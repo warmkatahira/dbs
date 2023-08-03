@@ -1,5 +1,5 @@
-$color-base: #FEA4A4;
-$color-sub:#FFDEDE;
+$color-base: #fc8618;
+$color-sub:#FFF0CA;
 $nav-height: 30px;
 // 余白と枠を横幅・高さに含める
 *{
@@ -22,7 +22,7 @@ nav{
     line-height: $nav-height;
     padding:0 15px;
     font-size:22px;
-    font-family: 'Lemonada';
+    font-family: 'Libre Baskerville';
     color: white;
   }
   // ナビゲーションバー直下のulタグのスタイル

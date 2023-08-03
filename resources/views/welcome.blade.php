@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 
         <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Zen+Maru+Gothic:wght@500&display=swap" rel="stylesheet">
 
         <!-- Lordicon -->
         <script src="https://cdn.lordicon.com/pzdvqjsp.js"></script>
@@ -33,7 +33,7 @@
         <x-alert/>
         <div class="flex mt-3">
             @auth
-                <a href="{{ route('top.index') }}" class="ml-auto mr-10"><img src="{{ asset('image/home_button.svg') }}" class="w-32"></a>
+                <a href="{{ route('top.index') }}" class="ml-auto mr-10">トップ</a>
             @else
                 <a href="{{ route('login') }}" class="ml-auto">ログイン</a>
                 <a href="{{ route('register') }}" class="ml-10 mr-10">ユーザー登録</a>
