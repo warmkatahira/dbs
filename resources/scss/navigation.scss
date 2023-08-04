@@ -1,5 +1,5 @@
-$color-base: #fc8618;
-$color-sub:#FFF0CA;
+$color-base: #54ACFD;
+$color-sub:#1c59ff;
 $nav-height: 30px;
 // 余白と枠を横幅・高さに含める
 *{
@@ -22,7 +22,7 @@ nav{
     line-height: $nav-height;
     padding:0 15px;
     font-size:22px;
-    font-family: 'Libre Baskerville';
+    font-family: 'Marko One';
     color: white;
   }
   // ナビゲーションバー直下のulタグのスタイル
@@ -38,6 +38,7 @@ nav{
       position: relative;
       display: inline-block;
       padding: 0 20px;
+      color: white;
       // liタグ直下のaタグのスタイル
       &>a{
         position: relative;
@@ -108,6 +109,7 @@ nav{
     position: relative;
     display: inline-block;
     padding: 0 20px;
+    color: white;
     // liタグ直下のaタグのスタイル
     &>a{
       position: relative;

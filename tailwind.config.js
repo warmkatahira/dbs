@@ -14,7 +14,7 @@ export default {
         extend: {
             colors: {
                 theme: {
-                    'main': "#fc8618",
+                    'main': "#54ACFD",
                     'sub': "#FFDEDE",
                     'gray': "#ebe6e6",
                 },

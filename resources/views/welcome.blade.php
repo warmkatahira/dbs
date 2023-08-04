@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 
         <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Zen+Maru+Gothic:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Marko+One&family=Zen+Maru+Gothic:wght@500&display=swap" rel="stylesheet">
 
         <!-- Lordicon -->
         <script src="https://cdn.lordicon.com/pzdvqjsp.js"></script>
@@ -41,8 +41,7 @@
         </div>
         <div class="">
             <p class="text-4xl text-center">日次収支管理システム</p>
-            <p class="LibreBaskerville text-5xl text-center mt-5"><span class="text-theme-main">D</span>aily <span class="text-theme-main">B</span>alance <span class="text-theme-main">S</span>ystem</p>
-
+            <p class="MarkoOne text-5xl text-center mt-5"><span class="text-theme-main">D</span>aily <span class="text-theme-main">B</span>alance <span class="text-theme-main">S</span>ystem</p>
         </div>
     </body>
 </html>
