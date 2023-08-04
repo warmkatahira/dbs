@@ -63,6 +63,19 @@ return [
             ]) : [],
         ],
 
+        'mysql_kintai' => [
+            'driver'    => 'mysql',
+            'host'      => env('DB_HOST_KINTAI', 'localhost'),
+            'port' => env('DB_PORT_KINTAI', '3306'),
+            'database'  => env('DB_DATABASE_KINTAI', 'forge'),
+            'username'  => env('DB_USERNAME_KINTAI', 'forge'),
+            'password'  => env('DB_PASSWORD_KINTAI', ''),
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => '',
+            'strict'    => false,
+       ],
+
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),

@@ -26,7 +26,6 @@ return new class extends Migration
             $table->timestamps();
             // 外部キー制約
             $table->foreign('role_id')->references('role_id')->on('roles')->onUpdate('SET NULL')->onDelete('SET NULL');
-            $table->foreign('base_id')->references('base_id')->on('bases');
         });
     }
 
