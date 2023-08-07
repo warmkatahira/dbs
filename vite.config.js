@@ -17,8 +17,14 @@ export default defineConfig({
                 'resources/scss/navigation.scss',
                 'resources/js/loading.js',
                 'resources/css/loading.css',
+                'resources/scss/scroll.scss',
+                'resources/js/common.js',
             ],
             // ウェルカム
+            [
+                
+            ],
+            // 荷主マスタ
             [
                 
             ],

@@ -1,6 +1,6 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-a6d5d3eb.css",
+    "file": "assets/app-3444729a.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -14,18 +14,31 @@
     "isEntry": true,
     "src": "resources/js/app.js"
   },
+  "resources/js/common.js": {
+    "file": "assets/common-91c34090.js",
+    "imports": [
+      "resources/js/loading.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/common.js"
+  },
   "resources/js/loading.js": {
-    "file": "assets/loading-4ed993c7.js",
+    "file": "assets/loading-e0e1f0e1.js",
     "isEntry": true,
     "src": "resources/js/loading.js"
   },
   "resources/scss/navigation.scss": {
-    "file": "assets/navigation-21aa9bf3.css",
+    "file": "assets/navigation-a35fa8bd.css",
     "isEntry": true,
     "src": "resources/scss/navigation.scss"
   },
+  "resources/scss/scroll.scss": {
+    "file": "assets/scroll-51ce249b.css",
+    "isEntry": true,
+    "src": "resources/scss/scroll.scss"
+  },
   "resources/scss/theme.scss": {
-    "file": "assets/theme-b922fa60.css",
+    "file": "assets/theme-b6cfbfa0.css",
     "isEntry": true,
     "src": "resources/scss/theme.scss"
   }

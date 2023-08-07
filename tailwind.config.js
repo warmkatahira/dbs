@@ -15,7 +15,7 @@ export default {
             colors: {
                 theme: {
                     'main': "#54ACFD",
-                    'sub': "#FFDEDE",
+                    'sub': "#c3e2ff",
                     'gray': "#ebe6e6",
                 },
             },

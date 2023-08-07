@@ -5,23 +5,35 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Base extends Model
+class Customer extends Model
 {
     use HasFactory;
     // 接続するDBをセット
     protected $connection = 'mysql';
     // 主キーカラムを変更
-    protected $primaryKey = 'base_id';
+    protected $primaryKey = 'customer_id';
     // オートインクリメント無効化
     public $incrementing = false;
     // 操作可能なカラムを定義
     protected $fillable = [
+        'customer_id',
         'base_id',
-        'base_name',
+        'customer_name',
+        'monthly_storage_sales',
+        'monthly_storage_cost',
+        'working_days',
+        'is_available',
+        'customer_sort_order',
     ];
+    // DB:dbsのbasesテーブルとのリレーション
+    public function dbs_base()
+    {
+        return $this->belongsTo(Base::class, 'base_id', 'base_id');
+    }
     // 全てを取得
     public static function getAll()
     {
-        return self::orderBy('base_id', 'asc');
+        return self::orderBy('customer_id', 'asc');
     }
+
 }

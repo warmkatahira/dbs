@@ -63,7 +63,7 @@ return [
             ]) : [],
         ],
 
-        'mysql_kintai' => [
+        'kintai' => [
             'driver'    => 'mysql',
             'host'      => env('DB_HOST_KINTAI', 'localhost'),
             'port' => env('DB_PORT_KINTAI', '3306'),

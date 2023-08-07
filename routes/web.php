@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Welcome\WelcomeController;
 // +-+-+-+-+-+-+-+- TOP +-+-+-+-+-+-+-+-
 use App\Http\Controllers\Top\TopController;
+// +-+-+-+-+-+-+-+- マスタ管理 +-+-+-+-+-+-+-+-
+use App\Http\Controllers\MasterMgt\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +32,12 @@ Route::middleware(['auth'])->group(function () {
         // -+-+-+-+-+-+-+-+-+-+-+-+ TOP -+-+-+-+-+-+-+-+-+-+-+-+
         Route::controller(TopController::class)->prefix('top')->name('top.')->group(function(){
             Route::get('', 'index')->name('index');
+        });
+    // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ マスタ管理 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
+        // -+-+-+-+-+-+-+-+-+-+-+-+ 荷主マスタ -+-+-+-+-+-+-+-+-+-+-+-+
+        Route::controller(CustomerController::class)->prefix('customer')->name('customer.')->group(function(){
+            Route::get('', 'index')->name('index');
+            Route::get('sync', 'sync')->name('sync');
         });
 });
 
