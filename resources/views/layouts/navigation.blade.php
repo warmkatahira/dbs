@@ -7,7 +7,7 @@
         <li class="dropdown"><a href="#" class="trigger-drop">収支一覧</a></li>
         <li class="dropdown"><a href="#" class="trigger-drop">マスタ管理</a>
             <ul class="drop">
-                <li><a href="">拠点マスタ</a></li>
+                <li><a href="{{ route('base.index') }}">拠点マスタ</a></li>
                 <li><a href="{{ route('customer.index') }}">荷主マスタ</a></li>
             </ul>
         </li>

@@ -7,7 +7,10 @@ use App\Http\Controllers\Welcome\WelcomeController;
 // +-+-+-+-+-+-+-+- TOP +-+-+-+-+-+-+-+-
 use App\Http\Controllers\Top\TopController;
 // +-+-+-+-+-+-+-+- マスタ管理 +-+-+-+-+-+-+-+-
-use App\Http\Controllers\MasterMgt\CustomerController;
+    // 拠点マスタ
+    use App\Http\Controllers\MasterMgt\Base\BaseController;
+    // 荷主マスタ
+    use App\Http\Controllers\MasterMgt\Customer\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +37,11 @@ Route::middleware(['auth'])->group(function () {
             Route::get('', 'index')->name('index');
         });
     // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ マスタ管理 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
+        // -+-+-+-+-+-+-+-+-+-+-+-+ 拠点マスタ -+-+-+-+-+-+-+-+-+-+-+-+
+        Route::controller(BaseController::class)->prefix('base')->name('base.')->group(function(){
+            Route::get('', 'index')->name('index');
+            Route::get('sync', 'sync')->name('sync');
+        });
         // -+-+-+-+-+-+-+-+-+-+-+-+ 荷主マスタ -+-+-+-+-+-+-+-+-+-+-+-+
         Route::controller(CustomerController::class)->prefix('customer')->name('customer.')->group(function(){
             Route::get('', 'index')->name('index');

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\MasterMgt;
+namespace App\Http\Controllers\MasterMgt\Customer;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -38,8 +38,6 @@ class CustomerController extends Controller
     {
         // インスタンス化
         $CustomerSyncSerivce = new CustomerSyncService;
-        // DB:kintaiのbasesテーブルと同期
-        $CustomerSyncSerivce->syncBase();
         // DB:kintaiのcustomersテーブルと同期
         $CustomerSyncSerivce->syncCustomer();
         return back();
