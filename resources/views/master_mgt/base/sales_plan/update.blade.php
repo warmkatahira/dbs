@@ -10,7 +10,7 @@
             @csrf
             <x-div.label label="拠点" :value="$sales_plan->dbs_base->base_name" />
             <x-div.label label="売上計画年月" :value="\Carbon\CarbonImmutable::parse($sales_plan->sales_plan_ym)->isoFormat('YYYY年MM月')" />
-            <x-div.input label="売上計画" id="sales_plan" :db="$sales_plan->sales_plan" required="1" tippy="0" />
+            <x-div.input type="text" label="売上計画" id="sales_plan" :db="$sales_plan->sales_plan" required="1" tippy="0" />
         </form>
     </div>
     <button type="button" id="sales_plan_update_enter" class="text-sm px-5 py-2 bg-theme-main text-white">更新</button>

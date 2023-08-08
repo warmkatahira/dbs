@@ -4,8 +4,6 @@ namespace App\Services\MasterMgt\Base\SalesPlan;
 
 // モデル
 use App\Models\SalesPlan;
-// その他
-use Carbon\CarbonImmutable;
 
 class SalesPlanUpdateService
 {

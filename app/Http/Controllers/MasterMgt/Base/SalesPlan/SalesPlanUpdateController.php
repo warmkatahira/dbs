@@ -28,7 +28,7 @@ class SalesPlanUpdateController extends Controller
     {
         // インスタンス化
         $SalesPlanUpdateService = new SalesPlanUpdateService;
-        // 
+        // 売上計画を更新
         $SalesPlanUpdateService->updateSalesPlan($request);
         return back()->with([
             'alert_type' => 'success',

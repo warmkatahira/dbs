@@ -11,6 +11,7 @@ use App\Http\Controllers\Top\TopController;
     use App\Http\Controllers\MasterMgt\Base\BaseController;
     // 売上計画
     use App\Http\Controllers\MasterMgt\Base\SalesPlan\SalesPlanController;
+    use App\Http\Controllers\MasterMgt\Base\SalesPlan\SalesPlanCreateController;
     use App\Http\Controllers\MasterMgt\Base\SalesPlan\SalesPlanUpdateController;
     // 荷主マスタ
     use App\Http\Controllers\MasterMgt\Customer\CustomerController;
@@ -48,6 +49,10 @@ Route::middleware(['auth'])->group(function () {
         // -+-+-+-+-+-+-+-+-+-+-+-+ 売上計画 -+-+-+-+-+-+-+-+-+-+-+-+
         Route::controller(SalesPlanController::class)->prefix('sales_plan')->name('sales_plan.')->group(function(){
             Route::get('', 'index')->name('index');
+        });
+        Route::controller(SalesPlanCreateController::class)->prefix('sales_plan_create')->name('sales_plan_create.')->group(function(){
+            Route::get('', 'index')->name('index');
+            Route::post('create', 'create')->name('create');
         });
         Route::controller(SalesPlanUpdateController::class)->prefix('sales_plan_update')->name('sales_plan_update.')->group(function(){
             Route::get('', 'index')->name('index');

@@ -5,5 +5,5 @@
     @endif
 </div>
 <div class="border px-10 py-5">
-    <input type="text" id="{{ $id }}" name="{{ $id }}" class="w-96 text-sm" value="{{ old($id, $db) }}" autocomplete="off">
+    <input type="{{ $type }}" id="{{ $id }}" name="{{ $id }}" class="w-96 text-sm" value="{{ old($id, $db) }}" autocomplete="off">
 </div>
