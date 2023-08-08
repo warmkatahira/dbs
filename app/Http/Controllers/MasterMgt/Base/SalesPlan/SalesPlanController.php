@@ -9,8 +9,6 @@ use App\Models\Base;
 use App\Models\SalesPlan;
 // サービス
 use App\Services\MasterMgt\Base\SalesPlan\SalesPlanService;
-// その他
-use Illuminate\Support\Facades\DB;
 
 class SalesPlanController extends Controller
 {

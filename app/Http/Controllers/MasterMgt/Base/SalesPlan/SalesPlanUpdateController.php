@@ -8,8 +8,6 @@ use Illuminate\Http\Request;
 use App\Models\SalesPlan;
 // サービス
 use App\Services\MasterMgt\Base\SalesPlan\SalesPlanUpdateService;
-// その他
-use Illuminate\Support\Facades\DB;
 
 class SalesPlanUpdateController extends Controller
 {
@@ -30,7 +28,7 @@ class SalesPlanUpdateController extends Controller
         $SalesPlanUpdateService = new SalesPlanUpdateService;
         // 売上計画を更新
         $SalesPlanUpdateService->updateSalesPlan($request);
-        return back()->with([
+        return redirect(session('back_url_1'))->with([
             'alert_type' => 'success',
             'alert_message' => '売上計画の更新が完了しました。',
         ]);

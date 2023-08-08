@@ -13,6 +13,7 @@ use App\Http\Controllers\Top\TopController;
     use App\Http\Controllers\MasterMgt\Base\SalesPlan\SalesPlanController;
     use App\Http\Controllers\MasterMgt\Base\SalesPlan\SalesPlanCreateController;
     use App\Http\Controllers\MasterMgt\Base\SalesPlan\SalesPlanUpdateController;
+    use App\Http\Controllers\MasterMgt\Base\SalesPlan\SalesPlanDeleteController;
     // 荷主マスタ
     use App\Http\Controllers\MasterMgt\Customer\CustomerController;
 
@@ -57,6 +58,9 @@ Route::middleware(['auth'])->group(function () {
         Route::controller(SalesPlanUpdateController::class)->prefix('sales_plan_update')->name('sales_plan_update.')->group(function(){
             Route::get('', 'index')->name('index');
             Route::post('update', 'update')->name('update');
+        });
+        Route::controller(SalesPlanDeleteController::class)->prefix('sales_plan_delete')->name('sales_plan_delete.')->group(function(){
+            Route::post('delete', 'delete')->name('delete');
         });
         // -+-+-+-+-+-+-+-+-+-+-+-+ 荷主マスタ -+-+-+-+-+-+-+-+-+-+-+-+
         Route::controller(CustomerController::class)->prefix('customer')->name('customer.')->group(function(){

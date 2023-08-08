@@ -8,8 +8,6 @@ use Illuminate\Http\Request;
 use App\Models\Base;
 // サービス
 use App\Services\MasterMgt\Base\SalesPlan\SalesPlanCreateService;
-// その他
-use Illuminate\Support\Facades\DB;
 
 class SalesPlanCreateController extends Controller
 {
@@ -28,7 +26,7 @@ class SalesPlanCreateController extends Controller
         $SalesPlanCreateService = new SalesPlanCreateService;
         // 売上計画を登録
         $SalesPlanCreateService->createSalesPlan($request);
-        return back()->with([
+        return redirect(session('back_url_1'))->with([
             'alert_type' => 'success',
             'alert_message' => '売上計画の登録が完了しました。',
         ]);

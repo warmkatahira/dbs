@@ -1,3 +1,5 @@
+@vite(['resources/js/master_mgt/base/sales_plan/sales_plan.js'])
+
 <x-app-layout>
     <x-page-header content="売上計画({{ $base->base_name }})"/>
     <div class="flex flex-row mb-2">

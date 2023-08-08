@@ -16,7 +16,11 @@
                         <td class="py-1 px-2 border">
                             <div class="flex">
                                 <a href="{{ route('sales_plan_update.index', ['sales_plan_id' => $sales_plan->sales_plan_id]) }}" class="text-xs mx-3 px-3 py-1 border border-blue-600 bg-blue-100">更新</a>
-                                <a href="" class="text-xs mx-3 px-3 py-1 border border-red-600 bg-red-100">削除</a>
+                                <form method="POST" action="{{ route('sales_plan_delete.delete') }}" id="{{ 'sales_plan_delete_form_'.$sales_plan->sales_plan_id }}" class="m-0">
+                                    @csrf
+                                    <input type="hidden" name="sales_plan_id">
+                                    <button type="button" id="{{ $sales_plan->sales_plan_id }}" class="sales_plan_delete_enter text-xs mx-3 px-3 py-1 border border-red-600 bg-red-100">削除</button>
+                                </form>
                             </div>
                         </td>
                     </tr>
