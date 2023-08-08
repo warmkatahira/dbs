@@ -15,8 +15,8 @@
                     <tr class="text-left hover:bg-theme-sub cursor-default">
                         <td class="py-1 px-2 border">{{ $customer->dbs_base->base_name }}</td>
                         <td class="py-1 px-2 border">{{ $customer->customer_name }}</td>
-                        <td class="py-1 px-2 border text-right">{{ number_format($customer->monthly_storage_sales).'円' }}</td>
-                        <td class="py-1 px-2 border text-right">{{ number_format($customer->monthly_storage_cost).'円' }}</td>
+                        <td class="py-1 px-2 border text-right"><i class="las la-yen-sign"></i>{{ number_format($customer->monthly_storage_sales) }}</td>
+                        <td class="py-1 px-2 border text-right"><i class="las la-yen-sign"></i>{{ number_format($customer->monthly_storage_cost) }}</td>
                         <td class="py-1 px-2 border text-right">{{ $customer->working_days.'日' }}</td>
                     </tr>
                 @endforeach

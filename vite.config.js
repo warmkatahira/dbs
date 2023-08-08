@@ -19,14 +19,15 @@ export default defineConfig({
                 'resources/css/loading.css',
                 'resources/scss/scroll.scss',
                 'resources/js/common.js',
+                'resources/js/search_date.js',
             ],
             // ウェルカム
             [
                 
             ],
-            // 荷主マスタ
+            // 売上計画
             [
-                
+                'resources/js/master_mgt/base/sales_plan/sales_plan.js',
             ],
         ),
     ],

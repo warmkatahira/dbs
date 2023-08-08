@@ -9,6 +9,9 @@ use App\Http\Controllers\Top\TopController;
 // +-+-+-+-+-+-+-+- マスタ管理 +-+-+-+-+-+-+-+-
     // 拠点マスタ
     use App\Http\Controllers\MasterMgt\Base\BaseController;
+    // 売上計画
+    use App\Http\Controllers\MasterMgt\Base\SalesPlan\SalesPlanController;
+    use App\Http\Controllers\MasterMgt\Base\SalesPlan\SalesPlanUpdateController;
     // 荷主マスタ
     use App\Http\Controllers\MasterMgt\Customer\CustomerController;
 
@@ -41,6 +44,14 @@ Route::middleware(['auth'])->group(function () {
         Route::controller(BaseController::class)->prefix('base')->name('base.')->group(function(){
             Route::get('', 'index')->name('index');
             Route::get('sync', 'sync')->name('sync');
+        });
+        // -+-+-+-+-+-+-+-+-+-+-+-+ 売上計画 -+-+-+-+-+-+-+-+-+-+-+-+
+        Route::controller(SalesPlanController::class)->prefix('sales_plan')->name('sales_plan.')->group(function(){
+            Route::get('', 'index')->name('index');
+        });
+        Route::controller(SalesPlanUpdateController::class)->prefix('sales_plan_update')->name('sales_plan_update.')->group(function(){
+            Route::get('', 'index')->name('index');
+            Route::post('update', 'update')->name('update');
         });
         // -+-+-+-+-+-+-+-+-+-+-+-+ 荷主マスタ -+-+-+-+-+-+-+-+-+-+-+-+
         Route::controller(CustomerController::class)->prefix('customer')->name('customer.')->group(function(){

@@ -24,4 +24,9 @@ class Base extends Model
     {
         return self::orderBy('base_id', 'asc');
     }
+    // 指定したレコードを取得
+    public static function getSpecify($base_id)
+    {
+        return self::where('base_id', $base_id);
+    }
 }
