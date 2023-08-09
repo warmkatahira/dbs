@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 // モデル
 use App\Models\Base;
-use App\Models\SalesPlan;
 // サービス
 use App\Services\MasterMgt\Base\SalesPlan\SalesPlanService;
 

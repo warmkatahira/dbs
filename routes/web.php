@@ -14,6 +14,11 @@ use App\Http\Controllers\Top\TopController;
     use App\Http\Controllers\MasterMgt\Base\SalesPlan\SalesPlanCreateController;
     use App\Http\Controllers\MasterMgt\Base\SalesPlan\SalesPlanUpdateController;
     use App\Http\Controllers\MasterMgt\Base\SalesPlan\SalesPlanDeleteController;
+    // 月額経費
+    use App\Http\Controllers\MasterMgt\Base\MonthlyCost\MonthlyCostController;
+    use App\Http\Controllers\MasterMgt\Base\MonthlyCost\MonthlyCostCreateController;
+    use App\Http\Controllers\MasterMgt\Base\MonthlyCost\MonthlyCostUpdateController;
+    use App\Http\Controllers\MasterMgt\Base\MonthlyCost\MonthlyCostDeleteController;
     // 荷主マスタ
     use App\Http\Controllers\MasterMgt\Customer\CustomerController;
 
@@ -60,6 +65,21 @@ Route::middleware(['auth'])->group(function () {
             Route::post('update', 'update')->name('update');
         });
         Route::controller(SalesPlanDeleteController::class)->prefix('sales_plan_delete')->name('sales_plan_delete.')->group(function(){
+            Route::post('delete', 'delete')->name('delete');
+        });
+        // -+-+-+-+-+-+-+-+-+-+-+-+ 月額経費 -+-+-+-+-+-+-+-+-+-+-+-+
+        Route::controller(MonthlyCostController::class)->prefix('monthly_cost')->name('monthly_cost.')->group(function(){
+            Route::get('', 'index')->name('index');
+        });
+        Route::controller(MonthlyCostCreateController::class)->prefix('monthly_cost_create')->name('monthly_cost_create.')->group(function(){
+            Route::get('', 'index')->name('index');
+            Route::post('create', 'create')->name('create');
+        });
+        Route::controller(MonthlyCostUpdateController::class)->prefix('monthly_cost_update')->name('monthly_cost_update.')->group(function(){
+            Route::get('', 'index')->name('index');
+            Route::post('update', 'update')->name('update');
+        });
+        Route::controller(MonthlyCostDeleteController::class)->prefix('monthly_cost_delete')->name('monthly_cost_delete.')->group(function(){
             Route::post('delete', 'delete')->name('delete');
         });
         // -+-+-+-+-+-+-+-+-+-+-+-+ 荷主マスタ -+-+-+-+-+-+-+-+-+-+-+-+

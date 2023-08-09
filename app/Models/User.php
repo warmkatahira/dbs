@@ -30,6 +30,11 @@ class User extends Authenticatable
         'status',
         'last_login_at',
     ];
+    // DB:dbsのbasesテーブルとのリレーション
+    public function dbs_base()
+    {
+        return $this->belongsTo(Base::class, 'base_id', 'base_id');
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

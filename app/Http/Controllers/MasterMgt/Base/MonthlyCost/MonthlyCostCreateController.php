@@ -1,0 +1,38 @@
+<?php
+
+namespace App\Http\Controllers\MasterMgt\Base\MonthlyCost;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+// モデル
+use App\Models\Base;
+use App\Models\Item;
+// サービス
+use App\Services\MasterMgt\Base\MonthlyCost\MonthlyCostCreateService;
+
+class MonthlyCostCreateController extends Controller
+{
+    public function index(Request $request)
+    {
+        // 拠点を取得
+        $base = Base::getSpecify(session('search_base_id'))->first();
+        // 経費項目を全て取得
+        $items = Item::getSpecifyByItemCategory1('経費')->get();
+        return view('master_mgt.base.monthly_cost.create')->with([
+            'base' => $base,
+            'items' => $items,
+        ]);
+    }
+
+    public function create(Request $request)
+    {
+        // インスタンス化
+        $MonthlyCostCreateService = new MonthlyCostCreateService;
+        // 月額経費を登録
+        $MonthlyCostCreateService->createMonthlyCost($request);
+        return redirect(session('back_url_1'))->with([
+            'alert_type' => 'success',
+            'alert_message' => '月額経費の登録が完了しました。',
+        ]);
+    }
+}

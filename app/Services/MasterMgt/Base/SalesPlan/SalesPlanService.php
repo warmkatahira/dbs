@@ -5,7 +5,6 @@ namespace App\Services\MasterMgt\Base\SalesPlan;
 // モデル
 use App\Models\SalesPlan;
 // その他
-use Illuminate\Support\Facades\Auth;
 use Carbon\CarbonImmutable;
 
 class SalesPlanService
@@ -55,7 +54,7 @@ class SalesPlanService
             $to = CarbonImmutable::createFromFormat('Y-m', session('search_sales_plan_ym_to'))->endOfMonth();
             $sales_plans->whereDate('sales_plan_ym', '>=', $from)->whereDate('sales_plan_ym', '<=', $to);
         }
-        // 拠点IDと荷主IDで並び替え
+        // 売上計画年月で並び替え
         return $sales_plans->orderBy('sales_plan_ym', 'asc')->get();
     }
 }

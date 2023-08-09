@@ -18,6 +18,7 @@
         </li>
         <li class="dropdown"><a href="#" class="trigger-drop">システム管理</a>
             <ul class="drop">
+                <li><a href="">項目マスタ</a></li>
                 <li><a href="">荷役マスタ</a></li>
                 <li><a href="">ユーザーマスタ</a></li>
             </ul>

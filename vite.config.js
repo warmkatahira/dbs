@@ -29,6 +29,10 @@ export default defineConfig({
             [
                 'resources/js/master_mgt/base/sales_plan/sales_plan.js',
             ],
+            // 月額経費
+            [
+                'resources/js/master_mgt/base/monthly_cost/monthly_cost.js',
+            ],
         ),
     ],
 });

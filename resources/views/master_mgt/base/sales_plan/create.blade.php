@@ -8,7 +8,7 @@
     <div class="bg-white">
         <form method="POST" action="{{ route('sales_plan_create.create') }}" id="sales_plan_create_form">
             @csrf
-            <x-div.label label="拠点" :value="$base->base_name" />
+            <x-div.label label="拠点" :value="Auth::user()->dbs_base->base_name" />
             <x-div.input type="month" label="売上計画年月" id="sales_plan_ym" :db="null" required="1" tippy="0" />
             <x-div.input type="text" label="売上計画" id="sales_plan" :db="null" required="1" tippy="0" />
         </form>

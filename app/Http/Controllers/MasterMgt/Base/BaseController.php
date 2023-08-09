@@ -8,8 +8,6 @@ use Illuminate\Http\Request;
 use App\Models\Base;
 // サービス
 use App\Services\MasterMgt\Base\BaseSyncService;
-// その他
-use Illuminate\Support\Facades\DB;
 
 class BaseController extends Controller
 {
