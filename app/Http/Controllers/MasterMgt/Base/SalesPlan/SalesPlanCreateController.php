@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\Base;
 // サービス
 use App\Services\MasterMgt\Base\SalesPlan\SalesPlanCreateService;
+// リクエスト
+use App\Http\Requests\MasterMgt\SalesPlan\SalesPlanCreateRequest;
 
 class SalesPlanCreateController extends Controller
 {
@@ -20,7 +22,7 @@ class SalesPlanCreateController extends Controller
         ]);
     }
 
-    public function create(Request $request)
+    public function create(SalesPlanCreateRequest $request)
     {
         // インスタンス化
         $SalesPlanCreateService = new SalesPlanCreateService;

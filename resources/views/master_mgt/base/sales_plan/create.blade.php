@@ -2,6 +2,8 @@
 
 <x-app-layout>
     <x-page-header content="売上計画登録"/>
+    <!-- バリデーションエラー -->
+    <x-validation-error-msg />
     <div class="flex flex-row mb-2">
         <a href="{{ session('back_url_1') }}" class="px-5 py-1"><i class="las la-arrow-circle-left la-2x"></i></a>
     </div>

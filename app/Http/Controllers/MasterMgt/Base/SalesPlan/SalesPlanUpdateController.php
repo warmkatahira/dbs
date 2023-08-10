@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\SalesPlan;
 // サービス
 use App\Services\MasterMgt\Base\SalesPlan\SalesPlanUpdateService;
+// リクエスト
+use App\Http\Requests\MasterMgt\SalesPlan\SalesPlanUpdateRequest;
 
 class SalesPlanUpdateController extends Controller
 {
@@ -22,7 +24,7 @@ class SalesPlanUpdateController extends Controller
         ]);
     }
 
-    public function update(Request $request)
+    public function update(SalesPlanUpdateRequest $request)
     {
         // インスタンス化
         $SalesPlanUpdateService = new SalesPlanUpdateService;
