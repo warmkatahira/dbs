@@ -21,9 +21,9 @@ class Customer extends Model
         'customer_name',
         'monthly_storage_sales',
         'monthly_storage_cost',
-        'working_days',
         'is_available',
         'customer_sort_order',
+        'cost_ratio',
     ];
     // DB:dbsのbasesテーブルとのリレーション
     public function dbs_base()

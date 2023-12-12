@@ -15,11 +15,11 @@ return new class extends Migration
             $table->string('customer_id', 20)->primary();
             $table->string('base_id', 20);
             $table->string('customer_name', 20);
-            $table->unsignedInteger('monthly_storage_sales')->nullable();
-            $table->unsignedInteger('monthly_storage_cost')->nullable();
-            $table->unsignedInteger('working_days')->nullable();
+            $table->unsignedInteger('monthly_storage_sales')->default(0);
+            $table->unsignedInteger('monthly_storage_cost')->default(0);
             $table->boolean('is_available');
             $table->unsignedInteger('customer_sort_order');
+            $table->unsignedInteger('cost_ratio')->default(0);
             $table->timestamps();
         });
     }

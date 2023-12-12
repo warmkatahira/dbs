@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 // モデル
 use App\Models\Base;
-use App\Models\Item;
+use App\Models\MonthlyItem;
 // サービス
 use App\Services\MasterMgt\Base\MonthlyCost\MonthlyCostCreateService;
+// 列挙
+use App\Enums\MonthlyItemEnum;
 
 class MonthlyCostCreateController extends Controller
 {
@@ -17,10 +19,10 @@ class MonthlyCostCreateController extends Controller
         // 拠点を取得
         $base = Base::getSpecify(session('search_base_id'))->first();
         // 経費項目を全て取得
-        $items = Item::getSpecifyByItemCategory1('経費')->get();
+        $monthly_items = MonthlyItem::getSpecifyByItemCategory1(MonthlyItemEnum::COST_JP)->get();
         return view('master_mgt.base.monthly_cost.create')->with([
             'base' => $base,
-            'items' => $items,
+            'monthly_items' => $monthly_items,
         ]);
     }
 

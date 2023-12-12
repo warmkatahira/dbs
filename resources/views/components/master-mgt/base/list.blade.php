@@ -9,12 +9,12 @@
             </thead>
             <tbody class="bg-white">
                 @foreach($bases as $base)
-                    <tr class="text-left hover:bg-theme-sub cursor-default">
+                    <tr class="text-left cursor-default">
                         <td class="py-1 px-2 border">{{ $base->base_name }}</td>
                         <td class="py-1 px-2 border">
                             <div class="flex">
-                                <a href="{{ route('sales_plan.index', ['base_id' => $base->base_id]) }}" class="text-xs mx-3 px-3 py-1 border border-green-600 bg-green-100">売上計画</a>
-                                <a href="{{ route('monthly_cost.index', ['base_id' => $base->base_id]) }}" class="text-xs mx-3 px-3 py-1 border border-green-600 bg-green-100">月額経費</a>
+                                <a href="{{ route('sales_plan.index', ['base_id' => $base->base_id]) }}" class="text-xs mx-3 px-3 py-1 border border-theme-main hover:bg-theme-sub">売上計画</a>
+                                <a href="{{ route('monthly_cost.index', ['base_id' => $base->base_id]) }}" class="text-xs mx-3 px-3 py-1 border border-theme-main hover:bg-theme-sub">月額経費</a>
                             </div>
                         </td>
                     </tr>

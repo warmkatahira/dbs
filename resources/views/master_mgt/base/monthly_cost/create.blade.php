@@ -10,9 +10,9 @@
             @csrf
             <x-div.label label="拠点" :value="Auth::user()->dbs_base->base_name" />
             <x-div.input type="month" label="月額経費年月" id="monthly_cost_ym" :db="null" required="1" tippy="0" />
-            <x-div.select label="経費項目" id="monthly_cost_item_id" :forValue="$items" forId="item_id" forText="item_name" :db="null" required="1" tippy="0" />
+            <x-div.select label="経費項目" id="monthly_cost_item_id" :forValue="$monthly_items" forId="monthly_item_id" forText="monthly_item_name" :db="null" required="1" tippy="0" />
             <x-div.input type="text" label="月額経費" id="monthly_cost" :db="null" required="1" tippy="0" />
         </form>
     </div>
-    <button type="button" id="monthly_cost_create_enter" class="text-sm px-5 py-2 bg-theme-main text-white">登録</button>
+    <button type="button" id="monthly_cost_create_enter" class="text-sm px-10 py-2 bg-theme-main text-white">登録</button>
 </x-app-layout>

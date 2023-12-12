@@ -13,7 +13,7 @@
                 @foreach($monthlyCosts as $monthly_cost)
                     <tr class="text-left hover:bg-theme-sub cursor-default">
                         <td class="py-1 px-2 border">{{ \Carbon\CarbonImmutable::parse($monthly_cost->monthly_cost_ym)->isoFormat('YYYY年MM月') }}</td>
-                        <td class="py-1 px-2 border">{{ $monthly_cost->dbs_item->item_name }}</td>
+                        <td class="py-1 px-2 border">{{ $monthly_cost->dbs_item->monthly_item_name }}</td>
                         <td class="py-1 px-2 border text-right"><i class="las la-yen-sign"></i>{{ number_format($monthly_cost->monthly_cost) }}</td>
                         <td class="py-1 px-2 border">
                             <div class="flex">

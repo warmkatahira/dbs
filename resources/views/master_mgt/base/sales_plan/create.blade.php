@@ -15,5 +15,5 @@
             <x-div.input type="text" label="売上計画" id="sales_plan" :db="null" required="1" tippy="0" />
         </form>
     </div>
-    <button type="button" id="sales_plan_create_enter" class="text-sm px-5 py-2 bg-theme-main text-white">登録</button>
+    <button type="button" id="sales_plan_create_enter" class="text-sm px-10 py-2 bg-theme-main text-white">登録</button>
 </x-app-layout>
