@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\MonthlyCost;
 // サービス
 use App\Services\MasterMgt\Base\MonthlyCost\MonthlyCostUpdateService;
+// リクエスト
+use App\Http\Requests\MasterMgt\MonthlyCost\MonthlyCostUpdateRequest;
 
 class MonthlyCostUpdateController extends Controller
 {
@@ -22,7 +24,7 @@ class MonthlyCostUpdateController extends Controller
         ]);
     }
 
-    public function update(Request $request)
+    public function update(MonthlyCostUpdateRequest $request)
     {
         // インスタンス化
         $MonthlyCostUpdateService = new MonthlyCostUpdateService;

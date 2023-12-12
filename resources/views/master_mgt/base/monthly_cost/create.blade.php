@@ -2,6 +2,8 @@
 
 <x-app-layout>
     <x-page-header content="月額経費登録"/>
+    <!-- バリデーションエラー -->
+    <x-validation-error-msg />
     <div class="flex flex-row mb-2">
         <a href="{{ session('back_url_1') }}" class="px-5 py-1"><i class="las la-arrow-circle-left la-2x"></i></a>
     </div>

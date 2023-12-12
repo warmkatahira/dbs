@@ -11,6 +11,8 @@ use App\Models\MonthlyItem;
 use App\Services\MasterMgt\Base\MonthlyCost\MonthlyCostCreateService;
 // 列挙
 use App\Enums\MonthlyItemEnum;
+// リクエスト
+use App\Http\Requests\MasterMgt\MonthlyCost\MonthlyCostCreateRequest;
 
 class MonthlyCostCreateController extends Controller
 {
@@ -26,7 +28,7 @@ class MonthlyCostCreateController extends Controller
         ]);
     }
 
-    public function create(Request $request)
+    public function create(MonthlyCostCreateRequest $request)
     {
         // インスタンス化
         $MonthlyCostCreateService = new MonthlyCostCreateService;

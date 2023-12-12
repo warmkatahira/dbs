@@ -24,6 +24,11 @@ class MonthlyItem extends Model
     {
         return self::orderBy('monthly_item_id', 'asc');
     }
+    // 全てを取得
+    public static function getSpecify($monthly_item_id)
+    {
+        return self::where('monthly_item_id', $monthly_item_id);
+    }
     // 指定された項目カテゴリ1のレコードを取得
     public static function getSpecifyByItemCategory1($item_category_1)
     {
