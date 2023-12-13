@@ -27,11 +27,11 @@ export default defineConfig({
             ],
             // 売上計画
             [
-                'resources/js/master_mgt/base/sales_plan/sales_plan.js',
+                'resources/js/sales_plan/sales_plan.js',
             ],
             // 月額経費
             [
-                'resources/js/master_mgt/base/monthly_cost/monthly_cost.js',
+                'resources/js/monthly_cost/monthly_cost.js',
             ],
         ),
     ],

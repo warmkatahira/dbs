@@ -11,6 +11,12 @@
                 <li><a href="{{ route('customer.index') }}">荷主マスタ</a></li>
             </ul>
         </li>
+        <li class="dropdown"><a href="#" class="trigger-drop">設定</a>
+            <ul class="drop">
+                <li><a href="{{ route('sales_plan.index') }}">売上計画</a></li>
+                <li><a href="{{ route('monthly_cost.index') }}">月額経費</a></li>
+            </ul>
+        </li>
         <li class="dropdown"><a href="#" class="trigger-drop">その他</a>
             <ul class="drop">
                 <li><a href="">問い合わせ</a></li>

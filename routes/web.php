@@ -10,15 +10,15 @@ use App\Http\Controllers\Top\TopController;
     // 拠点マスタ
     use App\Http\Controllers\MasterMgt\Base\BaseController;
     // 売上計画
-    use App\Http\Controllers\MasterMgt\Base\SalesPlan\SalesPlanController;
-    use App\Http\Controllers\MasterMgt\Base\SalesPlan\SalesPlanCreateController;
-    use App\Http\Controllers\MasterMgt\Base\SalesPlan\SalesPlanUpdateController;
-    use App\Http\Controllers\MasterMgt\Base\SalesPlan\SalesPlanDeleteController;
+    use App\Http\Controllers\SalesPlan\SalesPlanController;
+    use App\Http\Controllers\SalesPlan\SalesPlanCreateController;
+    use App\Http\Controllers\SalesPlan\SalesPlanUpdateController;
+    use App\Http\Controllers\SalesPlan\SalesPlanDeleteController;
     // 月額経費
-    use App\Http\Controllers\MasterMgt\Base\MonthlyCost\MonthlyCostController;
-    use App\Http\Controllers\MasterMgt\Base\MonthlyCost\MonthlyCostCreateController;
-    use App\Http\Controllers\MasterMgt\Base\MonthlyCost\MonthlyCostUpdateController;
-    use App\Http\Controllers\MasterMgt\Base\MonthlyCost\MonthlyCostDeleteController;
+    use App\Http\Controllers\MonthlyCost\MonthlyCostController;
+    use App\Http\Controllers\MonthlyCost\MonthlyCostCreateController;
+    use App\Http\Controllers\MonthlyCost\MonthlyCostUpdateController;
+    use App\Http\Controllers\MonthlyCost\MonthlyCostDeleteController;
     // 荷主マスタ
     use App\Http\Controllers\MasterMgt\Customer\CustomerController;
 

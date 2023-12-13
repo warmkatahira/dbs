@@ -29,4 +29,9 @@ class MonthlyCost extends Model
     {
         return $this->belongsTo(MonthlyItem::class, 'monthly_cost_item_id', 'monthly_item_id');
     }
+    // DB:dbsのbasesテーブルとのリレーション
+    public function dbs_base()
+    {
+        return $this->belongsTo(Base::class, 'base_id', 'base_id');
+    }
 }
