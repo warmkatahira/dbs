@@ -3,12 +3,15 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 // +-+-+-+-+-+-+-+- Welcome +-+-+-+-+-+-+-+-
-use App\Http\Controllers\Welcome\WelcomeController;
+    use App\Http\Controllers\Welcome\WelcomeController;
 // +-+-+-+-+-+-+-+- TOP +-+-+-+-+-+-+-+-
-use App\Http\Controllers\Top\TopController;
+    use App\Http\Controllers\Top\TopController;
 // +-+-+-+-+-+-+-+- マスタ管理 +-+-+-+-+-+-+-+-
     // 拠点マスタ
     use App\Http\Controllers\MasterMgt\Base\BaseController;
+    // 荷主マスタ
+    use App\Http\Controllers\MasterMgt\Customer\CustomerController;
+// +-+-+-+-+-+-+-+- 設定 +-+-+-+-+-+-+-+-
     // 売上計画
     use App\Http\Controllers\SalesPlan\SalesPlanController;
     use App\Http\Controllers\SalesPlan\SalesPlanCreateController;
@@ -19,8 +22,6 @@ use App\Http\Controllers\Top\TopController;
     use App\Http\Controllers\MonthlyCost\MonthlyCostCreateController;
     use App\Http\Controllers\MonthlyCost\MonthlyCostUpdateController;
     use App\Http\Controllers\MonthlyCost\MonthlyCostDeleteController;
-    // 荷主マスタ
-    use App\Http\Controllers\MasterMgt\Customer\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +53,12 @@ Route::middleware(['auth'])->group(function () {
             Route::get('', 'index')->name('index');
             Route::get('sync', 'sync')->name('sync');
         });
+        // -+-+-+-+-+-+-+-+-+-+-+-+ 荷主マスタ -+-+-+-+-+-+-+-+-+-+-+-+
+        Route::controller(CustomerController::class)->prefix('customer')->name('customer.')->group(function(){
+            Route::get('', 'index')->name('index');
+            Route::get('sync', 'sync')->name('sync');
+        });
+    // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ 設定 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
         // -+-+-+-+-+-+-+-+-+-+-+-+ 売上計画 -+-+-+-+-+-+-+-+-+-+-+-+
         Route::controller(SalesPlanController::class)->prefix('sales_plan')->name('sales_plan.')->group(function(){
             Route::get('', 'index')->name('index');
@@ -81,11 +88,6 @@ Route::middleware(['auth'])->group(function () {
         });
         Route::controller(MonthlyCostDeleteController::class)->prefix('monthly_cost_delete')->name('monthly_cost_delete.')->group(function(){
             Route::post('delete', 'delete')->name('delete');
-        });
-        // -+-+-+-+-+-+-+-+-+-+-+-+ 荷主マスタ -+-+-+-+-+-+-+-+-+-+-+-+
-        Route::controller(CustomerController::class)->prefix('customer')->name('customer.')->group(function(){
-            Route::get('', 'index')->name('index');
-            Route::get('sync', 'sync')->name('sync');
         });
 });
 

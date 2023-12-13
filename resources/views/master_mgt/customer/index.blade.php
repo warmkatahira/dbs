@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-page-header content="荷主マスタ"/>
-    <div class="flex flex-col mb-2">
+    <div class="flex flex-row mb-2">
         <!-- 操作ボタン -->
         <x-master-mgt.customer.operation-div />
         <!-- ページネーション -->

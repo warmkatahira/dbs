@@ -26,6 +26,9 @@ class BaseController extends Controller
         $BaseSyncSerivce = new BaseSyncService;
         // DB:kintaiのbasesテーブルと同期
         $BaseSyncSerivce->syncBase();
-        return back();
+        return back()->with([
+            'alert_type' => 'success',
+            'alert_message' => '拠点同期が完了しました。',
+        ]);
     }
 }

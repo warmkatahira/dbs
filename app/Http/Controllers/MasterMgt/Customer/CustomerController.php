@@ -40,6 +40,9 @@ class CustomerController extends Controller
         $CustomerSyncSerivce = new CustomerSyncService;
         // DB:kintaiのcustomersテーブルと同期
         $CustomerSyncSerivce->syncCustomer();
-        return back();
+        return back()->with([
+            'alert_type' => 'success',
+            'alert_message' => '荷主同期が完了しました。',
+        ]);
     }
 }
