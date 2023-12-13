@@ -1,4 +1,4 @@
-@vite(['resources/js/master_mgt/base/monthly_cost/monthly_cost.js'])
+@vite(['resources/js/monthly_cost/monthly_cost.js'])
 
 <x-app-layout>
     <x-page-header content="月額経費更新"/>
