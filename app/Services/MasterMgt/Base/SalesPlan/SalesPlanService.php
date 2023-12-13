@@ -55,6 +55,6 @@ class SalesPlanService
             $sales_plans->whereDate('sales_plan_ym', '>=', $from)->whereDate('sales_plan_ym', '<=', $to);
         }
         // 売上計画年月で並び替え
-        return $sales_plans->orderBy('sales_plan_ym', 'asc')->get();
+        return $sales_plans->orderBy('sales_plan_ym', 'asc')->paginate(50);
     }
 }

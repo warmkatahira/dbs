@@ -55,6 +55,6 @@ class MonthlyCostService
             $monthly_costs->whereDate('monthly_cost_ym', '>=', $from)->whereDate('monthly_cost_ym', '<=', $to);
         }
         // 月額経費年月と項目IDで並び替え
-        return $monthly_costs->orderBy('monthly_cost_ym', 'asc')->orderBy('monthly_cost_item_id', 'asc')->get();
+        return $monthly_costs->orderBy('monthly_cost_ym', 'asc')->orderBy('monthly_cost_item_id', 'asc')->paginate(50);
     }
 }

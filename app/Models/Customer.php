@@ -23,7 +23,7 @@ class Customer extends Model
         'monthly_storage_cost',
         'is_available',
         'customer_sort_order',
-        'cost_ratio',
+        'cost_allocation_ratio',
     ];
     // DB:dbsのbasesテーブルとのリレーション
     public function dbs_base()
