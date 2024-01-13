@@ -41,7 +41,7 @@ class CustomerService
     }
 
     // 荷主情報を取得
-    public function getCustomerSearch($request)
+    public function getCustomerSearch()
     {
         // 現在のURLを取得
         session(['back_url_1' => url()->full()]);
@@ -56,6 +56,6 @@ class CustomerService
             $customers->where('customer_name', 'LIKE', '%'.session('search_customer_name').'%');
         }
         // 拠点IDと荷主IDで並び替え
-        return $customers->orderBy('base_id', 'asc')->orderBy('customer_sort_order', 'asc')->paginate(50);
+        return $customers->orderBy('base_id', 'asc')->orderBy('customer_sort_order', 'asc');
     }
 }

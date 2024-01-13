@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\MasterMgt\Base;
+namespace App\Services\SystemMgt\BaseMgt;
 
 // モデル
 use App\Models\Base;

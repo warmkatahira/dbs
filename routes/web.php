@@ -7,8 +7,6 @@ use Illuminate\Support\Facades\Route;
 // +-+-+-+-+-+-+-+- TOP +-+-+-+-+-+-+-+-
     use App\Http\Controllers\Top\TopController;
 // +-+-+-+-+-+-+-+- マスタ管理 +-+-+-+-+-+-+-+-
-    // 拠点マスタ
-    use App\Http\Controllers\MasterMgt\Base\BaseController;
     // 荷主マスタ
     use App\Http\Controllers\MasterMgt\Customer\CustomerController;
 // +-+-+-+-+-+-+-+- 設定 +-+-+-+-+-+-+-+-
@@ -22,6 +20,11 @@ use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\MonthlyCost\MonthlyCostCreateController;
     use App\Http\Controllers\MonthlyCost\MonthlyCostUpdateController;
     use App\Http\Controllers\MonthlyCost\MonthlyCostDeleteController;
+// +-+-+-+-+-+-+-+- システム管理 +-+-+-+-+-+-+-+-
+    // 拠点管理
+    use App\Http\Controllers\SystemMgt\BaseMgt\BaseMgtController;
+    // ユーザー管理
+    use App\Http\Controllers\SystemMgt\UserMgt\UserMgtController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,15 +51,11 @@ Route::middleware(['auth'])->group(function () {
             Route::get('', 'index')->name('index');
         });
     // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ マスタ管理 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
-        // -+-+-+-+-+-+-+-+-+-+-+-+ 拠点マスタ -+-+-+-+-+-+-+-+-+-+-+-+
-        Route::controller(BaseController::class)->prefix('base')->name('base.')->group(function(){
-            Route::get('', 'index')->name('index');
-            Route::get('sync', 'sync')->name('sync');
-        });
         // -+-+-+-+-+-+-+-+-+-+-+-+ 荷主マスタ -+-+-+-+-+-+-+-+-+-+-+-+
         Route::controller(CustomerController::class)->prefix('customer')->name('customer.')->group(function(){
             Route::get('', 'index')->name('index');
             Route::get('sync', 'sync')->name('sync');
+            Route::get('download', 'download')->name('download');
         });
     // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ 設定 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
         // -+-+-+-+-+-+-+-+-+-+-+-+ 売上計画 -+-+-+-+-+-+-+-+-+-+-+-+
@@ -88,6 +87,16 @@ Route::middleware(['auth'])->group(function () {
         });
         Route::controller(MonthlyCostDeleteController::class)->prefix('monthly_cost_delete')->name('monthly_cost_delete.')->group(function(){
             Route::post('delete', 'delete')->name('delete');
+        });
+    // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ システム管理 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
+        // -+-+-+-+-+-+-+-+-+-+-+-+ 拠点管理 -+-+-+-+-+-+-+-+-+-+-+-+
+        Route::controller(BaseMgtController::class)->prefix('base_mgt')->name('base_mgt.')->group(function(){
+            Route::get('', 'index')->name('index');
+            Route::get('sync', 'sync')->name('sync');
+        });
+        // -+-+-+-+-+-+-+-+-+-+-+-+ ユーザー管理 -+-+-+-+-+-+-+-+-+-+-+-+
+        Route::controller(UserMgtController::class)->prefix('user_mgt')->name('user_mgt.')->group(function(){
+            Route::get('', 'index')->name('index');
         });
 });
 

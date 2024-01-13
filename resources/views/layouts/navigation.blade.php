@@ -3,11 +3,9 @@
 <nav id="navigation">
     <a href="{{ route('top.index') }}" class="logo">DBS</a>
     <ul class="links flex">
-        <li class="dropdown"><a href="#" class="trigger-drop">収支登録</a></li>
-        <li class="dropdown"><a href="#" class="trigger-drop">収支一覧</a></li>
+        <li class="dropdown"><a href="#" class="trigger-drop">収支</a></li>
         <li class="dropdown"><a href="#" class="trigger-drop">マスタ管理</a>
             <ul class="drop">
-                <li><a href="{{ route('base.index') }}">拠点マスタ</a></li>
                 <li><a href="{{ route('customer.index') }}">荷主マスタ</a></li>
             </ul>
         </li>
@@ -24,9 +22,10 @@
         </li>
         <li class="dropdown"><a href="#" class="trigger-drop">システム管理</a>
             <ul class="drop">
+                <li><a href="{{ route('base_mgt.index') }}">拠点管理</a></li>
                 <li><a href="">項目マスタ</a></li>
                 <li><a href="">荷役マスタ</a></li>
-                <li><a href="">ユーザーマスタ</a></li>
+                <li><a href="{{ route('user_mgt.index') }}">ユーザー管理</a></li>
             </ul>
         </li>
     </ul>

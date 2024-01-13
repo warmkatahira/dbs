@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\MasterMgt\Base\SalesPlan;
+namespace App\Services\SalesPlan;
 
 // モデル
 use App\Models\SalesPlan;

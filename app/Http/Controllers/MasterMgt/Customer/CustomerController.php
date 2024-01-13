@@ -9,8 +9,10 @@ use App\Models\Base;
 // サービス
 use App\Services\MasterMgt\Customer\CustomerService;
 use App\Services\MasterMgt\Customer\CustomerSyncService;
+use App\Services\MasterMgt\Customer\CustomerDownloadService;
 // その他
 use Illuminate\Support\Facades\DB;
+use Carbon\CarbonImmutable;
 
 class CustomerController extends Controller
 {
@@ -25,7 +27,7 @@ class CustomerController extends Controller
         // 検索条件をセッションにセット
         $CustomerSerivce->setSearchCondition($request);
         // 荷主情報を取得
-        $customers = $CustomerSerivce->getCustomerSearch($request);
+        $customers = $CustomerSerivce->getCustomerSearch()->paginate(50);
         // 拠点を全て取得
         $bases = Base::getAll()->get();
         return view('master_mgt.customer.index')->with([
@@ -44,5 +46,20 @@ class CustomerController extends Controller
             'alert_type' => 'success',
             'alert_message' => '荷主同期が完了しました。',
         ]);
+    }
+
+    public function download()
+    {
+        // インスタンス化
+        $CustomerSerivce = new CustomerService;
+        $CustomerDownloadSerivce = new CustomerDownloadService;
+        // 荷主情報を取得
+        $customers = $CustomerSerivce->getCustomerSearch();
+        // ダウンロードするデータを取得
+        $response = $CustomerDownloadSerivce->getDownloadCustomer($customers);
+        // ダウンロード処理
+        $response->headers->set('Content-Type', 'text/csv');
+        $response->headers->set('Content-Disposition', 'attachment; filename=荷主マスタ_' . CarbonImmutable::now()->isoFormat('Y年MM月DD日HH時mm分ss秒') . '.csv');
+        return $response;
     }
 }

@@ -1,11 +1,11 @@
 <x-app-layout>
-    <x-page-header content="拠点マスタ"/>
+    <x-page-header content="拠点管理"/>
     <div class="flex flex-row mb-2">
         <!-- 操作ボタン -->
-        <x-master-mgt.base.operation-div />
+        <x-system-mgt.base-mgt.operation-div />
     </div>
     <div class="flex flex-row items-start mb-2">
         <!-- 拠点一覧 -->
-        <x-master-mgt.base.list :bases="$bases" />
+        <x-system-mgt.base-mgt.list :bases="$bases" />
     </div>
 </x-app-layout>

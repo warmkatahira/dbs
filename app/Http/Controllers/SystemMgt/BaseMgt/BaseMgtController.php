@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\MasterMgt\Base;
+namespace App\Http\Controllers\SystemMgt\BaseMgt;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 // モデル
 use App\Models\Base;
 // サービス
-use App\Services\MasterMgt\Base\BaseSyncService;
+use App\Services\SystemMgt\BaseMgt\BaseSyncService;
 
-class BaseController extends Controller
+class BaseMgtController extends Controller
 {
     public function index(Request $request)
     {
         // 拠点を全て取得
         $bases = Base::getAll()->get();
-        return view('master_mgt.base.index')->with([
+        return view('system_mgt.base_mgt.index')->with([
             'bases' => $bases,
         ]);
     }
