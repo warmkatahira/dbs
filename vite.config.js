@@ -20,6 +20,8 @@ export default defineConfig({
                 'resources/scss/scroll.scss',
                 'resources/js/common.js',
                 'resources/js/search_date.js',
+                'resources/js/dropdown.js',
+                'resources/scss/dropdown.scss',
             ],
             // ウェルカム
             [
@@ -32,6 +34,10 @@ export default defineConfig({
             // 月額経費
             [
                 'resources/js/monthly_cost/monthly_cost.js',
+            ],
+            // 荷主マスタ
+            [
+                
             ],
         ),
     ],

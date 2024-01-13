@@ -56,6 +56,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('', 'index')->name('index');
             Route::get('sync', 'sync')->name('sync');
             Route::get('download', 'download')->name('download');
+            Route::get('upload', 'upload')->name('upload');
         });
     // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ 設定 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
         // -+-+-+-+-+-+-+-+-+-+-+-+ 売上計画 -+-+-+-+-+-+-+-+-+-+-+-+

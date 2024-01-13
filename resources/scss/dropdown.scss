@@ -1,0 +1,41 @@
+// 親要素
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+// ドロップダウンボタン
+.dropdown_btn {
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    background-color: #54ACFD;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 3px;
+}
+
+// 内容
+.dropdown-content {
+    display: none;
+    position: absolute;
+    z-index: 999;
+    width: 200px;
+}
+
+// 内容の各ボタン
+.dropdown-content a {
+    text-decoration: none;
+    display: block;
+    font-size: 12px;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    width: 200px;
+    text-align: left;
+}
+
+// 各ボタンのホバー時
+.dropdown-content a:hover {
+    background-color: rgb(146, 146, 146);
+}

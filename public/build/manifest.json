@@ -22,6 +22,11 @@
     "isEntry": true,
     "src": "resources/js/common.js"
   },
+  "resources/js/dropdown.js": {
+    "file": "assets/dropdown-68e6b675.js",
+    "isEntry": true,
+    "src": "resources/js/dropdown.js"
+  },
   "resources/js/loading.js": {
     "file": "assets/loading-e0e1f0e1.js",
     "isEntry": true,
@@ -31,6 +36,11 @@
     "file": "assets/search_date-8ec2ed9b.js",
     "isEntry": true,
     "src": "resources/js/search_date.js"
+  },
+  "resources/scss/dropdown.scss": {
+    "file": "assets/dropdown-390531fb.css",
+    "isEntry": true,
+    "src": "resources/scss/dropdown.scss"
   },
   "resources/scss/navigation.scss": {
     "file": "assets/navigation-a35fa8bd.css",
