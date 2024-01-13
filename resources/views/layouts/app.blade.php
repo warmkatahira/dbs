@@ -14,10 +14,10 @@
         <link rel="shortcut icon" href="{{ asset('image/favicon.svg') }}">
 
         <!-- Styles -->
-        @vite(['resources/css/app.css', 'resources/scss/theme.scss', 'resources/scss/scroll.scss'])
+        @vite(['resources/css/app.css', 'resources/scss/theme.scss', 'resources/scss/scroll.scss', 'resources/scss/dropdown.scss'])
 
         <!-- Script -->
-        @vite(['resources/js/common.js', 'resources/js/search_date.js'])
+        @vite(['resources/js/common.js', 'resources/js/search_date.js', 'resources/js/dropdown.js'])
 
         <!-- LINE AWESOME -->
         <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
