@@ -25,6 +25,32 @@ class Customer extends Model
         'customer_sort_order',
         'cost_allocation_ratio',
     ];
+    // ヘッダーを定義
+    public static function csvHeader()
+    {
+        return [
+            '荷主ID',
+            '拠点',
+            '荷主名',
+            '月間保管売上',
+            '月間保管経費',
+            '経費分配割合',
+            '有効/無効',
+        ];
+    }
+    // ヘッダーを定義
+    public static function csvHeader_EN()
+    {
+        return [
+            'customer_id',
+            'base_name',
+            'customer_name',
+            'monthly_storage_sales',
+            'monthly_storage_cost',
+            'cost_allocation_ratio',
+            'is_available',
+        ];
+    }
     // DB:dbsのbasesテーブルとのリレーション
     public function dbs_base()
     {

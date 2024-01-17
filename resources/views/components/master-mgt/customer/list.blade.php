@@ -7,7 +7,8 @@
                     <th class="font-thin py-3 px-2">荷主名</th>
                     <th class="font-thin py-3 px-2">月間保管売上</th>
                     <th class="font-thin py-3 px-2">月間保管経費</th>
-                    <th class="font-thin py-3 px-2">経費分配割合</th>
+                    <th class="font-thin py-3 px-2">経費分配割合<i class="las la-question-circle ml-1 la-lg tippy_cost_allocation_ratio"></i></th>
+                    <th class="font-thin py-3 px-2">有効/無効<i class="las la-question-circle ml-1 la-lg tippy_is_available"></i></th>
                 </tr>
             </thead>
             <tbody class="bg-white">
@@ -18,6 +19,7 @@
                         <td class="py-1 px-2 border text-right"><i class="las la-yen-sign"></i>{{ number_format($customer->monthly_storage_sales) }}</td>
                         <td class="py-1 px-2 border text-right"><i class="las la-yen-sign"></i>{{ number_format($customer->monthly_storage_cost) }}</td>
                         <td class="py-1 px-2 border text-right">{{ $customer->cost_allocation_ratio }}<i class="las la-percent"></i></td>
+                        <td class="py-1 px-2 border text-center">{{ $customer->is_available == 0 ? '無効' : '有効' }}
                     </tr>
                 @endforeach
             </tbody>

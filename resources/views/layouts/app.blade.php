@@ -14,10 +14,10 @@
         <link rel="shortcut icon" href="{{ asset('image/favicon.svg') }}">
 
         <!-- Styles -->
-        @vite(['resources/css/app.css', 'resources/scss/theme.scss', 'resources/scss/scroll.scss', 'resources/scss/dropdown.scss'])
+        @vite(['resources/css/app.css', 'resources/scss/theme.scss', 'resources/scss/scroll.scss', 'resources/scss/dropdown.scss', 'resources/scss/file_select.scss'])
 
         <!-- Script -->
-        @vite(['resources/js/common.js', 'resources/js/search_date.js', 'resources/js/dropdown.js'])
+        @vite(['resources/js/common.js', 'resources/js/search_date.js', 'resources/js/dropdown.js', 'resources/js/file_select.js', 'resources/js/upload_error.js'])
 
         <!-- LINE AWESOME -->
         <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
@@ -31,6 +31,10 @@
         <!-- toastr.js -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+        <!-- Tippy.js -->
+        <script src="https://unpkg.com/@popperjs/core@2"></script>
+        <script src="https://unpkg.com/tippy.js@6"></script>
     </head>
     <body>
         <div>

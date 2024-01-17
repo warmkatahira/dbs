@@ -18,17 +18,9 @@ class CustomerDownloadService
             $handle = fopen('php://output', 'wb');
             // BOMを書き込む
             fwrite($handle, "\xEF\xBB\xBF");
-            // ヘッダー行を書き込む
-            $headerRow = [
-                '荷主ID',
-                '拠点',
-                '荷主名',
-                '月間保管売上',
-                '月間保管経費',
-                '経費分配割合',
-                '有効/無効',
-            ];
-            fputcsv($handle, $headerRow);
+            // システムに定義してあるヘッダーを取得し、書き込む
+            $header = Customer::csvHeader();
+            fputcsv($handle, $header);
             // レコードをチャンクごとに書き込む
             $customers->chunk($chunkSize, function ($customers) use ($handle) {
                 // 荷主の分だけループ

@@ -56,7 +56,8 @@ Route::middleware(['auth'])->group(function () {
             Route::get('', 'index')->name('index');
             Route::get('sync', 'sync')->name('sync');
             Route::get('download', 'download')->name('download');
-            Route::get('upload', 'upload')->name('upload');
+            Route::post('upload', 'upload')->name('upload');
+            Route::get('upload_error_download', 'upload_error_download')->name('upload_error_download');
         });
     // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ 設定 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
         // -+-+-+-+-+-+-+-+-+-+-+-+ 売上計画 -+-+-+-+-+-+-+-+-+-+-+-+

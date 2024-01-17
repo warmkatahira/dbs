@@ -24,7 +24,7 @@
 }
 
 // 内容の各ボタン
-.dropdown-content a {
+.dropdown-content .dropdown-content-element {
     text-decoration: none;
     display: block;
     font-size: 12px;
@@ -36,6 +36,6 @@
 }
 
 // 各ボタンのホバー時
-.dropdown-content a:hover {
+.dropdown-content .dropdown-content-element:hover {
     background-color: rgb(146, 146, 146);
 }

@@ -1,6 +1,6 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-435b1509.css",
+    "file": "assets/app-3c1b8661.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -27,6 +27,14 @@
     "isEntry": true,
     "src": "resources/js/dropdown.js"
   },
+  "resources/js/file_select.js": {
+    "file": "assets/file_select-bd5cc3d1.js",
+    "imports": [
+      "resources/js/loading.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/file_select.js"
+  },
   "resources/js/loading.js": {
     "file": "assets/loading-e0e1f0e1.js",
     "isEntry": true,
@@ -37,10 +45,20 @@
     "isEntry": true,
     "src": "resources/js/search_date.js"
   },
+  "resources/js/upload_error.js": {
+    "file": "assets/upload_error-08ab75a1.js",
+    "isEntry": true,
+    "src": "resources/js/upload_error.js"
+  },
   "resources/scss/dropdown.scss": {
-    "file": "assets/dropdown-390531fb.css",
+    "file": "assets/dropdown-8bb74454.css",
     "isEntry": true,
     "src": "resources/scss/dropdown.scss"
+  },
+  "resources/scss/file_select.scss": {
+    "file": "assets/file_select-fd97c87b.css",
+    "isEntry": true,
+    "src": "resources/scss/file_select.scss"
   },
   "resources/scss/navigation.scss": {
     "file": "assets/navigation-a35fa8bd.css",

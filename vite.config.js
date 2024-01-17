@@ -22,6 +22,9 @@ export default defineConfig({
                 'resources/js/search_date.js',
                 'resources/js/dropdown.js',
                 'resources/scss/dropdown.scss',
+                'resources/js/file_select.js',
+                'resources/scss/file_select.scss',
+                'resources/js/upload_error.js',
             ],
             // ウェルカム
             [
@@ -37,7 +40,7 @@ export default defineConfig({
             ],
             // 荷主マスタ
             [
-                
+                'resources/js/master_mgt/customer/customer.js',
             ],
         ),
     ],
