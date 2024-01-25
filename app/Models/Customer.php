@@ -61,5 +61,12 @@ class Customer extends Model
     {
         return self::orderBy('customer_id', 'asc');
     }
+    // 経費分配割合の合計を取得
+    public static function getTotalCostAllocationRatio($base_id)
+    {
+        return self::where('base_id', $base_id)
+                    ->where('is_available', 1)
+                    ->sum('cost_allocation_ratio');
+    }
 
 }

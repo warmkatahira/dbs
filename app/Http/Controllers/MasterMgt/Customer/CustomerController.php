@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\DB;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use App\Enums\BooleanEnum;
 
 class CustomerController extends Controller
 {
@@ -35,9 +36,15 @@ class CustomerController extends Controller
         $customers = $CustomerSerivce->getCustomerSearch()->paginate(50);
         // 拠点を全て取得
         $bases = Base::getAll()->get();
+        // 拠点条件がある場合、経費分配割合を合計し100%であるか確認
+        $cost_allocation_ratio_check = $CustomerSerivce->checkCostAllocationRatio();
+        // 有効/無効の検索条件に使用する情報を作成
+        $is_available_conditions = BooleanEnum::makeCondition();
         return view('master_mgt.customer.index')->with([
             'bases' => $bases,
             'customers' => $customers,
+            'cost_allocation_ratio_check' => $cost_allocation_ratio_check,
+            'is_available_conditions' => $is_available_conditions,
         ]);
     }
 
@@ -123,30 +130,6 @@ class CustomerController extends Controller
                     session(['customer_upload_error' => array(['エラー情報' => $validation_error, 'アップロード日時' => $nowDate])]);
                     throw new \Exception("データが正しくない為、アップロードできませんでした。<br/>詳細はアップロードエラーを確認して下さい。");
                 }
-
-
-
-                
-                
-
-                /* // 追加する受注データを配列に格納（同時にバリデーションも実施）
-                $order = $AmazonOrderImportService->setArrayImport($path);
-                // バリデーションエラー配列の中にnull以外があれば、エラー情報を出力
-                if (count(array_filter($order['validation_error'])) != 0) {
-                    // セッションにエラー情報を格納
-                    session(['import_error' => array(['エラー情報' => $order['validation_error'], 'インポート日時' => $nowDate])]);
-                    throw new \Exception("データが正しくない為、インポートできませんでした。");
-                }
-                // amazon_order_importsをテーブルへ追加
-                $AmazonOrderImportService->insertArrayImportData($order['insert_data']);
-                // 請求金額を更新
-                $AmazonOrderImportService->updateBillingAmount();
-                // order_item_codeを更新
-                $AmazonOrderImportService->updateOrderItemCode();
-                // order_importsテーブルへ追加
-                $AmazonOrderImportService->insertOrderImport($nowDate);
-                // order_importsテーブルへ追加後の共通処理
-                return $OrderImportService->procOrderImport($nowDate); */
             });
         } catch (\Exception $e) {
             return redirect()->back()->with([

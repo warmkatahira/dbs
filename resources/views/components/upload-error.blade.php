@@ -1,1 +1,1 @@
-<a href="{{ route($downloadRoute) }}" class="text-blue-600 text-sm mt-3 ml-5 tippy_upload_error" data-upload_error_date="{{ 'アップロード日時：'.\Carbon\Carbon::parse($uploadErrorDate)->isoFormat('Y年MM月DD日 HH時mm分ss秒') }}"><i class="las la-download mr-1"></i>アップロードエラー</a>
+<a href="{{ route($downloadRoute) }}" class="text-red-600 text-sm pt-3 ml-5 tippy_upload_error" data-upload_error_date="{{ 'アップロード日時：'.\Carbon\Carbon::parse($uploadErrorDate)->isoFormat('Y年MM月DD日 HH時mm分ss秒') }}"><i class="las la-download mr-1"></i>アップロードエラー</a>

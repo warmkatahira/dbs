@@ -6,6 +6,7 @@ namespace App\Services\MasterMgt\Customer;
 use App\Models\Customer;
 // その他
 use Illuminate\Support\Facades\Auth;
+use App\Enums\BooleanEnum;
 
 class CustomerService
 {
@@ -14,7 +15,8 @@ class CustomerService
     {
         session()->forget([
             'search_base_id',
-            'search_customer_name'
+            'search_customer_name',
+            'search_is_available',
         ]);
         return;
     }
@@ -25,6 +27,7 @@ class CustomerService
         // nullなら検索が実行されていないので、初期条件をセット
         if(is_null($search_enter)){
             session(['search_base_id' => Auth::user()->base_id]);
+            session(['search_is_available' => BooleanEnum::AVAILABLE]);
         }
         return;
     }
@@ -36,6 +39,7 @@ class CustomerService
         if($request->search_enter){
             session(['search_base_id' => $request->search_base_id]);
             session(['search_customer_name' => $request->search_customer_name]);
+            session(['search_is_available' => $request->search_is_available]);
         }
         return;
     }
@@ -55,7 +59,28 @@ class CustomerService
         if(session('search_customer_name') != null){
             $customers->where('customer_name', 'LIKE', '%'.session('search_customer_name').'%');
         }
+        // 有効/無効条件がある場合
+        if(session('search_is_available') != null){
+            $customers->where('is_available', session('search_is_available'));
+        }
         // 拠点IDと荷主IDで並び替え
         return $customers->orderBy('base_id', 'asc')->orderBy('customer_sort_order', 'asc');
+    }
+
+    // 拠点条件がある場合、経費分配割合を合計し100%であるか確認
+    public function checkCostAllocationRatio()
+    {
+        // 変数を初期化
+        $cost_allocation_ratio_check = '';
+        // 拠点条件がある場合
+        if(session('search_base_id') != null){
+            // 指定された拠点で荷主が有効なものを対象に経費分配割合の合計を取得
+            $total_cost_allocation_ratio = Customer::getTotalCostAllocationRatio(session('search_base_id'));
+            // 合計が100以外だったら、エラーメッセージをセット
+            if($total_cost_allocation_ratio != 100){
+                $cost_allocation_ratio_check = '経費分配割合の合計が100%になっていません。(現在：' . $total_cost_allocation_ratio . '%)';
+            }
+        }
+        return $cost_allocation_ratio_check;
     }
 }
