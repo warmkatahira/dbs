@@ -78,7 +78,7 @@ class CustomerService
             $total_cost_allocation_ratio = Customer::getTotalCostAllocationRatio(session('search_base_id'));
             // 合計が100以外だったら、エラーメッセージをセット
             if($total_cost_allocation_ratio != 100){
-                $cost_allocation_ratio_check = '経費分配割合の合計が100%になっていません。(現在：' . $total_cost_allocation_ratio . '%)';
+                $cost_allocation_ratio_check = '経費分配割合の合計が100%ではありません。(現在：' . $total_cost_allocation_ratio . '%)';
             }
         }
         return $cost_allocation_ratio_check;
