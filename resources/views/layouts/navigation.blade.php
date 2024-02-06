@@ -3,7 +3,11 @@
 <nav id="navigation">
     <a href="{{ route('top.index') }}" class="logo">DBS</a>
     <ul class="links flex">
-        <li class="dropdown"><a href="#" class="trigger-drop">収支</a></li>
+        <li class="dropdown"><a href="#" class="trigger-drop">収支管理</a>
+            <ul class="drop">
+                <li><a href="{{ route('balance_list.index') }}">収支一覧</a></li>
+            </ul>
+        </li>
         <li class="dropdown"><a href="#" class="trigger-drop">マスタ管理</a>
             <ul class="drop">
                 <li><a href="{{ route('customer.index') }}">荷主マスタ</a></li>

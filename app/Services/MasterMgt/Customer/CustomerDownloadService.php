@@ -31,7 +31,8 @@ class CustomerDownloadService
                         $customer->customer_name,
                         $customer->monthly_storage_sales,
                         $customer->monthly_storage_cost,
-                        $customer->cost_allocation_ratio,
+                        $customer->ho_cost_allocation_ratio,
+                        $customer->monthly_cost_allocation_ratio,
                         $customer->is_available == 0 ? '無効' : '有効',
                     ];
                     fputcsv($handle, $row);

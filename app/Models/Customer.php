@@ -34,7 +34,8 @@ class Customer extends Model
             '荷主名',
             '月間保管売上',
             '月間保管経費',
-            '経費分配割合',
+            '本社管理費分配割合',
+            '月額経費分配割合',
             '有効/無効',
         ];
     }
@@ -47,7 +48,8 @@ class Customer extends Model
             'customer_name',
             'monthly_storage_sales',
             'monthly_storage_cost',
-            'cost_allocation_ratio',
+            'ho_cost_allocation_ratio',
+            'monthly_cost_allocation_ratio',
             'is_available',
         ];
     }
@@ -61,12 +63,12 @@ class Customer extends Model
     {
         return self::orderBy('customer_id', 'asc');
     }
-    // 経費分配割合の合計を取得
-    public static function getTotalCostAllocationRatio($base_id)
+    // 分配割合の合計を取得
+    public static function getTotalCostAllocationRatio($base_id, $column)
     {
         return self::where('base_id', $base_id)
                     ->where('is_available', 1)
-                    ->sum('cost_allocation_ratio');
+                    ->sum($column);
     }
 
 }

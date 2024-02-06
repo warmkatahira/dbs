@@ -39,7 +39,8 @@ class CustomerUploadService
                 Customer::where('customer_id', $item['customer_id'])->update([
                     'monthly_storage_sales' => $item['monthly_storage_sales'],
                     'monthly_storage_cost' => $item['monthly_storage_cost'],
-                    'cost_allocation_ratio' => $item['cost_allocation_ratio'],
+                    'ho_cost_allocation_ratio' => $item['ho_cost_allocation_ratio'],
+                    'monthly_cost_allocation_ratio' => $item['monthly_cost_allocation_ratio'],
                 ]);
             }
         }
@@ -56,7 +57,8 @@ class CustomerUploadService
             'customer_id' => 'required|exists:customers,customer_id',
             'monthly_storage_sales' => 'required|integer|min:0',
             'monthly_storage_cost' => 'required|integer|min:0',
-            'cost_allocation_ratio' => 'required|integer|min:0',
+            'ho_cost_allocation_ratio' => 'required|integer|min:0',
+            'monthly_cost_allocation_ratio' => 'required|integer|min:0',
         ];
         // バリデーションエラーメッセージを定義
         $messages = [
@@ -70,7 +72,8 @@ class CustomerUploadService
             'customer_id' => '荷主ID',
             'monthly_storage_sales' => '月間保管売上',
             'monthly_storage_cost' => '月間保管経費',
-            'cost_allocation_ratio' => '経費分配割合',
+            'ho_cost_allocation_ratio' => '本社管理費分配割合',
+            'monthly_cost_allocation_ratio' => '月額経費分配割合',
         ];
         // バリデーション実施
         $validator = Validator::make($itemArray, $rules, $messages, $attributes);

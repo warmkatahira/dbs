@@ -6,9 +6,14 @@
         <!-- 操作ボタン -->
         <x-master-mgt.customer.operation-div />
         <!-- 経費分配割合エラーメッセージ -->
-        @if(!empty($cost_allocation_ratio_check))
-            <p class="text-sm text-red-600 pt-3 ml-5"><i class="las la-exclamation-triangle la-lg mr-1"></i>{{ $cost_allocation_ratio_check }}</p>
-        @endif
+        <div class="flex flex-col">
+            @if(!empty($cost_allocation_ratio_check['ho_cost']))
+                <p class="text-sm text-red-600 ml-5"><i class="las la-exclamation-triangle la-lg mr-1"></i>{{ $cost_allocation_ratio_check['ho_cost'] }}</p>
+            @endif
+            @if(!empty($cost_allocation_ratio_check['monthly_cost']))
+                <p class="text-sm text-red-600 ml-5"><i class="las la-exclamation-triangle la-lg mr-1"></i>{{ $cost_allocation_ratio_check['monthly_cost'] }}</p>
+            @endif
+        </div>
         <!-- ページネーション -->
         <x-pagenation :pages="$customers" />
     </div>

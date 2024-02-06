@@ -19,7 +19,8 @@ return new class extends Migration
             $table->unsignedInteger('monthly_storage_cost')->default(0);
             $table->boolean('is_available');
             $table->unsignedInteger('customer_sort_order');
-            $table->unsignedInteger('cost_allocation_ratio')->default(0);
+            $table->unsignedInteger('ho_cost_allocation_ratio')->default(0);
+            $table->unsignedInteger('monthly_cost_allocation_ratio')->default(0);
             $table->timestamps();
         });
     }

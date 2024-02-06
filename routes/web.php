@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\Welcome\WelcomeController;
 // +-+-+-+-+-+-+-+- TOP +-+-+-+-+-+-+-+-
     use App\Http\Controllers\Top\TopController;
+// +-+-+-+-+-+-+-+- 収支管理 +-+-+-+-+-+-+-+-
+    // 収支一覧
+    use App\Http\Controllers\BalanceMgt\BalanceListController;
 // +-+-+-+-+-+-+-+- マスタ管理 +-+-+-+-+-+-+-+-
     // 荷主マスタ
     use App\Http\Controllers\MasterMgt\Customer\CustomerController;
@@ -48,6 +51,11 @@ Route::middleware(['auth'])->group(function () {
     // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ Top ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
         // -+-+-+-+-+-+-+-+-+-+-+-+ TOP -+-+-+-+-+-+-+-+-+-+-+-+
         Route::controller(TopController::class)->prefix('top')->name('top.')->group(function(){
+            Route::get('', 'index')->name('index');
+        });
+    // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ 収支管理 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
+        // -+-+-+-+-+-+-+-+-+-+-+-+ 収支一覧 -+-+-+-+-+-+-+-+-+-+-+-+
+        Route::controller(BalanceListController::class)->prefix('balance_list')->name('balance_list.')->group(function(){
             Route::get('', 'index')->name('index');
         });
     // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ マスタ管理 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
