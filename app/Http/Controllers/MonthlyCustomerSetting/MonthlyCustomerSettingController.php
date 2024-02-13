@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\MasterMgt\Customer;
+namespace App\Http\Controllers\MonthlyCustomerSetting;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -8,40 +8,30 @@ use Illuminate\Http\Request;
 use App\Models\Base;
 use App\Models\Customer;
 // サービス
-use App\Services\MasterMgt\Customer\CustomerService;
-use App\Services\MasterMgt\Customer\CustomerSyncService;
-use App\Services\MasterMgt\Customer\CustomerDownloadService;
-use App\Services\MasterMgt\Customer\CustomerUploadService;
-use App\Services\MasterMgt\Customer\CustomerUploadErrorDownloadSerivce;
-// その他
-use Illuminate\Support\Facades\DB;
-use Carbon\CarbonImmutable;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
-use App\Enums\BooleanEnum;
+use App\Services\MonthlyCustomerSetting\MonthlyCustomerSettingService;
 
-class CustomerController extends Controller
+class MonthlyCustomerSettingController extends Controller
 {
     public function index(Request $request)
     {
         // インスタンス化
-        $CustomerSerivce = new CustomerService;
+        $MonthlyCustomerSettingSerivce = new MonthlyCustomerSettingService;
         // 検索条件のセッションを削除
-        $CustomerSerivce->deleteSearchSession();
+        $MonthlyCustomerSettingSerivce->deleteSearchSession();
         // 検索条件の初期条件をセット
-        $CustomerSerivce->setDefaultCondition($request->search_enter);
+        $MonthlyCustomerSettingSerivce->setDefaultCondition($request->search_enter);
         // 検索条件をセッションにセット
-        $CustomerSerivce->setSearchCondition($request);
-        // 荷主情報を取得
-        $customers = $CustomerSerivce->getCustomerSearch()->paginate(50);
+        $MonthlyCustomerSettingSerivce->setSearchCondition($request);
+        // 月額荷主設定情報を取得
+        $monthly_customer_settings = $MonthlyCustomerSettingSerivce->getMonthlyCustomerSettingSearch()->paginate(50);
         // 拠点を全て取得
         $bases = Base::getAll()->get();
-        // 有効/無効の検索条件に使用する情報を作成
-        $is_available_conditions = BooleanEnum::makeCondition();
-        return view('master_mgt.customer.index')->with([
+        // 拠点条件がある場合、経費分配割合を合計し100%であるか確認
+        $cost_allocation_ratio_check = $MonthlyCustomerSettingSerivce->checkCostAllocationRatio();
+        return view('monthly_customer_setting.index')->with([
             'bases' => $bases,
-            'customers' => $customers,
-            'is_available_conditions' => $is_available_conditions,
+            'monthly_customer_settings' => $monthly_customer_settings,
+            'cost_allocation_ratio_check' => $cost_allocation_ratio_check,
         ]);
     }
 

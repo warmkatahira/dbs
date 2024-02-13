@@ -23,6 +23,8 @@ use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\MonthlyCost\MonthlyCostCreateController;
     use App\Http\Controllers\MonthlyCost\MonthlyCostUpdateController;
     use App\Http\Controllers\MonthlyCost\MonthlyCostDeleteController;
+    // 月額荷主設定
+    use App\Http\Controllers\MonthlyCustomerSetting\MonthlyCustomerSettingController;
 // +-+-+-+-+-+-+-+- システム管理 +-+-+-+-+-+-+-+-
     // 拠点管理
     use App\Http\Controllers\SystemMgt\BaseMgt\BaseMgtController;
@@ -97,6 +99,10 @@ Route::middleware(['auth'])->group(function () {
         });
         Route::controller(MonthlyCostDeleteController::class)->prefix('monthly_cost_delete')->name('monthly_cost_delete.')->group(function(){
             Route::post('delete', 'delete')->name('delete');
+        });
+        // -+-+-+-+-+-+-+-+-+-+-+-+ 月額荷主設定 -+-+-+-+-+-+-+-+-+-+-+-+
+        Route::controller(MonthlyCustomerSettingController::class)->prefix('monthly_customer_setting')->name('monthly_customer_setting.')->group(function(){
+            Route::get('', 'index')->name('index');
         });
     // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ システム管理 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
         // -+-+-+-+-+-+-+-+-+-+-+-+ 拠点管理 -+-+-+-+-+-+-+-+-+-+-+-+

@@ -17,6 +17,7 @@
             <ul class="drop">
                 <li><a href="{{ route('sales_plan.index') }}">売上計画</a></li>
                 <li><a href="{{ route('monthly_cost.index') }}">月額経費</a></li>
+                <li><a href="{{ route('monthly_customer_setting.index') }}">月額荷主設定</a></li>
             </ul>
         </li>
         <li class="dropdown"><a href="#" class="trigger-drop">その他</a>

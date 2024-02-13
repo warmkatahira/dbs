@@ -66,26 +66,4 @@ class CustomerService
         // 拠点IDと荷主IDで並び替え
         return $customers->orderBy('base_id', 'asc')->orderBy('customer_sort_order', 'asc');
     }
-
-    // 拠点条件がある場合、経費分配割合を合計し100%であるか確認
-    public function checkCostAllocationRatio()
-    {
-        // 変数を初期化
-        $ho_cost = '';
-        $monthly_cost = '';
-        // 拠点条件がある場合
-        if(session('search_base_id') != null){
-            // 指定された拠点で荷主が有効なものを対象に経費分配割合の合計を取得
-            $total_ho_cost_allocation_ratio = Customer::getTotalCostAllocationRatio(session('search_base_id'), 'ho_cost_allocation_ratio');
-            $total_monthly_cost_allocation_ratio = Customer::getTotalCostAllocationRatio(session('search_base_id'), 'monthly_cost_allocation_ratio');
-            // 合計が100以外だったら、エラーメッセージをセット
-            if($total_ho_cost_allocation_ratio != 100){
-                $ho_cost = '「本社管理費分配割合」の合計が100%ではありません。(現在：'.$total_ho_cost_allocation_ratio.'%)';
-            }
-            if($total_monthly_cost_allocation_ratio != 100){
-                $monthly_cost = '「月額経費分配割合」の合計が100%ではありません。(現在：'.$total_monthly_cost_allocation_ratio.'%)';
-            }
-        }
-        return compact('ho_cost', 'monthly_cost');
-    }
 }
