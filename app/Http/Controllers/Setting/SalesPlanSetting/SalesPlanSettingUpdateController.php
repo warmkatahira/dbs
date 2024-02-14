@@ -9,7 +9,7 @@ use App\Models\SalesPlanSetting;
 // サービス
 use App\Services\Setting\SalesPlanSetting\SalesPlanSettingUpdateService;
 // リクエスト
-use App\Http\Requests\SalesPlanSetting\SalesPlanSettingUpdateRequest;
+use App\Http\Requests\Setting\SalesPlanSetting\SalesPlanSettingUpdateRequest;
 
 class SalesPlanSettingUpdateController extends Controller
 {

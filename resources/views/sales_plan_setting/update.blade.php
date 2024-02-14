@@ -1,7 +1,7 @@
 @vite(['resources/js/sales_plan_setting/sales_plan_setting.js'])
 
 <x-app-layout>
-    <x-page-header content="売上計画更新"/>
+    <x-page-header content="売上計画設定更新"/>
     <!-- バリデーションエラー -->
     <x-validation-error-msg />
     <div class="flex flex-row mb-2">

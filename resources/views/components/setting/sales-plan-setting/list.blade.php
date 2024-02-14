@@ -3,7 +3,7 @@
         <table class="text-sm block whitespace-nowrap">
             <thead>
                 <tr class="text-left text-white bg-gray-600 sticky top-0">
-                    <th class="font-thin py-3 px-2 text-center">売上計画年月</th>
+                    <th class="font-thin py-3 px-2 text-center">設定年月</th>
                     <th class="font-thin py-3 px-2 text-center">拠点</th>
                     <th class="font-thin py-3 px-2 text-center">売上計画</th>
                     <th class="font-thin py-3 px-2 text-center">操作</th>

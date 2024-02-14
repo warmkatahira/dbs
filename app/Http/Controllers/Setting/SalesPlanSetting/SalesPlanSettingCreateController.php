@@ -9,7 +9,7 @@ use App\Models\Base;
 // サービス
 use App\Services\Setting\SalesPlanSetting\SalesPlanSettingCreateService;
 // リクエスト
-use App\Http\Requests\SalesPlanSetting\SalesPlanSettingCreateRequest;
+use App\Http\Requests\Setting\SalesPlanSetting\SalesPlanSettingCreateRequest;
 
 class SalesPlanSettingCreateController extends Controller
 {

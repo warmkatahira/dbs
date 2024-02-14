@@ -9,7 +9,7 @@ use App\Models\MonthlyCostSetting;
 // サービス
 use App\Services\Setting\MonthlyCostSetting\MonthlyCostSettingUpdateService;
 // リクエスト
-use App\Http\Requests\MonthlyCostSetting\MonthlyCostSettingUpdateRequest;
+use App\Http\Requests\Setting\MonthlyCostSetting\MonthlyCostSettingUpdateRequest;
 
 class MonthlyCostSettingUpdateController extends Controller
 {

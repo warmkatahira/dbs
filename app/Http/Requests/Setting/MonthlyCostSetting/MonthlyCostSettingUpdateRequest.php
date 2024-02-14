@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\MonthlyCostSetting;
+namespace App\Http\Requests\Setting\MonthlyCostSetting;
 
 use Illuminate\Foundation\Http\FormRequest;
 

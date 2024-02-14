@@ -1,7 +1,7 @@
 @vite(['resources/js/monthly_cost_setting/monthly_cost_setting.js'])
 
 <x-app-layout>
-    <x-page-header content="月額経費更新"/>
+    <x-page-header content="月額経費設定更新"/>
     <!-- バリデーションエラー -->
     <x-validation-error-msg />
     <div class="flex flex-row mb-2">

@@ -12,7 +12,7 @@ use App\Services\Setting\MonthlyCostSetting\MonthlyCostSettingCreateService;
 // 列挙
 use App\Enums\MonthlyItemEnum;
 // リクエスト
-use App\Http\Requests\MonthlyCostSetting\MonthlyCostSettingCreateRequest;
+use App\Http\Requests\Setting\MonthlyCostSetting\MonthlyCostSettingCreateRequest;
 
 class MonthlyCostSettingCreateController extends Controller
 {

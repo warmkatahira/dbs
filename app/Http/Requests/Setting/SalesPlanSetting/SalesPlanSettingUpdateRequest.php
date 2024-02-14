@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\SalesPlanSetting;
+namespace App\Http\Requests\Setting\SalesPlanSetting;
 
 use Illuminate\Foundation\Http\FormRequest;
 
