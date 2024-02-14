@@ -16,7 +16,7 @@
                         <td class="py-1 px-2 border">{{ \Carbon\CarbonImmutable::parse($monthly_cost_setting->monthly_cost_setting_ym)->isoFormat('YYYY年MM月') }}</td>
                         <td class="py-1 px-2 border">{{ $monthly_cost_setting->dbs_base->base_name }}</td>
                         <td class="py-1 px-2 border">{{ $monthly_cost_setting->dbs_item->monthly_item_name }}</td>
-                        <td class="py-1 px-2 border text-right"><i class="las la-yen-sign"></i>{{ number_format($monthly_cost_setting->monthly_cost_setting) }}</td>
+                        <td class="py-1 px-2 border text-right"><i class="las la-yen-sign"></i>{{ number_format($monthly_cost_setting->monthly_cost) }}</td>
                         <td class="py-1 px-2 border">
                             <div class="flex">
                                 <a href="{{ route('monthly_cost_setting_update.index', ['monthly_cost_setting_id' => $monthly_cost_setting->monthly_cost_setting_id]) }}" class="text-xs mx-3 px-3 py-1 border border-blue-600 bg-blue-100">更新</a>

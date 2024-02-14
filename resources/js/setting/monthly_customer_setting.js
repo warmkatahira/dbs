@@ -7,7 +7,7 @@ tippy('.tippy_ho_cost_allocation_ratio', {
 });
 
 // 月額経費分配割合のツールチップ
-tippy('.tippy_monthly_cost_setting_allocation_ratio', {
+tippy('.tippy_monthly_cost_allocation_ratio', {
     content: '月額経費を何%割り振るかを設定します。',
     duration: [1000, 0],
     allowHTML: true,
