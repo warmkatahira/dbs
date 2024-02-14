@@ -57,8 +57,8 @@ class MonthlyCustomerSettingUploadService
             'monthly_customer_setting_id' => 'required|exists:monthly_customer_settings,monthly_customer_setting_id',
             'monthly_storage_sales' => 'required|integer|min:0',
             'monthly_storage_cost' => 'required|integer|min:0',
-            'ho_cost_allocation_ratio' => 'required|integer|min:0',
-            'monthly_cost_allocation_ratio' => 'required|integer|min:0',
+            'ho_cost_allocation_ratio' => 'required|integer|min:0|max:100',
+            'monthly_cost_allocation_ratio' => 'required|integer|min:0|max:100',
         ];
         // バリデーションエラーメッセージを定義
         $messages = [
@@ -66,6 +66,7 @@ class MonthlyCustomerSettingUploadService
             'exists' => ':attributeが存在しません。',
             'integer' => ':attributeは整数で設定して下さい。',
             'min' => ':attributeは:min以上で設定して下さい。',
+            'max' => ':attributeは:max以下で設定して下さい。',
         ];
         // バリデーションエラー項目を定義
         $attributes = [

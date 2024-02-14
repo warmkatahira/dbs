@@ -89,8 +89,8 @@ class MonthlyCustomerSettingService
         // 拠点条件があって、月額荷主設定年月条件が単月である場合
         if(session('search_base_id') != null && session('search_monthly_customer_setting_ym_from') == session('search_monthly_customer_setting_ym_to')){
             // 指定された拠点で荷主が有効なものを対象に経費分配割合の合計を取得
-            $total_ho_cost_allocation_ratio = MonthlyCustomerSetting::getTotalCostAllocationRatio(session('search_base_id'), session('search_monthly_customer_setting_ym_from'), 'ho_cost_allocation_ratio');
-            $total_monthly_cost_allocation_ratio = MonthlyCustomerSetting::getTotalCostAllocationRatio(session('search_base_id'), session('search_monthly_customer_setting_ym_from'), 'monthly_cost_allocation_ratio');
+            $total_ho_cost_allocation_ratio = MonthlyCustomerSetting::getTotalCostAllocationRatio(session('search_base_id'), CarbonImmutable::createFromFormat('Y-m', session('search_monthly_customer_setting_ym_from'))->startOfMonth(), 'ho_cost_allocation_ratio');
+            $total_monthly_cost_allocation_ratio = MonthlyCustomerSetting::getTotalCostAllocationRatio(session('search_base_id'), CarbonImmutable::createFromFormat('Y-m', session('search_monthly_customer_setting_ym_from'))->startOfMonth(), 'monthly_cost_allocation_ratio');
             // 合計が100以外だったら、エラーメッセージをセット
             if($total_ho_cost_allocation_ratio != 100){
                 $ho_cost = '「本社管理費分配割合」の合計が100%ではありません。(現在：'.$total_ho_cost_allocation_ratio.'%)';
