@@ -1,22 +1,22 @@
 <?php
 
-namespace App\Services\SalesPlan;
+namespace App\Services\SalesPlanSetting;
 
 // モデル
-use App\Models\SalesPlan;
+use App\Models\SalesPlanSetting;
 // その他
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Auth;
 
-class SalesPlanCreateService
+class SalesPlanSettingCreateService
 {
     // 登録処理
-    public function createSalesPlan($request)
+    public function createSalesPlanSetting($request)
     {
-        SalesPlan::create([
+        SalesPlanSetting::create([
             'base_id' => Auth::user()->base_id,
-            'sales_plan_ym' => CarbonImmutable::createFromFormat('Y-m', $request->sales_plan_ym)->startOfMonth(), // 1日の日付で登録する
-            'sales_plan' => $request->sales_plan,
+            'sales_plan_setting_ym' => CarbonImmutable::createFromFormat('Y-m', $request->sales_plan_setting_ym)->startOfMonth(), // 1日の日付で登録する
+            'sales_plan_setting' => $request->sales_plan_setting,
         ]);
         return;
     }

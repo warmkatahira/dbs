@@ -40,7 +40,7 @@ class MonthlyCustomerSettingUploadService
                     'monthly_storage_sales' => $item['monthly_storage_sales'],
                     'monthly_storage_cost' => $item['monthly_storage_cost'],
                     'ho_cost_allocation_ratio' => $item['ho_cost_allocation_ratio'],
-                    'monthly_cost_allocation_ratio' => $item['monthly_cost_allocation_ratio'],
+                    'monthly_cost_setting_allocation_ratio' => $item['monthly_cost_setting_allocation_ratio'],
                 ]);
             }
         }
@@ -58,7 +58,7 @@ class MonthlyCustomerSettingUploadService
             'monthly_storage_sales' => 'required|integer|min:0',
             'monthly_storage_cost' => 'required|integer|min:0',
             'ho_cost_allocation_ratio' => 'required|integer|min:0|max:100',
-            'monthly_cost_allocation_ratio' => 'required|integer|min:0|max:100',
+            'monthly_cost_setting_allocation_ratio' => 'required|integer|min:0|max:100',
         ];
         // バリデーションエラーメッセージを定義
         $messages = [
@@ -74,7 +74,7 @@ class MonthlyCustomerSettingUploadService
             'monthly_storage_sales' => '月額保管売上',
             'monthly_storage_cost' => '月額保管経費',
             'ho_cost_allocation_ratio' => '本社管理費分配割合',
-            'monthly_cost_allocation_ratio' => '月額経費分配割合',
+            'monthly_cost_setting_allocation_ratio' => '月額経費分配割合',
         ];
         // バリデーション実施
         $validator = Validator::make($itemArray, $rules, $messages, $attributes);

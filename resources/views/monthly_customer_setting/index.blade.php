@@ -10,8 +10,8 @@
             @if(!empty($cost_allocation_ratio_check['ho_cost']))
                 <p class="text-sm text-red-600 ml-5"><i class="las la-exclamation-triangle la-lg mr-1"></i>{{ $cost_allocation_ratio_check['ho_cost'] }}</p>
             @endif
-            @if(!empty($cost_allocation_ratio_check['monthly_cost']))
-                <p class="text-sm text-red-600 ml-5"><i class="las la-exclamation-triangle la-lg mr-1"></i>{{ $cost_allocation_ratio_check['monthly_cost'] }}</p>
+            @if(!empty($cost_allocation_ratio_check['monthly_cost_setting']))
+                <p class="text-sm text-red-600 ml-5"><i class="las la-exclamation-triangle la-lg mr-1"></i>{{ $cost_allocation_ratio_check['monthly_cost_setting'] }}</p>
             @endif
         </div>
         <!-- ページネーション -->

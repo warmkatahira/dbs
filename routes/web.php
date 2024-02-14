@@ -14,17 +14,17 @@ use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\MasterMgt\Customer\CustomerController;
 // +-+-+-+-+-+-+-+- 設定 +-+-+-+-+-+-+-+-
     // 売上計画
-    use App\Http\Controllers\SalesPlan\SalesPlanController;
-    use App\Http\Controllers\SalesPlan\SalesPlanCreateController;
-    use App\Http\Controllers\SalesPlan\SalesPlanUpdateController;
-    use App\Http\Controllers\SalesPlan\SalesPlanDeleteController;
+    use App\Http\Controllers\Setting\SalesPlanSetting\SalesPlanSettingController;
+    use App\Http\Controllers\Setting\SalesPlanSetting\SalesPlanSettingCreateController;
+    use App\Http\Controllers\Setting\SalesPlanSetting\SalesPlanSettingUpdateController;
+    use App\Http\Controllers\Setting\SalesPlanSetting\SalesPlanSettingDeleteController;
     // 月額経費
-    use App\Http\Controllers\MonthlyCost\MonthlyCostController;
-    use App\Http\Controllers\MonthlyCost\MonthlyCostCreateController;
-    use App\Http\Controllers\MonthlyCost\MonthlyCostUpdateController;
-    use App\Http\Controllers\MonthlyCost\MonthlyCostDeleteController;
+    use App\Http\Controllers\Setting\MonthlyCostSetting\MonthlyCostSettingController;
+    use App\Http\Controllers\Setting\MonthlyCostSetting\MonthlyCostSettingCreateController;
+    use App\Http\Controllers\Setting\MonthlyCostSetting\MonthlyCostSettingUpdateController;
+    use App\Http\Controllers\Setting\MonthlyCostSetting\MonthlyCostSettingDeleteController;
     // 月額荷主設定
-    use App\Http\Controllers\MonthlyCustomerSetting\MonthlyCustomerSettingController;
+    use App\Http\Controllers\Setting\MonthlyCustomerSetting\MonthlyCustomerSettingController;
 // +-+-+-+-+-+-+-+- システム管理 +-+-+-+-+-+-+-+-
     // 拠点管理
     use App\Http\Controllers\SystemMgt\BaseMgt\BaseMgtController;
@@ -69,33 +69,33 @@ Route::middleware(['auth'])->group(function () {
         });
     // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ 設定 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
         // -+-+-+-+-+-+-+-+-+-+-+-+ 売上計画 -+-+-+-+-+-+-+-+-+-+-+-+
-        Route::controller(SalesPlanController::class)->prefix('sales_plan')->name('sales_plan.')->group(function(){
+        Route::controller(SalesPlanSettingController::class)->prefix('sales_plan_setting')->name('sales_plan_setting.')->group(function(){
             Route::get('', 'index')->name('index');
         });
-        Route::controller(SalesPlanCreateController::class)->prefix('sales_plan_create')->name('sales_plan_create.')->group(function(){
+        Route::controller(SalesPlanSettingCreateController::class)->prefix('sales_plan_setting_create')->name('sales_plan_setting_create.')->group(function(){
             Route::get('', 'index')->name('index');
             Route::post('create', 'create')->name('create');
         });
-        Route::controller(SalesPlanUpdateController::class)->prefix('sales_plan_update')->name('sales_plan_update.')->group(function(){
+        Route::controller(SalesPlanSettingUpdateController::class)->prefix('sales_plan_setting_update')->name('sales_plan_setting_update.')->group(function(){
             Route::get('', 'index')->name('index');
             Route::post('update', 'update')->name('update');
         });
-        Route::controller(SalesPlanDeleteController::class)->prefix('sales_plan_delete')->name('sales_plan_delete.')->group(function(){
+        Route::controller(SalesPlanSettingDeleteController::class)->prefix('sales_plan_setting_delete')->name('sales_plan_setting_delete.')->group(function(){
             Route::post('delete', 'delete')->name('delete');
         });
         // -+-+-+-+-+-+-+-+-+-+-+-+ 月額経費 -+-+-+-+-+-+-+-+-+-+-+-+
-        Route::controller(MonthlyCostController::class)->prefix('monthly_cost')->name('monthly_cost.')->group(function(){
+        Route::controller(MonthlyCostSettingController::class)->prefix('monthly_cost_setting')->name('monthly_cost_setting.')->group(function(){
             Route::get('', 'index')->name('index');
         });
-        Route::controller(MonthlyCostCreateController::class)->prefix('monthly_cost_create')->name('monthly_cost_create.')->group(function(){
+        Route::controller(MonthlyCostSettingCreateController::class)->prefix('monthly_cost_setting_create')->name('monthly_cost_setting_create.')->group(function(){
             Route::get('', 'index')->name('index');
             Route::post('create', 'create')->name('create');
         });
-        Route::controller(MonthlyCostUpdateController::class)->prefix('monthly_cost_update')->name('monthly_cost_update.')->group(function(){
+        Route::controller(MonthlyCostSettingUpdateController::class)->prefix('monthly_cost_setting_update')->name('monthly_cost_setting_update.')->group(function(){
             Route::get('', 'index')->name('index');
             Route::post('update', 'update')->name('update');
         });
-        Route::controller(MonthlyCostDeleteController::class)->prefix('monthly_cost_delete')->name('monthly_cost_delete.')->group(function(){
+        Route::controller(MonthlyCostSettingDeleteController::class)->prefix('monthly_cost_setting_delete')->name('monthly_cost_setting_delete.')->group(function(){
             Route::post('delete', 'delete')->name('delete');
         });
         // -+-+-+-+-+-+-+-+-+-+-+-+ 月額荷主設定 -+-+-+-+-+-+-+-+-+-+-+-+

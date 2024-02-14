@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('monthly_costs', function (Blueprint $table) {
-            $table->increments('monthly_cost_id');
+        Schema::create('monthly_cost_settings', function (Blueprint $table) {
+            $table->increments('monthly_cost_setting_id');
             $table->string('base_id', 20);
-            $table->date('monthly_cost_ym');
-            $table->unsignedInteger('monthly_cost_item_id');
-            $table->unsignedInteger('monthly_cost');
+            $table->date('monthly_cost_setting_ym');
+            $table->unsignedInteger('monthly_cost_setting_item_id');
+            $table->unsignedInteger('monthly_cost_setting');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('monthly_costs');
+        Schema::dropIfExists('monthly_cost_settings');
     }
 };

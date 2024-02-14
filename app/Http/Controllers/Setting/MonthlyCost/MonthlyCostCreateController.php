@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\MonthlyCost;
+namespace App\Http\Controllers\Setting\MonthlyCostSetting;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -8,13 +8,13 @@ use Illuminate\Http\Request;
 use App\Models\Base;
 use App\Models\MonthlyItem;
 // サービス
-use App\Services\MonthlyCost\MonthlyCostCreateService;
+use App\Services\MonthlyCostSetting\MonthlyCostSettingCreateService;
 // 列挙
 use App\Enums\MonthlyItemEnum;
 // リクエスト
-use App\Http\Requests\MonthlyCost\MonthlyCostCreateRequest;
+use App\Http\Requests\MonthlyCostSetting\MonthlyCostSettingCreateRequest;
 
-class MonthlyCostCreateController extends Controller
+class MonthlyCostSettingCreateController extends Controller
 {
     public function index(Request $request)
     {
@@ -22,18 +22,18 @@ class MonthlyCostCreateController extends Controller
         $base = Base::getSpecify(session('search_base_id'))->first();
         // 経費項目を全て取得
         $monthly_items = MonthlyItem::getSpecifyByItemCategory1(MonthlyItemEnum::COST_JP)->get();
-        return view('monthly_cost.create')->with([
+        return view('monthly_cost_setting.create')->with([
             'base' => $base,
             'monthly_items' => $monthly_items,
         ]);
     }
 
-    public function create(MonthlyCostCreateRequest $request)
+    public function create(MonthlyCostSettingCreateRequest $request)
     {
         // インスタンス化
-        $MonthlyCostCreateService = new MonthlyCostCreateService;
+        $MonthlyCostSettingCreateService = new MonthlyCostSettingCreateService;
         // 月額経費を登録
-        $MonthlyCostCreateService->createMonthlyCost($request);
+        $MonthlyCostSettingCreateService->createMonthlyCostSetting($request);
         return redirect(session('back_url_1'))->with([
             'alert_type' => 'success',
             'alert_message' => '月額経費の登録が完了しました。',

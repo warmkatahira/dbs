@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\MonthlyCost;
+namespace App\Http\Requests\MonthlyCostSetting;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MonthlyCostUpdateRequest extends FormRequest
+class MonthlyCostSettingUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +22,7 @@ class MonthlyCostUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'monthly_cost' => 'required|integer|min:0',
+            'monthly_cost_setting' => 'required|integer|min:0',
         ];
     }
 
@@ -38,7 +38,7 @@ class MonthlyCostUpdateRequest extends FormRequest
     public function attributes()
     {
         return [
-            'monthly_cost' => '月額経費',
+            'monthly_cost_setting' => '月額経費',
         ];
     }
 }

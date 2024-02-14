@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests\MonthlyCost;
+namespace App\Http\Requests\MonthlyCostSetting;
 
 use Illuminate\Foundation\Http\FormRequest;
 // ルール
-use App\Rules\MonthlyCost\MonthlyCostYmCreateRule;
+use App\Rules\MonthlyCostSetting\MonthlyCostSettingYmCreateRule;
 
-class MonthlyCostCreateRequest extends FormRequest
+class MonthlyCostSettingCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,9 @@ class MonthlyCostCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'monthly_cost_ym' => ['required', 'date', new MonthlyCostYmCreateRule],
-            'monthly_cost_item_id' => 'required|exists:monthly_items,monthly_item_id',
-            'monthly_cost' => 'required|integer|min:0',
+            'monthly_cost_setting_ym' => ['required', 'date', new MonthlyCostSettingYmCreateRule],
+            'monthly_cost_setting_item_id' => 'required|exists:monthly_items,monthly_item_id',
+            'monthly_cost_setting' => 'required|integer|min:0',
         ];
     }
 
@@ -44,9 +44,9 @@ class MonthlyCostCreateRequest extends FormRequest
     public function attributes()
     {
         return [
-            'monthly_cost_ym' => '月額経費年月',
-            'monthly_cost_item_id' => '経費項目',
-            'monthly_cost' => '月額経費',
+            'monthly_cost_setting_ym' => '月額経費年月',
+            'monthly_cost_setting_item_id' => '経費項目',
+            'monthly_cost_setting' => '月額経費',
         ];
     }
 }

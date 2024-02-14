@@ -10,18 +10,18 @@
                 </tr>
             </thead>
             <tbody class="bg-white">
-                @foreach($salesPlans as $sales_plan)
+                @foreach($salesPlans as $sales_plan_setting)
                     <tr class="text-left hover:bg-theme-sub cursor-default">
-                        <td class="py-1 px-2 border">{{ \Carbon\CarbonImmutable::parse($sales_plan->sales_plan_ym)->isoFormat('YYYY年MM月') }}</td>
-                        <td class="py-1 px-2 border text-right">{{ $sales_plan->dbs_base->base_name }}</td>
-                        <td class="py-1 px-2 border text-right"><i class="las la-yen-sign"></i>{{ number_format($sales_plan->sales_plan) }}</td>
+                        <td class="py-1 px-2 border">{{ \Carbon\CarbonImmutable::parse($sales_plan_setting->sales_plan_setting_ym)->isoFormat('YYYY年MM月') }}</td>
+                        <td class="py-1 px-2 border text-right">{{ $sales_plan_setting->dbs_base->base_name }}</td>
+                        <td class="py-1 px-2 border text-right"><i class="las la-yen-sign"></i>{{ number_format($sales_plan_setting->sales_plan_setting) }}</td>
                         <td class="py-1 px-2 border">
                             <div class="flex">
-                                <a href="{{ route('sales_plan_update.index', ['sales_plan_id' => $sales_plan->sales_plan_id]) }}" class="text-xs mx-3 px-3 py-1 border border-blue-600 bg-blue-100">更新</a>
-                                <form method="POST" action="{{ route('sales_plan_delete.delete') }}" id="{{ 'sales_plan_delete_form_'.$sales_plan->sales_plan_id }}" class="m-0">
+                                <a href="{{ route('sales_plan_setting_update.index', ['sales_plan_setting_id' => $sales_plan_setting->sales_plan_setting_id]) }}" class="text-xs mx-3 px-3 py-1 border border-blue-600 bg-blue-100">更新</a>
+                                <form method="POST" action="{{ route('sales_plan_setting_delete.delete') }}" id="{{ 'sales_plan_setting_delete_form_'.$sales_plan_setting->sales_plan_setting_id }}" class="m-0">
                                     @csrf
-                                    <input type="hidden" name="sales_plan_id">
-                                    <button type="button" id="{{ $sales_plan->sales_plan_id }}" class="sales_plan_delete_enter text-xs mx-3 px-3 py-1 border border-red-600 bg-red-100">削除</button>
+                                    <input type="hidden" name="sales_plan_setting_id">
+                                    <button type="button" id="{{ $sales_plan_setting->sales_plan_setting_id }}" class="sales_plan_setting_delete_enter text-xs mx-3 px-3 py-1 border border-red-600 bg-red-100">削除</button>
                                 </form>
                             </div>
                         </td>

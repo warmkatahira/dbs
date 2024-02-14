@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\MonthlyCustomerSetting;
+namespace App\Http\Controllers\Setting\MonthlyCustomerSetting;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;

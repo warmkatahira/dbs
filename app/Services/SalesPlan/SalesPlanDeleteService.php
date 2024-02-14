@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Services\SalesPlan;
+namespace App\Services\SalesPlanSetting;
 
 // モデル
-use App\Models\SalesPlan;
+use App\Models\SalesPlanSetting;
 
-class SalesPlanDeleteService
+class SalesPlanSettingDeleteService
 {
     // 削除処理
-    public function deleteSalesPlan($sales_plan_id)
+    public function deleteSalesPlanSetting($sales_plan_setting_id)
     {
-        SalesPlan::where('sales_plan_id', $sales_plan_id)->delete();
+        SalesPlanSetting::where('sales_plan_setting_id', $sales_plan_setting_id)->delete();
         return;
     }
 }

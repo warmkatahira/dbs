@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Services\SalesPlan;
+namespace App\Services\SalesPlanSetting;
 
 // モデル
-use App\Models\SalesPlan;
+use App\Models\SalesPlanSetting;
 
-class SalesPlanUpdateService
+class SalesPlanSettingUpdateService
 {
     // 更新処理
-    public function updateSalesPlan($request)
+    public function updateSalesPlanSetting($request)
     {
-        SalesPlan::where('sales_plan_id', session('sales_plan_id'))->update([
-            'sales_plan' => $request->sales_plan,
+        SalesPlanSetting::where('sales_plan_setting_id', session('sales_plan_setting_id'))->update([
+            'sales_plan_setting' => $request->sales_plan_setting,
         ]);
         return;
     }

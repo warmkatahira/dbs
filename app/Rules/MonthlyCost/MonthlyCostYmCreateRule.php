@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Rules\MonthlyCost;
+namespace App\Rules\MonthlyCostSetting;
 
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
 // モデル
-use App\Models\MonthlyCost;
+use App\Models\MonthlyCostSetting;
 use App\Models\MonthlyItem;
 // その他
 use Illuminate\Contracts\Validation\DataAwareRule;
 use Illuminate\Support\Facades\Auth;
 use Carbon\CarbonImmutable;
 
-class MonthlyCostYmCreateRule implements ValidationRule, DataAwareRule
+class MonthlyCostSettingYmCreateRule implements ValidationRule, DataAwareRule
 {
     // エラーメッセージ格納用の変数をセット
     protected $error_message = '';
@@ -34,16 +34,16 @@ class MonthlyCostYmCreateRule implements ValidationRule, DataAwareRule
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
         // 1日の日付にフォーマット変換
-        $monthly_cost_ym = CarbonImmutable::createFromFormat('Y-m', $this->data['monthly_cost_ym'])->startOfMonth();
+        $monthly_cost_setting_ym = CarbonImmutable::createFromFormat('Y-m', $this->data['monthly_cost_setting_ym'])->startOfMonth();
         // 追加しようとしている条件のレコードを取得
-        $monthly_cost = MonthlyCost::where('base_id', Auth::user()->base_id)
-                        ->where('monthly_cost_ym', $monthly_cost_ym)
-                        ->where('monthly_cost_item_id', $this->data['monthly_cost_item_id'])
+        $monthly_cost_setting = MonthlyCostSetting::where('base_id', Auth::user()->base_id)
+                        ->where('monthly_cost_setting_ym', $monthly_cost_setting_ym)
+                        ->where('monthly_cost_setting_item_id', $this->data['monthly_cost_setting_item_id'])
                         ->first();
         // レコードが取得されていれば追加できないのでエラーを返す
-        if(!is_null($monthly_cost)){
-            $monthly_item = MonthlyItem::getSpecify($this->data['monthly_cost_item_id'])->first();
-            $fail(CarbonImmutable::parse($this->data['monthly_cost_ym'])->isoFormat('Y年MM月') . 'の「'.$monthly_item->monthly_item_name.'」は既に登録されています。');
+        if(!is_null($monthly_cost_setting)){
+            $monthly_item = MonthlyItem::getSpecify($this->data['monthly_cost_setting_item_id'])->first();
+            $fail(CarbonImmutable::parse($this->data['monthly_cost_setting_ym'])->isoFormat('Y年MM月') . 'の「'.$monthly_item->monthly_item_name.'」は既に登録されています。');
         }
     }
 }

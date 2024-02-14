@@ -49,7 +49,7 @@ class MonthlyCustomerSetting extends Model
             'monthly_storage_sales',
             'monthly_storage_cost',
             'ho_cost_allocation_ratio',
-            'monthly_cost_allocation_ratio',
+            'monthly_cost_setting_allocation_ratio',
             'is_available',
         ];
     }

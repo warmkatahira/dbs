@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Services\MonthlyCost;
+namespace App\Services\MonthlyCostSetting;
 
 // モデル
-use App\Models\MonthlyCost;
+use App\Models\MonthlyCostSetting;
 
-class MonthlyCostDeleteService
+class MonthlyCostSettingDeleteService
 {
     // 削除処理
-    public function deleteMonthlyCost($monthly_cost_id)
+    public function deleteMonthlyCostSetting($monthly_cost_setting_id)
     {
-        MonthlyCost::where('monthly_cost_id', $monthly_cost_id)->delete();
+        MonthlyCostSetting::where('monthly_cost_setting_id', $monthly_cost_setting_id)->delete();
         return;
     }
 }

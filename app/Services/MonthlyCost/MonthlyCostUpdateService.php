@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Services\MonthlyCost;
+namespace App\Services\MonthlyCostSetting;
 
 // モデル
-use App\Models\MonthlyCost;
+use App\Models\MonthlyCostSetting;
 
-class MonthlyCostUpdateService
+class MonthlyCostSettingUpdateService
 {
     // 更新処理
-    public function updateMonthlyCost($request)
+    public function updateMonthlyCostSetting($request)
     {
-        MonthlyCost::where('monthly_cost_id', session('monthly_cost_id'))->update([
-            'monthly_cost' => $request->monthly_cost,
+        MonthlyCostSetting::where('monthly_cost_setting_id', session('monthly_cost_setting_id'))->update([
+            'monthly_cost_setting' => $request->monthly_cost_setting,
         ]);
         return;
     }

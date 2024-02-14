@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\SalesPlan;
+namespace App\Http\Requests\SalesPlanSetting;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SalesPlanUpdateRequest extends FormRequest
+class SalesPlanSettingUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +22,7 @@ class SalesPlanUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'sales_plan' => 'required|integer|min:0',
+            'sales_plan_setting' => 'required|integer|min:0',
         ];
     }
 
@@ -38,7 +38,7 @@ class SalesPlanUpdateRequest extends FormRequest
     public function attributes()
     {
         return [
-            'sales_plan' => '売上計画',
+            'sales_plan_setting' => '売上計画',
         ];
     }
 }
