@@ -1,5 +1,3 @@
-@vite(['resources/js/master_mgt/customer/customer.js'])
-
 <x-app-layout>
     <x-page-header content="荷主マスタ"/>
     <div class="flex flex-row mb-2">

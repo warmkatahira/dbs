@@ -1,4 +1,4 @@
-@vite(['resources/js/master_mgt/customer/customer.js'])
+@vite(['resources/js/setting/monthly_customer_setting.js'])
 
 <x-app-layout>
     <x-page-header content="月額荷主設定"/>

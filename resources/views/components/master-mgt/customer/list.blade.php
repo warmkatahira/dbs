@@ -5,7 +5,7 @@
                 <tr class="text-center text-white bg-gray-600 sticky top-0">
                     <th class="font-thin py-3 px-2">拠点</th>
                     <th class="font-thin py-3 px-2">荷主名</th>
-                    <th class="font-thin py-3 px-2">有効/無効<i class="las la-question-circle ml-1 la-lg tippy_is_available"></i></th>
+                    <th class="font-thin py-3 px-2">有効/無効</th>
                 </tr>
             </thead>
             <tbody class="bg-white">

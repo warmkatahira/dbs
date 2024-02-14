@@ -30,17 +30,14 @@ export default defineConfig({
             [
                 
             ],
-            // 売上計画
+            // 設定
             [
+                // 売上計画
                 'resources/js/sales_plan/sales_plan.js',
-            ],
-            // 月額経費
-            [
+                // 月額経費
                 'resources/js/monthly_cost/monthly_cost.js',
-            ],
-            // 荷主マスタ
-            [
-                'resources/js/master_mgt/customer/customer.js',
+                // 月額荷主設定
+                'resources/js/setting/monthly_customer_setting.js',
             ],
         ),
     ],
