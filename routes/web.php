@@ -66,8 +66,6 @@ Route::middleware(['auth'])->group(function () {
             Route::get('', 'index')->name('index');
             Route::get('sync', 'sync')->name('sync');
             Route::get('download', 'download')->name('download');
-            Route::post('upload', 'upload')->name('upload');
-            Route::get('upload_error_download', 'upload_error_download')->name('upload_error_download');
         });
     // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ 設定 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
         // -+-+-+-+-+-+-+-+-+-+-+-+ 売上計画 -+-+-+-+-+-+-+-+-+-+-+-+
@@ -103,6 +101,9 @@ Route::middleware(['auth'])->group(function () {
         // -+-+-+-+-+-+-+-+-+-+-+-+ 月額荷主設定 -+-+-+-+-+-+-+-+-+-+-+-+
         Route::controller(MonthlyCustomerSettingController::class)->prefix('monthly_customer_setting')->name('monthly_customer_setting.')->group(function(){
             Route::get('', 'index')->name('index');
+            Route::get('download', 'download')->name('download');
+            Route::post('upload', 'upload')->name('upload');
+            Route::get('upload_error_download', 'upload_error_download')->name('upload_error_download');
         });
     // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ システム管理 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
         // -+-+-+-+-+-+-+-+-+-+-+-+ 拠点管理 -+-+-+-+-+-+-+-+-+-+-+-+

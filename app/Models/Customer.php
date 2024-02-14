@@ -35,16 +35,6 @@ class Customer extends Model
             '有効/無効',
         ];
     }
-    // ヘッダーを定義
-    public static function csvHeader_EN()
-    {
-        return [
-            'customer_id',
-            'base_name',
-            'customer_name',
-            'is_available',
-        ];
-    }
     // DB:dbsのbasesテーブルとのリレーション
     public function dbs_base()
     {

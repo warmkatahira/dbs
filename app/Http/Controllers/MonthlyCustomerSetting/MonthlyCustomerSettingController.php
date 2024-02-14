@@ -6,9 +6,17 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 // モデル
 use App\Models\Base;
-use App\Models\Customer;
+use App\Models\MonthlyCustomerSetting;
 // サービス
 use App\Services\MonthlyCustomerSetting\MonthlyCustomerSettingService;
+use App\Services\MonthlyCustomerSetting\MonthlyCustomerSettingDownloadService;
+use App\Services\MonthlyCustomerSetting\MonthlyCustomerSettingUploadService;
+use App\Services\MonthlyCustomerSetting\MonthlyCustomerSettingUploadErrorDownloadSerivce;
+// その他
+use Illuminate\Support\Facades\DB;
+use Carbon\CarbonImmutable;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class MonthlyCustomerSettingController extends Controller
 {
@@ -35,41 +43,29 @@ class MonthlyCustomerSettingController extends Controller
         ]);
     }
 
-    public function sync()
-    {
-        // インスタンス化
-        $CustomerSyncSerivce = new CustomerSyncService;
-        // DB:kintaiのcustomersテーブルと同期
-        $CustomerSyncSerivce->syncCustomer();
-        return back()->with([
-            'alert_type' => 'success',
-            'alert_message' => '荷主同期が完了しました。',
-        ]);
-    }
-
     public function download()
     {
         // インスタンス化
-        $CustomerSerivce = new CustomerService;
-        $CustomerDownloadSerivce = new CustomerDownloadService;
-        // 荷主情報を取得
-        $customers = $CustomerSerivce->getCustomerSearch();
+        $MonthlyCustomerSettingService = new MonthlyCustomerSettingService;
+        $MonthlyCustomerSettingDownloadService = new MonthlyCustomerSettingDownloadService;
+        // 月額荷主設定情報を取得
+        $monthly_customer_settings = $MonthlyCustomerSettingService->getMonthlyCustomerSettingSearch();
         // ダウンロードするデータを取得
-        $response = $CustomerDownloadSerivce->getDownloadCustomer($customers);
+        $response = $MonthlyCustomerSettingDownloadService->getDownloadMonthlyCustomerSetting($monthly_customer_settings);
         // ダウンロード処理
         $response->headers->set('Content-Type', 'text/csv');
-        $response->headers->set('Content-Disposition', 'attachment; filename=荷主マスタ_' . CarbonImmutable::now()->isoFormat('Y年MM月DD日HH時mm分ss秒') . '.csv');
+        $response->headers->set('Content-Disposition', 'attachment; filename=月額荷主設定_' . CarbonImmutable::now()->isoFormat('Y年MM月DD日HH時mm分ss秒') . '.csv');
         return $response;
     }
 
     public function upload(Request $request)
     {
         // アップロードエラーを格納しているセッションを削除
-        session()->forget(['customer_upload_error']);
+        session()->forget(['monthly_customer_setting_upload_error']);
         // インスタンス化
-        $CustomerUploadService = new CustomerUploadService;
+        $MonthlyCustomerSettingUploadService = new MonthlyCustomerSettingUploadService;
         try {
-            $result = DB::transaction(function () use ($request, $CustomerUploadService) {
+            $result = DB::transaction(function () use ($request, $MonthlyCustomerSettingUploadService) {
                 // 現在の日時を取得
                 $nowDate = CarbonImmutable::now();
                 // 拡張子がCSVであるかの確認
@@ -77,9 +73,9 @@ class MonthlyCustomerSettingController extends Controller
                     throw new \Exception('拡張子がCSVではありません。');
                 }
                 // ストレージに保存する際のファイル名を指定(customer_import_ユーザーID_現在日時.csv)
-                $store_file_name = 'customer_import_'.Auth::user()->user_id.'_'.CarbonImmutable::now()->isoFormat('YMMDDHHmmss').'.csv';
+                $store_file_name = 'monthly_customer_setting_import_'.Auth::user()->user_id.'_'.CarbonImmutable::now()->isoFormat('YMMDDHHmmss').'.csv';
                 // 選択したファイルをストレージに保存
-                $path = $CustomerUploadService->storeFile($request->file('csvFile'), $store_file_name);
+                $path = $MonthlyCustomerSettingUploadService->storeFile($request->file('csvFile'), $store_file_name);
                 // 保存したCSVファイルのデータを取得
                 $csv = File::get(storage_path('app/' . $path));
                 // 文字コードをUTF-8に変換
@@ -98,7 +94,7 @@ class MonthlyCustomerSettingController extends Controller
                     return !empty(trim($item));
                 });
                 // システムに定義してあるヘッダーを取得
-                $header = Customer::csvHeader();
+                $header = MonthlyCustomerSetting::csvHeader();
                 // CSVからヘッダーを取得(shiftメソッドにより、最初の要素が取り除かれるので、ヘッダーがコレクションから無くなる)
                 $csvHeader = explode(",", $csv_records->shift());
                 // ヘッダーを比較し、差分があればエラー情報を返す
@@ -106,15 +102,15 @@ class MonthlyCustomerSettingController extends Controller
                     return '受注データのヘッダーに相違がある為、インポートできませんでした。';
                 }
                 // ヘッダーをコレクションに変換
-                $header = collect(Customer::csvHeader_EN());
+                $header = collect(MonthlyCustomerSetting::csvHeader_EN());
                 // ヘッダーをキーにした連想配列のコレクションを作成
                 $items = $csv_records->map(fn($oneRecord) => $header->combine(collect(str_getcsv($oneRecord))));
                 // テーブルにアップロードしたデータを更新
-                $validation_error = $CustomerUploadService->updateCustomer($items);
+                $validation_error = $MonthlyCustomerSettingUploadService->updateMonthlyCustomerSetting($items);
                 // バリデーションエラー配列の中にnull以外があれば、処理を中断
                 if (count(array_filter($validation_error)) != 0) {
                     // セッションにエラー情報を格納
-                    session(['customer_upload_error' => array(['エラー情報' => $validation_error, 'アップロード日時' => $nowDate])]);
+                    session(['monthly_customer_setting_upload_error' => array(['エラー情報' => $validation_error, 'アップロード日時' => $nowDate])]);
                     throw new \Exception("データが正しくない為、アップロードできませんでした。<br/>詳細はアップロードエラーを確認して下さい。");
                 }
             });
@@ -126,19 +122,19 @@ class MonthlyCustomerSettingController extends Controller
         }
         return redirect()->back()->with([
             'alert_type' => 'success',
-            'alert_message' => '荷主マスタをアップロードしました。',
+            'alert_message' => '月額荷主設定をアップロードしました。',
         ]);
     }
 
     public function upload_error_download()
     {
         // インスタンス化
-        $CustomerUploadErrorDownloadSerivce = new CustomerUploadErrorDownloadSerivce;
+        $MonthlyCustomerSettingUploadErrorDownloadSerivce = new MonthlyCustomerSettingUploadErrorDownloadSerivce;
         // ダウンロードするデータを取得
-        $response = $CustomerUploadErrorDownloadSerivce->getDownloadCustomerUploadError(session('customer_upload_error')[0]['エラー情報']);
+        $response = $MonthlyCustomerSettingUploadErrorDownloadSerivce->getDownloadMonthlyCustomerSettingUploadError(session('monthly_customer_setting_upload_error')[0]['エラー情報']);
         // ダウンロード処理
         $response->headers->set('Content-Type', 'text/csv');
-        $response->headers->set('Content-Disposition', 'attachment; filename=荷主マスタアップロードエラー'.CarbonImmutable::now()->isoFormat('Y年MM月DD日HH時mm分ss秒') . '.csv');
+        $response->headers->set('Content-Disposition', 'attachment; filename=月額荷主設定アップロードエラー'.CarbonImmutable::now()->isoFormat('Y年MM月DD日HH時mm分ss秒') . '.csv');
         return $response;
     }
 }

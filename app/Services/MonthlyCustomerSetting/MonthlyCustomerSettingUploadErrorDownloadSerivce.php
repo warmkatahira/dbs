@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Services\MasterMgt\Customer;
+namespace App\Services\MonthlyCustomerSetting;
 
 // その他
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
-class CustomerUploadErrorDownloadSerivce
+class MonthlyCustomerSettingUploadErrorDownloadSerivce
 {
-    public function getDownloadCustomerUploadError($errors)
+    public function getDownloadMonthlyCustomerSettingUploadError($errors)
     {
         $response = new StreamedResponse(function () use ($errors) {
             // ハンドルを取得

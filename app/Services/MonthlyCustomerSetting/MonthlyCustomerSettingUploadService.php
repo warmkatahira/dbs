@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Services\MasterMgt\Customer;
+namespace App\Services\MonthlyCustomerSetting;
 
 // モデル
-use App\Models\Customer;
+use App\Models\MonthlyCustomerSetting;
 // その他
 use Illuminate\Support\Facades\Validator;
 
-class CustomerUploadService
+class MonthlyCustomerSettingUploadService
 {
     // 選択したファイルをストレージに保存
     public function storeFile($file, $store_file_name)
@@ -19,7 +19,7 @@ class CustomerUploadService
     }
 
     // テーブルにアップロードしたデータを更新
-    public function updateCustomer($items)
+    public function updateMonthlyCustomerSetting($items)
     {
         // バリデーションエラー情報を格納する配列をセット
         $validation_error = [];
@@ -36,7 +36,7 @@ class CustomerUploadService
             }
             // 変数が空であればバリデーションエラーがないので、テーブルへの更新を実行
             if(empty($message)){
-                Customer::where('customer_id', $item['customer_id'])->update([
+                MonthlyCustomerSetting::where('monthly_customer_setting_id', $item['monthly_customer_setting_id'])->update([
                     'monthly_storage_sales' => $item['monthly_storage_sales'],
                     'monthly_storage_cost' => $item['monthly_storage_cost'],
                     'ho_cost_allocation_ratio' => $item['ho_cost_allocation_ratio'],
@@ -54,7 +54,7 @@ class CustomerUploadService
         $itemArray = $item->toArray();
         // バリデーションルールを定義
         $rules = [
-            'customer_id' => 'required|exists:customers,customer_id',
+            'monthly_customer_setting_id' => 'required|exists:monthly_customer_settings,monthly_customer_setting_id',
             'monthly_storage_sales' => 'required|integer|min:0',
             'monthly_storage_cost' => 'required|integer|min:0',
             'ho_cost_allocation_ratio' => 'required|integer|min:0',
@@ -69,9 +69,9 @@ class CustomerUploadService
         ];
         // バリデーションエラー項目を定義
         $attributes = [
-            'customer_id' => '荷主ID',
-            'monthly_storage_sales' => '月間保管売上',
-            'monthly_storage_cost' => '月間保管経費',
+            'monthly_customer_setting_id' => '月額荷主設定ID',
+            'monthly_storage_sales' => '月額保管売上',
+            'monthly_storage_cost' => '月額保管経費',
             'ho_cost_allocation_ratio' => '本社管理費分配割合',
             'monthly_cost_allocation_ratio' => '月額経費分配割合',
         ];

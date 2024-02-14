@@ -23,6 +23,36 @@ class MonthlyCustomerSetting extends Model
         'customer_sort_order',
         'cost_allocation_ratio',
     ];
+    // ヘッダーを定義
+    public static function csvHeader()
+    {
+        return [
+            '月額荷主設定ID',
+            '設定年月',
+            '拠点',
+            '荷主名',
+            '月額保管売上',
+            '月額保管経費',
+            '本社管理費分配割合',
+            '月額経費分配割合',
+            '有効/無効',
+        ];
+    }
+    // ヘッダーを定義
+    public static function csvHeader_EN()
+    {
+        return [
+            'monthly_customer_setting_id',
+            'monthly_customer_setting_ym',
+            'base_name',
+            'customer_name',
+            'monthly_storage_sales',
+            'monthly_storage_cost',
+            'ho_cost_allocation_ratio',
+            'monthly_cost_allocation_ratio',
+            'is_available',
+        ];
+    }
     // DB:dbsのcustomersテーブルとのリレーション
     public function dbs_customer()
     {
