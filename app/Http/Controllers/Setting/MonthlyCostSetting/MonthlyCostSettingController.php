@@ -27,7 +27,7 @@ class MonthlyCostSettingController extends Controller
         $monthly_cost_settings = $MonthlyCostSettingSerivce->getMonthlyCostSettingSearch($request);
         // 拠点を取得
         $bases = Base::getall()->get();
-        return view('monthly_cost_setting.index')->with([
+        return view('setting.monthly_cost_setting.index')->with([
             'monthly_cost_settings' => $monthly_cost_settings,
             'bases' => $bases,
         ]);

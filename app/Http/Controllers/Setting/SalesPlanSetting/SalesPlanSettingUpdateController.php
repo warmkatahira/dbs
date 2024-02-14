@@ -19,7 +19,7 @@ class SalesPlanSettingUpdateController extends Controller
         session(['sales_plan_setting_id' => $request->sales_plan_setting_id]);
         // 売上計画を取得
         $sales_plan_setting = SalesPlanSetting::getSpecify($request->sales_plan_setting_id)->first();
-        return view('sales_plan_setting.update')->with([
+        return view('setting.sales_plan_setting.update')->with([
             'sales_plan_setting' => $sales_plan_setting,
         ]);
     }

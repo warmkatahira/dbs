@@ -25,7 +25,7 @@ class SalesPlanSettingController extends Controller
         $sales_plan_settings = $SalesPlanSettingSerivce->getSalesPlanSettingSearch($request);
         // 拠点を取得
         $bases = Base::getall()->get();
-        return view('sales_plan_setting.index')->with([
+        return view('setting.sales_plan_setting.index')->with([
             'sales_plan_settings' => $sales_plan_settings,
             'bases' => $bases,
         ]);

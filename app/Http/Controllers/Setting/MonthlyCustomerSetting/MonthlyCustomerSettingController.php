@@ -36,7 +36,7 @@ class MonthlyCustomerSettingController extends Controller
         $bases = Base::getAll()->get();
         // 拠点条件がある場合、経費分配割合を合計し100%であるか確認
         $cost_allocation_ratio_check = $MonthlyCustomerSettingSerivce->checkCostAllocationRatio();
-        return view('monthly_customer_setting.index')->with([
+        return view('setting.monthly_customer_setting.index')->with([
             'bases' => $bases,
             'monthly_customer_settings' => $monthly_customer_settings,
             'cost_allocation_ratio_check' => $cost_allocation_ratio_check,

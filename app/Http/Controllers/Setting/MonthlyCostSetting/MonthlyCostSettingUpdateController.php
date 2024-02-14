@@ -19,7 +19,7 @@ class MonthlyCostSettingUpdateController extends Controller
         session(['monthly_cost_setting_id' => $request->monthly_cost_setting_id]);
         // 月額経費を取得
         $monthly_cost_setting = MonthlyCostSetting::getSpecify($request->monthly_cost_setting_id)->first();
-        return view('monthly_cost_setting.update')->with([
+        return view('setting.monthly_cost_setting.update')->with([
             'monthly_cost_setting' => $monthly_cost_setting,
         ]);
     }

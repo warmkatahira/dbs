@@ -17,7 +17,7 @@ class SalesPlanSettingCreateController extends Controller
     {
         // 拠点を取得
         $base = Base::getSpecify(session('search_base_id'))->first();
-        return view('sales_plan_setting.create')->with([
+        return view('setting.sales_plan_setting.create')->with([
             'base' => $base,
         ]);
     }
