@@ -14,6 +14,7 @@
                     </div>
                 </form>
             </div>
+            <button id="setting_record_create_modal_open" class="dropdown-content-element text-sm bg-theme-main text-white py-2 px-10 mr-10 ml-auto"><i class="las la-plus mr-1"></i>設定行追加</button>
         </div>
     </div>
     <div class="flex">
@@ -22,3 +23,5 @@
         @endif
     </div>
 </div>
+<!-- 設定行追加モーダル -->
+<x-setting.monthly-customer-setting.setting-record_create-modal :bases="$bases" />

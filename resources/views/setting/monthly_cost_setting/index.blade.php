@@ -1,4 +1,4 @@
-@vite(['resources/js/monthly_cost_setting/monthly_cost_setting.js'])
+@vite(['resources/js/setting/monthly_cost_setting/monthly_cost_setting.js'])
 
 <x-app-layout>
     <x-page-header content="月額経費設定"/>

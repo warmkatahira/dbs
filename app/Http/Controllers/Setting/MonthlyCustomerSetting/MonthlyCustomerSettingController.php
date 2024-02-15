@@ -30,7 +30,7 @@ class MonthlyCustomerSettingController extends Controller
         $MonthlyCustomerSettingService->setDefaultCondition($request->search_enter);
         // 検索条件をセッションにセット
         $MonthlyCustomerSettingService->setSearchCondition($request);
-        // 月額荷主設定情報を取得
+        // 月別荷主設定情報を取得
         $monthly_customer_settings = $MonthlyCustomerSettingService->getMonthlyCustomerSettingSearch()->paginate(50);
         // 拠点を全て取得
         $bases = Base::getAll()->get();
@@ -48,13 +48,13 @@ class MonthlyCustomerSettingController extends Controller
         // インスタンス化
         $MonthlyCustomerSettingService = new MonthlyCustomerSettingService;
         $MonthlyCustomerSettingDownloadService = new MonthlyCustomerSettingDownloadService;
-        // 月額荷主設定情報を取得
+        // 月別荷主設定情報を取得
         $monthly_customer_settings = $MonthlyCustomerSettingService->getMonthlyCustomerSettingSearch();
         // ダウンロードするデータを取得
         $response = $MonthlyCustomerSettingDownloadService->getDownloadMonthlyCustomerSetting($monthly_customer_settings);
         // ダウンロード処理
         $response->headers->set('Content-Type', 'text/csv');
-        $response->headers->set('Content-Disposition', 'attachment; filename=月額荷主設定_' . CarbonImmutable::now()->isoFormat('Y年MM月DD日HH時mm分ss秒') . '.csv');
+        $response->headers->set('Content-Disposition', 'attachment; filename=月別荷主設定_' . CarbonImmutable::now()->isoFormat('Y年MM月DD日HH時mm分ss秒') . '.csv');
         return $response;
     }
 
@@ -122,7 +122,7 @@ class MonthlyCustomerSettingController extends Controller
         }
         return redirect()->back()->with([
             'alert_type' => 'success',
-            'alert_message' => '月額荷主設定をアップロードしました。',
+            'alert_message' => '月別荷主設定をアップロードしました。',
         ]);
     }
 
@@ -134,7 +134,7 @@ class MonthlyCustomerSettingController extends Controller
         $response = $MonthlyCustomerSettingUploadErrorDownloadService->getDownloadMonthlyCustomerSettingUploadError(session('monthly_customer_setting_upload_error')[0]['エラー情報']);
         // ダウンロード処理
         $response->headers->set('Content-Type', 'text/csv');
-        $response->headers->set('Content-Disposition', 'attachment; filename=月額荷主設定アップロードエラー'.CarbonImmutable::now()->isoFormat('Y年MM月DD日HH時mm分ss秒') . '.csv');
+        $response->headers->set('Content-Disposition', 'attachment; filename=月別荷主設定アップロードエラー'.CarbonImmutable::now()->isoFormat('Y年MM月DD日HH時mm分ss秒') . '.csv');
         return $response;
     }
 }

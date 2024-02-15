@@ -10,7 +10,7 @@
             </thead>
             <tbody class="bg-white">
                 @foreach($customers as $customer)
-                    <tr class="hover:bg-theme-sub cursor-default">
+                    <tr class="hover:bg-theme-sub cursor-default @if($customer->is_available == 0) text-red-600 bg-gray-200 @endif">
                         <td class="py-1 px-2 border text-left">{{ $customer->dbs_base->base_name }}</td>
                         <td class="py-1 px-2 border text-left">{{ $customer->customer_name }}</td>
                         <td class="py-1 px-2 border text-center">{{ $customer->is_available == 0 ? '無効' : '有効' }}

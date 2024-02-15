@@ -47,12 +47,12 @@ class MonthlyCustomerSettingService
         return;
     }
 
-    // 月額荷主設定情報を取得
+    // 月別荷主設定情報を取得
     public function getMonthlyCustomerSettingSearch()
     {
         // 現在のURLを取得
         session(['back_url_1' => url()->full()]);
-        // 月額荷主設定をセット
+        // 月別荷主設定をセット
         $monthly_customer_settings = MonthlyCustomerSetting::query();
         // 拠点条件がある場合
         if(session('search_base_id') != null){
@@ -60,7 +60,7 @@ class MonthlyCustomerSettingService
                 $monthly_customer_settings->where('base_id', session('search_base_id'));
             });
         }
-        // 月額荷主設定年月条件がある場合
+        // 月別荷主設定年月条件がある場合
         if(!empty(session('search_monthly_customer_setting_ym_from')) && !empty(session('search_monthly_customer_setting_ym_to'))){
             $from = CarbonImmutable::createFromFormat('Y-m', session('search_monthly_customer_setting_ym_from'))->startOfMonth();
             $to = CarbonImmutable::createFromFormat('Y-m', session('search_monthly_customer_setting_ym_to'))->endOfMonth();
@@ -86,7 +86,7 @@ class MonthlyCustomerSettingService
         // 変数を初期化
         $ho_cost = '';
         $monthly_cost_setting = '';
-        // 拠点条件があって、月額荷主設定年月条件が単月である場合
+        // 拠点条件があって、月別荷主設定年月条件が単月である場合
         if(session('search_base_id') != null && session('search_monthly_customer_setting_ym_from') == session('search_monthly_customer_setting_ym_to')){
             // 指定された拠点で荷主が有効なものを対象に経費分配割合の合計を取得
             $total_ho_cost_allocation_ratio = MonthlyCustomerSetting::getTotalCostAllocationRatio(session('search_base_id'), CarbonImmutable::createFromFormat('Y-m', session('search_monthly_customer_setting_ym_from'))->startOfMonth(), 'ho_cost_allocation_ratio');

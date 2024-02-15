@@ -1,10 +1,10 @@
-@vite(['resources/js/setting/monthly_customer_setting.js'])
+@vite(['resources/js/setting/monthly_customer_setting/monthly_customer_setting.js'])
 
 <x-app-layout>
-    <x-page-header content="月額荷主設定"/>
+    <x-page-header content="月別荷主設定"/>
     <div class="flex flex-row mb-2">
         <!-- 操作ボタン -->
-        <x-setting.monthly-customer-setting.operation-div />
+        <x-setting.monthly-customer-setting.operation-div :bases="$bases" />
         <!-- 経費分配割合エラーメッセージ -->
         <div class="flex flex-col">
             @if(!empty($cost_allocation_ratio_check['ho_cost']))
@@ -20,7 +20,7 @@
     <div class="flex flex-row items-start mb-2">
         <!-- 検索条件 -->
         <x-setting.monthly-customer-setting.search :bases="$bases" searchRoute="monthly_customer_setting.index" resetRoute="monthly_customer_setting.index" />
-        <!-- 月額荷主設定一覧 -->
+        <!-- 月別荷主設定一覧 -->
         <x-setting.monthly-customer-setting.list :monthlyCustomerSettings="$monthly_customer_settings" />
     </div>
 </x-app-layout>

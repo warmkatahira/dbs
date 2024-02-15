@@ -23,8 +23,9 @@ use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\Setting\MonthlyCostSetting\MonthlyCostSettingCreateController;
     use App\Http\Controllers\Setting\MonthlyCostSetting\MonthlyCostSettingUpdateController;
     use App\Http\Controllers\Setting\MonthlyCostSetting\MonthlyCostSettingDeleteController;
-    // 月額荷主設定
+    // 月別荷主設定
     use App\Http\Controllers\Setting\MonthlyCustomerSetting\MonthlyCustomerSettingController;
+    use App\Http\Controllers\Setting\MonthlyCustomerSetting\MonthlyCustomerSettingCreateRecordController;
 // +-+-+-+-+-+-+-+- システム管理 +-+-+-+-+-+-+-+-
     // 拠点管理
     use App\Http\Controllers\SystemMgt\BaseMgt\BaseMgtController;
@@ -68,7 +69,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('download', 'download')->name('download');
         });
     // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ 設定 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
-        // -+-+-+-+-+-+-+-+-+-+-+-+ 売上計画 -+-+-+-+-+-+-+-+-+-+-+-+
+        // -+-+-+-+-+-+-+-+-+-+-+-+ 売上計画設定 -+-+-+-+-+-+-+-+-+-+-+-+
         Route::controller(SalesPlanSettingController::class)->prefix('sales_plan_setting')->name('sales_plan_setting.')->group(function(){
             Route::get('', 'index')->name('index');
         });
@@ -83,7 +84,7 @@ Route::middleware(['auth'])->group(function () {
         Route::controller(SalesPlanSettingDeleteController::class)->prefix('sales_plan_setting_delete')->name('sales_plan_setting_delete.')->group(function(){
             Route::post('delete', 'delete')->name('delete');
         });
-        // -+-+-+-+-+-+-+-+-+-+-+-+ 月額経費 -+-+-+-+-+-+-+-+-+-+-+-+
+        // -+-+-+-+-+-+-+-+-+-+-+-+ 月額経費設定 -+-+-+-+-+-+-+-+-+-+-+-+
         Route::controller(MonthlyCostSettingController::class)->prefix('monthly_cost_setting')->name('monthly_cost_setting.')->group(function(){
             Route::get('', 'index')->name('index');
         });
@@ -98,12 +99,15 @@ Route::middleware(['auth'])->group(function () {
         Route::controller(MonthlyCostSettingDeleteController::class)->prefix('monthly_cost_setting_delete')->name('monthly_cost_setting_delete.')->group(function(){
             Route::post('delete', 'delete')->name('delete');
         });
-        // -+-+-+-+-+-+-+-+-+-+-+-+ 月額荷主設定 -+-+-+-+-+-+-+-+-+-+-+-+
+        // -+-+-+-+-+-+-+-+-+-+-+-+ 月別荷主設定 -+-+-+-+-+-+-+-+-+-+-+-+
         Route::controller(MonthlyCustomerSettingController::class)->prefix('monthly_customer_setting')->name('monthly_customer_setting.')->group(function(){
             Route::get('', 'index')->name('index');
             Route::get('download', 'download')->name('download');
             Route::post('upload', 'upload')->name('upload');
             Route::get('upload_error_download', 'upload_error_download')->name('upload_error_download');
+        });
+        Route::controller(MonthlyCustomerSettingCreateRecordController::class)->prefix('monthly_customer_setting_create_record')->name('monthly_customer_setting_create_record.')->group(function(){
+            Route::post('create', 'create')->name('create');
         });
     // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ システム管理 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
         // -+-+-+-+-+-+-+-+-+-+-+-+ 拠点管理 -+-+-+-+-+-+-+-+-+-+-+-+

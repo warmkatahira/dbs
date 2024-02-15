@@ -1,4 +1,4 @@
-@vite(['resources/js/sales_plan_setting/sales_plan_setting.js'])
+@vite(['resources/js/setting/sales_plan_setting/sales_plan_setting.js'])
 
 <x-app-layout>
     <x-page-header content="売上計画設定更新"/>

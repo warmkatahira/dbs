@@ -70,7 +70,7 @@ class MonthlyCustomerSettingUploadService
         ];
         // バリデーションエラー項目を定義
         $attributes = [
-            'monthly_customer_setting_id' => '月額荷主設定ID',
+            'monthly_customer_setting_id' => '月別荷主設定ID',
             'monthly_storage_sales' => '月額保管売上',
             'monthly_storage_cost' => '月額保管経費',
             'ho_cost_allocation_ratio' => '本社管理費分配割合',

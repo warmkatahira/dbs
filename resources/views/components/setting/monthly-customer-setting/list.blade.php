@@ -15,7 +15,7 @@
             </thead>
             <tbody class="bg-white">
                 @foreach($monthlyCustomerSettings as $monthly_customer_settings)
-                    <tr class="hover:bg-theme-sub cursor-default">
+                    <tr class="hover:bg-theme-sub cursor-default @if($monthly_customer_settings->dbs_customer->is_available == 0) text-red-600 bg-gray-200 @endif">
                         <td class="py-1 px-2 border text-left">{{ \Carbon\CarbonImmutable::parse($monthly_customer_settings->monthly_customer_setting_ym)->isoFormat('YYYY年MM月') }}</td>
                         <td class="py-1 px-2 border text-left">{{ $monthly_customer_settings->dbs_customer->dbs_base->base_name }}</td>
                         <td class="py-1 px-2 border text-left">{{ $monthly_customer_settings->dbs_customer->customer_name }}</td>

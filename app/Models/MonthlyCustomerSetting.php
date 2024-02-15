@@ -27,7 +27,7 @@ class MonthlyCustomerSetting extends Model
     public static function csvHeader()
     {
         return [
-            '月額荷主設定ID',
+            '月別荷主設定ID',
             '設定年月',
             '拠点',
             '荷主名',
