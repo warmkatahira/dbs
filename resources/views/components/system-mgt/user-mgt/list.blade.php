@@ -18,7 +18,7 @@
                         <td class="py-1 px-2 border">{{ $user->last_name.' '.$user->first_name }}</td>
                         <td class="py-1 px-2 border">{{ $user->email }}</td>
                         <td class="py-1 px-2 border">{{ $user->dbs_role->role_name }}</td>
-                        <td class="py-1 px-2 border text-center">{{ \Carbon\CarbonImmutable::parse($user->last_login_at)->isoFormat('YYYY年MM月DD日 HH時mm分ss秒') }}</td>
+                        <td class="py-1 px-2 border text-center">{{ CarbonImmutable::parse($user->last_login_at)->isoFormat('YYYY年MM月DD日 HH時mm分ss秒') }}</td>
                         <td class="py-1 px-2 border text-center">{{ $user->status == '1' ? '有効' : '無効' }}</td>
                     </tr>
                 @endforeach

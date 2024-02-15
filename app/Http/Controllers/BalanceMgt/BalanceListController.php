@@ -16,9 +16,9 @@ class BalanceListController extends Controller
         // インスタンス化
         $CalendarService = new CalendarService;
         // 指定した月の情報を取得
-        $month_info = $CalendarService->getMonthInfo('2024-02-01');
+        $month_date = $CalendarService->getMonthInfo('2024-02-01');
         return view('balance_mgt.balance_list.index')->with([
-            'month_info' => $month_info,
+            'month_date' => $month_date,
         ]);
     }
 }

@@ -13,12 +13,12 @@ use Illuminate\Support\Facades\Route;
     // 荷主マスタ
     use App\Http\Controllers\MasterMgt\Customer\CustomerController;
 // +-+-+-+-+-+-+-+- 設定 +-+-+-+-+-+-+-+-
-    // 売上計画
+    // 売上計画設定
     use App\Http\Controllers\Setting\SalesPlanSetting\SalesPlanSettingController;
     use App\Http\Controllers\Setting\SalesPlanSetting\SalesPlanSettingCreateController;
     use App\Http\Controllers\Setting\SalesPlanSetting\SalesPlanSettingUpdateController;
     use App\Http\Controllers\Setting\SalesPlanSetting\SalesPlanSettingDeleteController;
-    // 月額経費
+    // 月額経費設定
     use App\Http\Controllers\Setting\MonthlyCostSetting\MonthlyCostSettingController;
     use App\Http\Controllers\Setting\MonthlyCostSetting\MonthlyCostSettingCreateController;
     use App\Http\Controllers\Setting\MonthlyCostSetting\MonthlyCostSettingUpdateController;

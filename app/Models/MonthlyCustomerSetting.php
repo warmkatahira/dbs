@@ -12,8 +12,6 @@ class MonthlyCustomerSetting extends Model
     protected $connection = 'mysql';
     // 主キーカラムを変更
     protected $primaryKey = 'monthly_customer_setting_id';
-    // オートインクリメント無効化
-    public $incrementing = false;
     // 操作可能なカラムを定義
     protected $fillable = [
         'customer_id',

@@ -10,28 +10,33 @@ class CalendarService
     // 指定した月の情報を取得
     public function getMonthInfo($date)
     {
-        // 月初と月末の日付を取得
-        $start_day = CarbonImmutable::parse($date)->startOfMonth();
-        $end_day = CarbonImmutable::parse($date)->endOfMonth();
-        // 月初の日付が月曜日でない場合、前月最後の月曜日に戻る
-        while($start_day->dayOfWeek != CarbonImmutable::MONDAY){
-            $start_day = $start_day->subDay();
+        // 指定された月の月初と月末の日付を取得
+        $start_date = CarbonImmutable::parse($date)->startOfMonth();
+        $end_date = CarbonImmutable::parse($date)->endOfMonth();
+        // 月初の日付が月曜日でない場合、直前の月曜日を取得する
+        while($start_date->dayOfWeek != CarbonImmutable::MONDAY){
+            $start_date = $start_date->subDay();
         }
-        // 月の日数を取得
-        $days_in_month = $start_day->daysInMonth;
-        // 日付を格納するの配列を初期化
-        $month_info = [];
-        // 月の日数分だけループ処理
-        for($i = 0;$i < $days_in_month;$i++){
-            // 月初の日付にループ変数分を足して日付を生成
-            $current_date = $start_day->addDay($i)->toDateString();
-            // 週ごとのサブ配列がまだ作成されていない場合、新しい配列を作成
-            if (!isset($month_info[$current_date->weekOfMonth()])) {
-                $month_info[$current_date->weekOfMonth()] = [];
+        // 月末の日付が日曜日でない場合、次の日曜日を取得する
+        while ($end_date->dayOfWeek != CarbonImmutable::SUNDAY) {
+            $end_date = $end_date->addDay();
+        }
+        // 月の日付を格納する配列を初期化
+        $month_date = [];
+        // 開始する日付を格納
+        $current_date = CarbonImmutable::parse($start_date);
+        // 開始日から終了日までの間の日付を配列に格納
+        while ($current_date <= $end_date) {
+            // 週の日付を格納する配列を初期化
+            $week_date = [];
+            // 7回ループし、1週間の日付を配列に格納
+            for ($i = 0; $i < 7; $i++) {
+                $week_date[] = $current_date->toDateString();
+                $current_date = $current_date->addDay();
             }
-            dd($month_info);
-            $month_info[] = $current_date;
+            // 月の配列に週単位の情報を格納
+            $month_date[] = $week_date;
         }
-        return $month_info;
+        return $month_date;
     }
 }

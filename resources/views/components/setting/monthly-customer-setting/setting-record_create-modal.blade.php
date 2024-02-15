@@ -25,7 +25,7 @@
             </form>
             <!-- ボタン -->
             <div class="flex justify-between mt-10">
-                <button type="button" id="setting_record_create_enter" class="border border-blue-500 bg-blue-100 text-blue-500 text-center p-4 text-sm w-1/4">作成</button>
+                <button type="button" id="setting_record_create_enter" class="border border-blue-500 bg-blue-100 text-blue-500 text-center p-4 text-sm w-1/4">追加</button>
                 <button type="button" class="setting_record_create_modal_close border border-red-500 bg-red-100 text-red-500 text-center p-4 text-sm w-1/4">閉じる</button>
             </div>
         </div>
