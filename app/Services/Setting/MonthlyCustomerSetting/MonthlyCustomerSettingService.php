@@ -53,12 +53,11 @@ class MonthlyCustomerSettingService
         // 現在のURLを取得
         session(['back_url_1' => url()->full()]);
         // 月別荷主設定をセット
-        $monthly_customer_settings = MonthlyCustomerSetting::query();
+        $monthly_customer_settings = MonthlyCustomerSetting::join('customers', 'customers.customer_id', 'monthly_customer_settings.customer_id')
+                                        ->join('bases', 'bases.base_id', 'customers.base_id');
         // 拠点条件がある場合
         if(session('search_base_id') != null){
-            $monthly_customer_settings->whereHas('dbs_customer.dbs_base', function ($monthly_customer_settings) {
-                $monthly_customer_settings->where('base_id', session('search_base_id'));
-            });
+            $monthly_customer_settings->where('customers.base_id', session('search_base_id'));
         }
         // 月別荷主設定年月条件がある場合
         if(!empty(session('search_monthly_customer_setting_ym_from')) && !empty(session('search_monthly_customer_setting_ym_to'))){
@@ -70,14 +69,11 @@ class MonthlyCustomerSettingService
         if(session('search_customer_name') != null){
             $monthly_customer_settings->where('customer_name', 'LIKE', '%'.session('search_customer_name').'%');
         }
-        // 拠点IDと荷主IDで並び替え
-        return $monthly_customer_settings->whereHas('dbs_customer.dbs_base', function ($monthly_customer_settings) {
-                    $monthly_customer_settings->orderBy('base_id', 'asc');
-                })
+        // 拠点ID/設定年月/荷主並び順/荷主IDで並び替え
+        return $monthly_customer_settings->orderBy('customers.base_id', 'asc')
                 ->orderBy('monthly_customer_setting_ym', 'asc')
-                ->whereHas('dbs_customer.dbs_base', function ($monthly_customer_settings) {
-                    $monthly_customer_settings->orderBy('customer_sort_order', 'asc');
-                });
+                ->orderBy('customer_sort_order', 'asc')
+                ->orderBy('customers.customer_id', 'asc');
     }
 
     // 拠点条件がある場合、経費分配割合を合計し100%であるか確認

@@ -24,8 +24,8 @@ class MonthlyCustomerSettingCreateRecordService
     {
         // テーブルから追加予定の条件のレコードを取得
         $monthly_customer_settings = MonthlyCustomerSetting::where('monthly_customer_setting_ym', $create_ym)
-                                                            ->whereHas('dbs_customer.dbs_base', function ($monthly_customer_settings) use($base_id) {
-                                                                $monthly_customer_settings->where('base_id', $base_id);
+                                                            ->whereHas('dbs_customer.dbs_base', function ($query) use($base_id) {
+                                                                $query->where('base_id', $base_id);
                                                             })
                                                             ->pluck('customer_id');
         // $customersから$monthly_customer_settingsを除いた結果を取得（残った結果が追加されていない荷主となる）

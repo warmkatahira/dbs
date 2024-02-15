@@ -19,11 +19,8 @@ class Customer extends Model
         'customer_id',
         'base_id',
         'customer_name',
-        'monthly_storage_sales',
-        'monthly_storage_cost',
         'is_available',
         'customer_sort_order',
-        'cost_allocation_ratio',
     ];
     // ヘッダーを定義
     public static function csvHeader()
