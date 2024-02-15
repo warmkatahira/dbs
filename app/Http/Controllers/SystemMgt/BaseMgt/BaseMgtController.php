@@ -23,9 +23,9 @@ class BaseMgtController extends Controller
     public function sync()
     {
         // インスタンス化
-        $BaseSyncSerivce = new BaseSyncService;
+        $BaseSyncService = new BaseSyncService;
         // DB:kintaiのbasesテーブルと同期
-        $BaseSyncSerivce->syncBase();
+        $BaseSyncService->syncBase();
         return back()->with([
             'alert_type' => 'success',
             'alert_message' => '拠点同期が完了しました。',

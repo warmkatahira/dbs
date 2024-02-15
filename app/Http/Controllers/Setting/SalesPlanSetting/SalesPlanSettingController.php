@@ -14,15 +14,15 @@ class SalesPlanSettingController extends Controller
     public function index(Request $request)
     {
         // インスタンス化
-        $SalesPlanSettingSerivce = new SalesPlanSettingService;
+        $SalesPlanSettingService = new SalesPlanSettingService;
         // 検索条件のセッションを削除
-        $SalesPlanSettingSerivce->deleteSearchSession();
+        $SalesPlanSettingService->deleteSearchSession();
         // 検索条件の初期条件をセット
-        $SalesPlanSettingSerivce->setDefaultCondition($request->search_enter);
+        $SalesPlanSettingService->setDefaultCondition($request->search_enter);
         // 検索条件をセッションにセット
-        $SalesPlanSettingSerivce->setSearchCondition($request);
+        $SalesPlanSettingService->setSearchCondition($request);
         // 売上計画情報を取得
-        $sales_plan_settings = $SalesPlanSettingSerivce->getSalesPlanSettingSearch($request);
+        $sales_plan_settings = $SalesPlanSettingService->getSalesPlanSettingSearch($request);
         // 拠点を取得
         $bases = Base::getall()->get();
         return view('setting.sales_plan_setting.index')->with([

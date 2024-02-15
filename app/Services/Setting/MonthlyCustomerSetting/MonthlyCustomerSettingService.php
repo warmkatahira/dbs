@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\MonthlyCustomerSetting;
+namespace App\Services\Setting\MonthlyCustomerSetting;
 
 // モデル
 use App\Models\MonthlyCustomerSetting;

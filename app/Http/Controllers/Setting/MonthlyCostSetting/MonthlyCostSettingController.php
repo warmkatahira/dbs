@@ -16,15 +16,15 @@ class MonthlyCostSettingController extends Controller
         // 拠点IDをセッションにセット
         session(['search_base_id' => $request->base_id]);
         // インスタンス化
-        $MonthlyCostSettingSerivce = new MonthlyCostSettingService;
+        $MonthlyCostSettingService = new MonthlyCostSettingService;
         // 検索条件のセッションを削除
-        $MonthlyCostSettingSerivce->deleteSearchSession();
+        $MonthlyCostSettingService->deleteSearchSession();
         // 検索条件の初期条件をセット
-        $MonthlyCostSettingSerivce->setDefaultCondition($request->search_enter);
+        $MonthlyCostSettingService->setDefaultCondition($request->search_enter);
         // 検索条件をセッションにセット
-        $MonthlyCostSettingSerivce->setSearchCondition($request);
+        $MonthlyCostSettingService->setSearchCondition($request);
         // 月額経費情報を取得
-        $monthly_cost_settings = $MonthlyCostSettingSerivce->getMonthlyCostSettingSearch($request);
+        $monthly_cost_settings = $MonthlyCostSettingService->getMonthlyCostSettingSearch($request);
         // 拠点を取得
         $bases = Base::getall()->get();
         return view('setting.monthly_cost_setting.index')->with([

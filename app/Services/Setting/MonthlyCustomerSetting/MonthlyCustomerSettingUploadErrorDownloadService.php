@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Services\MonthlyCustomerSetting;
+namespace App\Services\Setting\MonthlyCustomerSetting;
 
 // その他
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
-class MonthlyCustomerSettingUploadErrorDownloadSerivce
+class MonthlyCustomerSettingUploadErrorDownloadService
 {
     public function getDownloadMonthlyCustomerSettingUploadError($errors)
     {

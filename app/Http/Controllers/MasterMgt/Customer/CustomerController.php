@@ -21,15 +21,15 @@ class CustomerController extends Controller
     public function index(Request $request)
     {
         // インスタンス化
-        $CustomerSerivce = new CustomerService;
+        $CustomerService = new CustomerService;
         // 検索条件のセッションを削除
-        $CustomerSerivce->deleteSearchSession();
+        $CustomerService->deleteSearchSession();
         // 検索条件の初期条件をセット
-        $CustomerSerivce->setDefaultCondition($request->search_enter);
+        $CustomerService->setDefaultCondition($request->search_enter);
         // 検索条件をセッションにセット
-        $CustomerSerivce->setSearchCondition($request);
+        $CustomerService->setSearchCondition($request);
         // 荷主情報を取得
-        $customers = $CustomerSerivce->getCustomerSearch()->paginate(50);
+        $customers = $CustomerService->getCustomerSearch()->paginate(50);
         // 拠点を全て取得
         $bases = Base::getAll()->get();
         // 有効/無効の検索条件に使用する情報を作成
@@ -44,9 +44,9 @@ class CustomerController extends Controller
     public function sync()
     {
         // インスタンス化
-        $CustomerSyncSerivce = new CustomerSyncService;
+        $CustomerSyncService = new CustomerSyncService;
         // DB:kintaiのcustomersテーブルと同期
-        $CustomerSyncSerivce->syncCustomer();
+        $CustomerSyncService->syncCustomer();
         return back()->with([
             'alert_type' => 'success',
             'alert_message' => '荷主同期が完了しました。',
@@ -56,12 +56,12 @@ class CustomerController extends Controller
     public function download()
     {
         // インスタンス化
-        $CustomerSerivce = new CustomerService;
-        $CustomerDownloadSerivce = new CustomerDownloadService;
+        $CustomerService = new CustomerService;
+        $CustomerDownloadService = new CustomerDownloadService;
         // 荷主情報を取得
-        $customers = $CustomerSerivce->getCustomerSearch();
+        $customers = $CustomerService->getCustomerSearch();
         // ダウンロードするデータを取得
-        $response = $CustomerDownloadSerivce->getDownloadCustomer($customers);
+        $response = $CustomerDownloadService->getDownloadCustomer($customers);
         // ダウンロード処理
         $response->headers->set('Content-Type', 'text/csv');
         $response->headers->set('Content-Disposition', 'attachment; filename=荷主マスタ_' . CarbonImmutable::now()->isoFormat('Y年MM月DD日HH時mm分ss秒') . '.csv');

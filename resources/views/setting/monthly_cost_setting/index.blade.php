@@ -11,7 +11,7 @@
     <div class="flex flex-row items-start mb-2">
         <!-- 検索条件 -->
         <x-setting.monthly-cost-setting.search :bases="$bases" searchRoute="monthly_cost_setting.index" resetRoute="monthly_cost_setting.index" />
-        <!-- 月額経費一覧 -->
+        <!-- 月額経費設定一覧 -->
         <x-setting.monthly-cost-setting.list :monthlyCosts="$monthly_cost_settings" />
     </div>
 </x-app-layout>

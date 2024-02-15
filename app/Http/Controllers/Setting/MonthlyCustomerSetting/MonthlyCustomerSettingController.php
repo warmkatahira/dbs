@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 use App\Models\Base;
 use App\Models\MonthlyCustomerSetting;
 // サービス
-use App\Services\MonthlyCustomerSetting\MonthlyCustomerSettingService;
-use App\Services\MonthlyCustomerSetting\MonthlyCustomerSettingDownloadService;
-use App\Services\MonthlyCustomerSetting\MonthlyCustomerSettingUploadService;
-use App\Services\MonthlyCustomerSetting\MonthlyCustomerSettingUploadErrorDownloadSerivce;
+use App\Services\Setting\MonthlyCustomerSetting\MonthlyCustomerSettingService;
+use App\Services\Setting\MonthlyCustomerSetting\MonthlyCustomerSettingDownloadService;
+use App\Services\Setting\MonthlyCustomerSetting\MonthlyCustomerSettingUploadService;
+use App\Services\Setting\MonthlyCustomerSetting\MonthlyCustomerSettingUploadErrorDownloadService;
 // その他
 use Illuminate\Support\Facades\DB;
 use Carbon\CarbonImmutable;
@@ -23,19 +23,19 @@ class MonthlyCustomerSettingController extends Controller
     public function index(Request $request)
     {
         // インスタンス化
-        $MonthlyCustomerSettingSerivce = new MonthlyCustomerSettingService;
+        $MonthlyCustomerSettingService = new MonthlyCustomerSettingService;
         // 検索条件のセッションを削除
-        $MonthlyCustomerSettingSerivce->deleteSearchSession();
+        $MonthlyCustomerSettingService->deleteSearchSession();
         // 検索条件の初期条件をセット
-        $MonthlyCustomerSettingSerivce->setDefaultCondition($request->search_enter);
+        $MonthlyCustomerSettingService->setDefaultCondition($request->search_enter);
         // 検索条件をセッションにセット
-        $MonthlyCustomerSettingSerivce->setSearchCondition($request);
+        $MonthlyCustomerSettingService->setSearchCondition($request);
         // 月額荷主設定情報を取得
-        $monthly_customer_settings = $MonthlyCustomerSettingSerivce->getMonthlyCustomerSettingSearch()->paginate(50);
+        $monthly_customer_settings = $MonthlyCustomerSettingService->getMonthlyCustomerSettingSearch()->paginate(50);
         // 拠点を全て取得
         $bases = Base::getAll()->get();
         // 拠点条件がある場合、経費分配割合を合計し100%であるか確認
-        $cost_allocation_ratio_check = $MonthlyCustomerSettingSerivce->checkCostAllocationRatio();
+        $cost_allocation_ratio_check = $MonthlyCustomerSettingService->checkCostAllocationRatio();
         return view('setting.monthly_customer_setting.index')->with([
             'bases' => $bases,
             'monthly_customer_settings' => $monthly_customer_settings,
@@ -129,9 +129,9 @@ class MonthlyCustomerSettingController extends Controller
     public function upload_error_download()
     {
         // インスタンス化
-        $MonthlyCustomerSettingUploadErrorDownloadSerivce = new MonthlyCustomerSettingUploadErrorDownloadSerivce;
+        $MonthlyCustomerSettingUploadErrorDownloadService = new MonthlyCustomerSettingUploadErrorDownloadService;
         // ダウンロードするデータを取得
-        $response = $MonthlyCustomerSettingUploadErrorDownloadSerivce->getDownloadMonthlyCustomerSettingUploadError(session('monthly_customer_setting_upload_error')[0]['エラー情報']);
+        $response = $MonthlyCustomerSettingUploadErrorDownloadService->getDownloadMonthlyCustomerSettingUploadError(session('monthly_customer_setting_upload_error')[0]['エラー情報']);
         // ダウンロード処理
         $response->headers->set('Content-Type', 'text/csv');
         $response->headers->set('Content-Disposition', 'attachment; filename=月額荷主設定アップロードエラー'.CarbonImmutable::now()->isoFormat('Y年MM月DD日HH時mm分ss秒') . '.csv');
