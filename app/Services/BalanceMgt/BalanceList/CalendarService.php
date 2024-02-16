@@ -48,9 +48,22 @@ class CalendarService
         while ($current_date <= $end_date) {
             // 週の日付を格納する配列を初期化
             $week_date = [];
-            // 7回ループし、1週間の日付を配列に格納
+            // 7回ループする（1週間分の日付）
             for ($i = 0; $i < 7; $i++) {
-                $week_date[] = $current_date->toDateString();
+                // 土曜日と日曜日だったら、カレンダーの背景色を設定
+                $bg = '';
+                if($current_date->dayOfWeek == CarbonImmutable::SATURDAY){
+                    $bg = 'bg-blue-200';
+                }
+                if($current_date->dayOfWeek == CarbonImmutable::SUNDAY){
+                    $bg = 'bg-pink-200';
+                }
+                // 日付と背景色を週の配列に格納
+                $week_date[] = [
+                    'date' => $current_date->toDateString(),
+                    'bg' => $bg,
+                ];
+                // 日付を1日足す
                 $current_date = $current_date->addDay();
             }
             // 月の配列に週単位の情報を格納

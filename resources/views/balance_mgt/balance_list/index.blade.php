@@ -23,19 +23,7 @@
                 @foreach($month_date as $week_date)
                     <tr class="text-left cursor-default">
                         @foreach($week_date as $date)
-                            @php
-                                // 週の番号を取得 
-                                $day_of_week = CarbonImmutable::parse($date)->dayOfWeek;
-                                // 土曜日か日曜日であれば、背景色を設定
-                                $bg = '';
-                                if($day_of_week == CarbonImmutable::SATURDAY){
-                                    $bg = 'bg-blue-200';
-                                }
-                                if($day_of_week == CarbonImmutable::SUNDAY){
-                                    $bg = 'bg-pink-200';
-                                }
-                            @endphp
-                            <td class="py-1 px-2 border pb-20 pr-32 {{ $bg }}">{{ CarbonImmutable::parse($date)->isoFormat('MM/DD') }}</td>
+                            <td class="py-1 px-2 border pb-20 pr-32 {{ $date['bg'] }}">{{ CarbonImmutable::parse($date['date'])->isoFormat('MM/DD') }}</td>
                         @endforeach
                     </tr>
                 @endforeach
