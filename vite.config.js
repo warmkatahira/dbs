@@ -40,6 +40,11 @@ export default defineConfig({
                 'resources/js/setting/monthly_customer_setting/monthly_customer_setting.js',
                 'resources/js/setting/monthly_customer_setting/setting_record_create.js',
             ],
+            // 収支管理
+            [
+                // 収支一覧
+                'resources/js/balance_mgt/balance_list/balance_list.js',
+            ],
         ),
     ],
 });

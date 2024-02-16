@@ -4,9 +4,28 @@ namespace App\Services\BalanceMgt\BalanceList;
 
 // その他
 use Carbon\CarbonImmutable;
+use Illuminate\Support\Facades\Auth;
 
 class CalendarService
 {
+    // 表示する情報をセッションに格納
+    public function setDisplayInfo($request)
+    {
+        // nullなら検索が実行されていないので、初期条件をセット
+        if(is_null($request->search_enter)){
+            session(['search_month' => CarbonImmutable::now()->startOfMonth()->format('Y-m-d')]);
+            session(['search_base' => Auth::user()->base_id]);
+            session(['search_customer' => null]);
+        }
+        // nullではなかったら検索が実行されているので、指定された条件を格納
+        if(!is_null($request->search_enter)){
+            session(['search_month' => $request->search_month]);
+            session(['search_base' => $request->search_base]);
+            session(['search_customer' => $request->search_customer]);
+        }
+        return;
+    }
+
     // 指定した月の情報を取得
     public function getMonthInfo($date)
     {

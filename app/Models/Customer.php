@@ -40,6 +40,17 @@ class Customer extends Model
     // 全てを取得
     public static function getAll()
     {
-        return self::orderBy('customer_id', 'asc');
+        return self::orderBy('customer_sort_order', 'asc')
+                    ->orderBy('base_id', 'asc')
+                    ->orderBy('customer_id', 'asc');
+    }
+    // 指定した拠点の有効な荷主を全て取得
+    public static function getAllByBase($base_id)
+    {
+        return self::where('base_id', $base_id)
+                    ->where('is_available', 1)
+                    ->orderBy('customer_sort_order', 'asc')
+                    ->orderBy('base_id', 'asc')
+                    ->orderBy('customer_id', 'asc');
     }
 }
