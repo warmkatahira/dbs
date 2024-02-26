@@ -1,7 +1,7 @@
 <div class="bg-white border border-gray-600 shadow-md mr-3">
     <p class="text-sm bg-gray-600 text-white py-3 text-center">検索条件</p>
     <form method="GET" action="{{ route($searchRoute) }}" class="m-0">
-        <div class="flex flex-col px-3">
+        <div class="flex flex-col px-3 w-60">
             <x-search.select-1 id="search_base_id" label="拠点" :searchConditions="$bases" value="base_id" text="base_name" />
             <x-search.input id="search_customer_name" label="荷主名" />
             <x-search.select-2 id="search_is_available" label="有効/無効" :searchConditions="$isAvailableConditions" value="value" text="text" />

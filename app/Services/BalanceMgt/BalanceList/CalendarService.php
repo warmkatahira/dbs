@@ -13,15 +13,15 @@ class CalendarService
     {
         // nullなら検索が実行されていないので、初期条件をセット
         if(is_null($request->search_enter)){
-            session(['search_month' => CarbonImmutable::now()->startOfMonth()->format('Y-m-d')]);
-            session(['search_base' => Auth::user()->base_id]);
-            session(['search_customer' => null]);
+            session(['search_month' => CarbonImmutable::now()->startOfMonth()->format('Y-m')]);
+            session(['search_base_id' => Auth::user()->base_id]);
+            session(['search_customer_id' => null]);
         }
         // nullではなかったら検索が実行されているので、指定された条件を格納
         if(!is_null($request->search_enter)){
             session(['search_month' => $request->search_month]);
-            session(['search_base' => $request->search_base]);
-            session(['search_customer' => $request->search_customer]);
+            session(['search_base_id' => $request->search_base_id]);
+            session(['search_customer_id' => $request->search_customer_id]);
         }
         return;
     }
@@ -60,7 +60,7 @@ class CalendarService
                 }
                 // 日付と背景色を週の配列に格納
                 $week_date[] = [
-                    'date' => $current_date->toDateString(),
+                    'date' => $current_date->isoFormat('MM/DD'),
                     'bg' => $bg,
                 ];
                 // 日付を1日足す

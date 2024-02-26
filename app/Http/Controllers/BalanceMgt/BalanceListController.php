@@ -23,7 +23,7 @@ class BalanceListController extends Controller
         // 拠点を取得
         $bases = Base::getall()->get();
         // 指定した拠点の有効な荷主を全て取得
-        $customers = Customer::getAllByBase(session('search_base'))->get();
+        $customers = Customer::getAllByBase(session('search_base_id'))->get();
         return view('balance_mgt.balance_list.index')->with([
             'month_date' => $month_date,
             'bases' => $bases,

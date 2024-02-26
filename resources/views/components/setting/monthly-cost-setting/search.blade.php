@@ -1,7 +1,7 @@
 <div class="bg-white border border-gray-600 shadow-md mr-3">
     <p class="text-sm bg-gray-600 text-white py-3 text-center">検索条件</p>
     <form method="GET" action="{{ route($searchRoute) }}" class="m-0">
-        <div class="flex flex-col px-3">
+        <div class="flex flex-col px-3 w-60">
             <input type="hidden" name="base_id" value="{{ session('search_base_id') }}">
             <x-search.date-period idFrom="search_monthly_cost_setting_ym_from" idTo="search_monthly_cost_setting_ym_to" label="設定年月" type="month" />
             <x-search.select-1 id="search_base_id" label="拠点" :searchConditions="$bases" value="base_id" text="base_name" />
