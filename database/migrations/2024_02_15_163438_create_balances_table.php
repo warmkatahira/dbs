@@ -15,6 +15,9 @@ return new class extends Migration
             $table->increments('balance_id');
             $table->string('customer_id', 20);
             $table->date('balance_date');
+            $table->integer('sales')->default(0);
+            $table->integer('cost')->default(0);
+            $table->integer('profit')->default(0);
             $table->timestamps();
         });
     }

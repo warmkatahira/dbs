@@ -16,5 +16,7 @@ class Balance extends Model
     protected $fillable = [
         'customer_id',
         'balance_date',
+        'sales',
+        'cost',
     ];
 }

@@ -184,6 +184,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
         'CarbonImmutable' => Carbon\CarbonImmutable::class,
+        'SortFieldConditionsEnum' => App\Enums\BalanceMgt\BalanceList\SortFieldConditionsEnum::class,
     ])->toArray(),
 
 ];

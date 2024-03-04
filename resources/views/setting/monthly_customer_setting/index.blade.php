@@ -1,4 +1,5 @@
 @vite(['resources/js/setting/monthly_customer_setting/monthly_customer_setting.js'])
+@vite(['resources/js/balance_mgt/balance_list/balance_list.js'])
 
 <x-app-layout>
     <x-page-header content="月別荷主設定"/>

@@ -2,9 +2,14 @@
 
 namespace App\Services\BalanceMgt\BalanceList;
 
+// モデル
+use App\Models\Balance;
 // その他
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Auth;
+// 列挙
+use App\Enums\BalanceMgt\BalanceList\SortFieldConditionsEnum;
+use App\Enums\SortDirectionConditionsEnum;
 
 class CalendarService
 {
@@ -16,18 +21,22 @@ class CalendarService
             session(['search_month' => CarbonImmutable::now()->startOfMonth()->format('Y-m')]);
             session(['search_base_id' => Auth::user()->base_id]);
             session(['search_customer_id' => null]);
+            session(['search_sort_field' => SortFieldConditionsEnum::SALES]);
+            session(['search_sort_direction' => SortDirectionConditionsEnum::DESC]);
         }
         // nullではなかったら検索が実行されているので、指定された条件を格納
         if(!is_null($request->search_enter)){
             session(['search_month' => $request->search_month]);
             session(['search_base_id' => $request->search_base_id]);
             session(['search_customer_id' => $request->search_customer_id]);
+            session(['search_sort_field' => is_null($request->search_sort_field) ? SortFieldConditionsEnum::SALES : $request->search_sort_field]);
+            session(['search_sort_direction' => is_null($request->search_sort_direction) ? SortDirectionConditionsEnum::DESC : $request->search_sort_direction]);
         }
         return;
     }
 
-    // 指定した月の情報を取得
-    public function getMonthInfo($date)
+    // カレンダー表示に使用する日付を取得
+    public function getStartEndDate($date)
     {
         // 指定された月の月初と月末の日付を取得
         $start_date = CarbonImmutable::parse($date)->startOfMonth();
@@ -40,29 +49,24 @@ class CalendarService
         while ($end_date->dayOfWeek != CarbonImmutable::SUNDAY) {
             $end_date = $end_date->addDay();
         }
+        return compact('start_date', 'end_date');
+    }
+
+    // 指定した月の情報を取得
+    public function getMonthInfo($start_end_date)
+    {
         // 月の日付を格納する配列を初期化
         $month_date = [];
-        // 開始する日付を格納
-        $current_date = CarbonImmutable::parse($start_date);
+        // ループ処理で使用する変数に開始する日付を格納
+        $current_date = CarbonImmutable::parse($start_end_date['start_date']);
         // 開始日から終了日までの間の日付を配列に格納
-        while ($current_date <= $end_date) {
+        while ($current_date <= $start_end_date['end_date']) {
             // 週の日付を格納する配列を初期化
             $week_date = [];
             // 7回ループする（1週間分の日付）
             for ($i = 0; $i < 7; $i++) {
-                // 土曜日と日曜日だったら、カレンダーの背景色を設定
-                $bg = '';
-                if($current_date->dayOfWeek == CarbonImmutable::SATURDAY){
-                    $bg = 'bg-blue-200';
-                }
-                if($current_date->dayOfWeek == CarbonImmutable::SUNDAY){
-                    $bg = 'bg-pink-200';
-                }
                 // 日付と背景色を週の配列に格納
-                $week_date[] = [
-                    'date' => $current_date->isoFormat('MM/DD'),
-                    'bg' => $bg,
-                ];
+                $week_date[$current_date->isoFormat('YYYY/MM/DD')] = [];
                 // 日付を1日足す
                 $current_date = $current_date->addDay();
             }
@@ -70,5 +74,72 @@ class CalendarService
             $month_date[] = $week_date;
         }
         return $month_date;
+    }
+
+    // カレンダーに表示する情報を取得
+    public function getCalendarInfo($month_date)
+    {
+        // カレンダーに表示する情報を格納する配列を初期化
+        $calendar_info = [];
+        // 週毎にループ処理
+        foreach($month_date as $week_date){
+            // 週単位の情報を格納する配列を初期化
+            $week_info = [];
+            // 日毎にループ処理
+            foreach($week_date as $key => $value){
+                // 日付をフォーマット
+                $date = CarbonImmutable::parse($key)->format('Y-m-d');
+                // 指定された条件の収支を取得(指定された並び替え項目・並び順順序で並べる)
+                $balances = Balance::join('customers', 'customers.customer_id', 'balances.customer_id')
+                                ->where('base_id', session('search_base_id'))
+                                ->where('balance_date', $date)
+                                ->orderBy(session('search_sort_field'), session('search_sort_direction'));
+                /***********************************************
+                 * 全体の情報
+                 ***********************************************/
+                // 収支登録数を取得
+                $balance_count = $balances->count();
+                // 全体の売上合計を取得
+                $total_sales = $balances->sum('sales');
+                // 全体の経費合計を取得
+                $total_cost = $balances->sum('cost');
+                // 全体の利益合計を取得
+                $total_profit = $balances->sum('profit');
+                /***********************************************
+                 * 上位3件の情報
+                 ***********************************************/
+                // 上から3件の収支を取得
+                $top_balances = $balances->take(3)->get()->toArray();
+                /***********************************************
+                 * 上位3件以外の情報
+                 ***********************************************/
+                // 収支を取得
+                $other_balances = $balances->skip(3)->get();
+                // 売上合計を取得
+                $other_balances_total_sales = $other_balances->sum('sales');
+                // 経費合計を取得
+                $other_balances_total_cost = $other_balances->sum('cost');
+                // 利益合計を取得
+                $other_balances_total_profit = $other_balances->sum('profit');
+                // 配列に変換して取得
+                $other_balances = $other_balances->toArray();
+                // 収支情報を週単位の配列に格納
+                $week_info[$date] = 
+                    [
+                        'top_balances' => $top_balances,
+                        'other_balances' => $other_balances,
+                        'balance_count' => $balance_count,
+                        'total_sales' => $total_sales,
+                        'total_cost' => $total_cost,
+                        'total_profit' => $total_profit,
+                        'other_balances_total_sales' => $other_balances_total_sales,
+                        'other_balances_total_cost' => $other_balances_total_cost,
+                        'other_balances_total_profit' => $other_balances_total_profit,
+                    ];
+            }
+            // 週単位の配列を全体の配列に格納
+            $calendar_info[] = $week_info;
+        }
+        return $calendar_info;
     }
 }
