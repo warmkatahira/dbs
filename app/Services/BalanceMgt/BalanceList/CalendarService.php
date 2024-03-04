@@ -9,6 +9,7 @@ use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Auth;
 // 列挙
 use App\Enums\BalanceMgt\BalanceList\SortFieldConditionsEnum;
+use App\Enums\BalanceMgt\BalanceList\DispNumConditionsEnum;
 use App\Enums\SortDirectionConditionsEnum;
 
 class CalendarService
@@ -23,6 +24,7 @@ class CalendarService
             session(['search_customer_id' => null]);
             session(['search_sort_field' => SortFieldConditionsEnum::SALES]);
             session(['search_sort_direction' => SortDirectionConditionsEnum::DESC]);
+            session(['search_disp_num' => DispNumConditionsEnum::DISP_03]);
         }
         // nullではなかったら検索が実行されているので、指定された条件を格納
         if(!is_null($request->search_enter)){
@@ -31,6 +33,7 @@ class CalendarService
             session(['search_customer_id' => $request->search_customer_id]);
             session(['search_sort_field' => is_null($request->search_sort_field) ? SortFieldConditionsEnum::SALES : $request->search_sort_field]);
             session(['search_sort_direction' => is_null($request->search_sort_direction) ? SortDirectionConditionsEnum::DESC : $request->search_sort_direction]);
+            session(['search_disp_num' => is_null($request->search_disp_num) ? DispNumConditionsEnum::DISP_03 : $request->search_disp_num]);
         }
         return;
     }
@@ -106,15 +109,15 @@ class CalendarService
                 // 全体の利益合計を取得
                 $total_profit = $balances->sum('profit');
                 /***********************************************
-                 * 上位3件の情報
-                 ***********************************************/
-                // 上から3件の収支を取得
-                $top_balances = $balances->take(3)->get()->toArray();
-                /***********************************************
-                 * 上位3件以外の情報
+                 * 上位X件の情報(表示件数条件により件数が可変)
                  ***********************************************/
                 // 収支を取得
-                $other_balances = $balances->skip(3)->get();
+                $top_balances = $balances->take(session('search_disp_num'))->get()->toArray();
+                /***********************************************
+                 * 上位X件以外の情報(表示件数条件により件数が可変)
+                 ***********************************************/
+                // 収支を取得
+                $other_balances = $balances->skip(session('search_disp_num'))->get();
                 // 売上合計を取得
                 $other_balances_total_sales = $other_balances->sum('sales');
                 // 経費合計を取得

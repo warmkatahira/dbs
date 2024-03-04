@@ -11,6 +11,7 @@ use App\Models\Customer;
 use App\Services\BalanceMgt\BalanceList\CalendarService;
 // 列挙
 use App\Enums\BalanceMgt\BalanceList\SortFieldConditionsEnum;
+use App\Enums\BalanceMgt\BalanceList\DispNumConditionsEnum;
 use App\Enums\SortDirectionConditionsEnum;
 
 class BalanceListController extends Controller
@@ -35,12 +36,15 @@ class BalanceListController extends Controller
         $sort_field_conditions = SortFieldConditionsEnum::makeCondition();
         // 並び替え順序の検索条件に使用する情報を取得
         $sort_direction_conditions = SortDirectionConditionsEnum::makeCondition();
+        // 表示件数の検索条件に使用する情報を取得
+        $disp_num_conditions = DispNumConditionsEnum::makeCondition();
         return view('balance_mgt.balance_list.index')->with([
             'bases' => $bases,
             'customers' => $customers,
             'calendar_info' => $calendar_info,
             'sort_field_conditions' => $sort_field_conditions,
             'sort_direction_conditions' => $sort_direction_conditions,
+            'disp_num_conditions' => $disp_num_conditions,
         ]);
     }
 }

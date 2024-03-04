@@ -7,6 +7,7 @@
             <x-search.select-1 id="search_customer_id" label="荷主" :searchConditions="$customers" value="customer_id" text="customer_name" />
             <x-search.select-2 id="search_sort_field" label="並び替え項目" :searchConditions="$sortFieldConditions" value="value" text="text" />
             <x-search.select-2 id="search_sort_direction" label="並び替え順序" :searchConditions="$sortDirectionConditions" value="value" text="text" />
+            <x-search.select-2 id="search_disp_num" label="表示件数" :searchConditions="$dispNumConditions" value="value" text="text" />
             <button type="submit" class="text-sm text-center border border-blue-500 text-blue-500 bg-blue-100 py-2 mt-2 shadow-md">
                 <i class="las la-search la-lg"></i>検索
             </button>
