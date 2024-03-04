@@ -1,6 +1,6 @@
 <table class="block whitespace-nowrap table-fixed">
     <thead>
-        <tr class="bg-theme-main text-white text-left sticky top-0">
+        <tr class="bg-theme-main text-white text-left">
             <th class="font-thin py-3 px-2 text-center border">月</th>
             <th class="font-thin py-3 px-2 text-center border">火</th>
             <th class="font-thin py-3 px-2 text-center border">水</th>
