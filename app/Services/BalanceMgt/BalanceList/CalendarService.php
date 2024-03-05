@@ -94,9 +94,17 @@ class CalendarService
                 $date = CarbonImmutable::parse($key)->format('Y-m-d');
                 // 指定された条件の収支を取得(指定された並び替え項目・並び順順序で並べる)
                 $balances = Balance::join('customers', 'customers.customer_id', 'balances.customer_id')
-                                ->where('base_id', session('search_base_id'))
+                                ->join('bases', 'bases.base_id', 'customers.base_id')
                                 ->where('balance_date', $date)
                                 ->orderBy(session('search_sort_field'), session('search_sort_direction'));
+                // 拠点条件がある場合
+                if(session('search_base_id') != null){
+                    $balances->where('customers.base_id', session('search_base_id'));
+                }
+                // 荷主条件がある場合
+                if(session('search_customer_id') != null){
+                    $balances->where('balances.customer_id', session('search_customer_id'));
+                }
                 /***********************************************
                  * 全体の情報
                  ***********************************************/
@@ -112,7 +120,7 @@ class CalendarService
                  * 上位X件の情報(表示件数条件により件数が可変)
                  ***********************************************/
                 // 収支を取得
-                $top_balances = $balances->take(session('search_disp_num'))->get()->toArray();
+                $disp_balances = $balances->take(session('search_disp_num'))->get()->toArray();
                 /***********************************************
                  * 上位X件以外の情報(表示件数条件により件数が可変)
                  ***********************************************/
@@ -129,7 +137,7 @@ class CalendarService
                 // 収支情報を週単位の配列に格納
                 $week_info[$date] = 
                     [
-                        'top_balances' => $top_balances,
+                        'disp_balances' => $disp_balances,
                         'other_balances' => $other_balances,
                         'balance_count' => $balance_count,
                         'total_sales' => $total_sales,
