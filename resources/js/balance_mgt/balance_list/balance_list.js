@@ -1,4 +1,4 @@
-// アップロードエラーのツールチップ
+// 収支情報表示のツールチップ
 tippy('.tippy_balance_info_disp', {
     // data-balance属性の値を取得
     content: function (balance) {

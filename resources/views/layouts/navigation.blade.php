@@ -5,7 +5,8 @@
     <ul class="links flex">
         <li class="dropdown"><a href="#" class="trigger-drop">収支管理</a>
             <ul class="drop">
-                <li><a href="{{ route('balance_list.index') }}">収支一覧</a></li>
+                <li><a href="{{ route('balance_list.index_calendar') }}">収支一覧(カレンダー)</a></li>
+                <li><a href="{{ route('balance_list.index_list') }}">収支一覧(リスト)</a></li>
             </ul>
         </li>
         <li class="dropdown"><a href="#" class="trigger-drop">マスタ管理</a>

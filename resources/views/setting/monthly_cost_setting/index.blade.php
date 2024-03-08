@@ -6,7 +6,7 @@
         <!-- 操作ボタン -->
         <x-setting.monthly-cost-setting.operation-div />
         <!-- ページネーション -->
-        <x-pagenation :pages="$monthly_cost_settings" />
+        <x-pagination :pages="$monthly_cost_settings" />
     </div>
     <div class="flex flex-row items-start mb-2">
         <!-- 検索条件 -->

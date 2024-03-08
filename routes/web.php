@@ -59,7 +59,8 @@ Route::middleware(['auth'])->group(function () {
     // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ 収支管理 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
         // -+-+-+-+-+-+-+-+-+-+-+-+ 収支一覧 -+-+-+-+-+-+-+-+-+-+-+-+
         Route::controller(BalanceListController::class)->prefix('balance_list')->name('balance_list.')->group(function(){
-            Route::get('', 'index')->name('index');
+            Route::get('index_calendar', 'index_calendar')->name('index_calendar');
+            Route::get('index_list', 'index_list')->name('index_list');
         });
     // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ マスタ管理 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
         // -+-+-+-+-+-+-+-+-+-+-+-+ 荷主マスタ -+-+-+-+-+-+-+-+-+-+-+-+

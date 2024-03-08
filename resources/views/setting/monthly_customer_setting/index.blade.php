@@ -16,7 +16,7 @@
             @endif
         </div>
         <!-- ページネーション -->
-        <x-pagenation :pages="$monthly_customer_settings" />
+        <x-pagination :pages="$monthly_customer_settings" />
     </div>
     <div class="flex flex-row items-start mb-2">
         <!-- 検索条件 -->

@@ -6,7 +6,7 @@
         <!-- 操作ボタン -->
         <x-setting.sales-plan-setting.operation-div />
         <!-- ページネーション -->
-        <x-pagenation :pages="$sales_plan_settings" />
+        <x-pagination :pages="$sales_plan_settings" />
     </div>
     <div class="flex flex-row items-start mb-2">
         <!-- 検索条件 -->
