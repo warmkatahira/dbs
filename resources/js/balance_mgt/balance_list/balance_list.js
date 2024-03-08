@@ -8,6 +8,7 @@ tippy('.tippy_balance_info_disp', {
         const sales = balance.getAttribute('data-sales').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
         const cost = balance.getAttribute('data-cost').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
         const profit = balance.getAttribute('data-profit').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+        const profit_ratio = ((balance.getAttribute('data-profit') / balance.getAttribute('data-sales')) * 100).toFixed(2);
         // 利益だけマイナスであれば色を変えたいので、確認してタグを調整する
         let start_tag = '';
         let end_tag = '';
@@ -52,6 +53,10 @@ tippy('.tippy_balance_info_disp', {
             <tr>
                 <td class="border border-black px-2 py-2 bg-theme-main text-white">利益</td>
                 <td class="border border-black px-2 py-2 text-right">${start_tag}<i class="las la-yen-sign"></i>${profit}${end_tag}</td>
+            </tr>
+            <tr>
+                <td class="border border-black px-2 py-2 bg-theme-main text-white">経費</td>
+                <td class="border border-black px-2 py-2 text-right">${profit_ratio}<i class="las la-percent"></i></td>
             </tr>
         `;
         return table_start_tag + base_name_info + amount_info + table_end_tag;

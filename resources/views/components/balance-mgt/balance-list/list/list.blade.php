@@ -9,6 +9,7 @@
                     <th class="font-thin py-3 px-2">売上</th>
                     <th class="font-thin py-3 px-2">経費</th>
                     <th class="font-thin py-3 px-2">利益</th>
+                    <th class="font-thin py-3 px-2">利益率</th>
                 </tr>
             </thead>
             <tbody class="bg-white">
@@ -20,6 +21,7 @@
                         <td class="py-1 px-2 border text-right"><i class="las la-yen-sign"></i>{{ number_format($list->sales) }}</td>
                         <td class="py-1 px-2 border text-right"><i class="las la-yen-sign"></i>{{ number_format($list->cost) }}</td>
                         <td class="py-1 px-2 border text-right @if($list->profit < 0) bg-red-300 @endif"><i class="las la-yen-sign"></i>{{ number_format($list->profit) }}</td>
+                        <td class="py-1 px-2 border text-right">{{ number_format(($list->profit / $list->sales) * 100, 2) }}<i class="las la-percent"></i></td>
                     </tr>
                 @endforeach
             </tbody>
