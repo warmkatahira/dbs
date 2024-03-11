@@ -55,7 +55,7 @@ tippy('.tippy_balance_info_disp', {
                 <td class="border border-black px-2 py-2 text-right">${start_tag}<i class="las la-yen-sign"></i>${profit}${end_tag}</td>
             </tr>
             <tr>
-                <td class="border border-black px-2 py-2 bg-theme-main text-white">経費</td>
+                <td class="border border-black px-2 py-2 bg-theme-main text-white">利益率</td>
                 <td class="border border-black px-2 py-2 text-right">${profit_ratio}<i class="las la-percent"></i></td>
             </tr>
         `;
@@ -63,6 +63,6 @@ tippy('.tippy_balance_info_disp', {
     },
     duration: [1000, 700],
     allowHTML: true,
-    placement: 'right-start',
+    placement: 'right',
     theme: 'light-border',
 });

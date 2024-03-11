@@ -15,7 +15,7 @@ class ListService
     {
         // nullなら検索が実行されていないので、初期条件をセット
         if(is_null($request->search_enter)){
-            session(['search_balance_date_from' => CarbonImmutable::now()->format('Y-m-d')]);
+            session(['search_balance_date_from' => CarbonImmutable::now()->firstOfMonth()->format('Y-m-d')]);
             session(['search_balance_date_to' => CarbonImmutable::now()->format('Y-m-d')]);
             session(['search_base_id' => Auth::user()->base_id]);
             session(['search_customer_id' => null]);

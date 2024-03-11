@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer('sales')->default(0);
             $table->integer('cost')->default(0);
             $table->integer('profit')->default(0);
+            $table->string('note', 50)->nullable();
+            $table->unsignedInteger('last_updated_user_id')->nullable();
             $table->timestamps();
         });
     }

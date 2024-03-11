@@ -6,5 +6,5 @@ tippy('.tippy_upload_error', {
     },
     duration: [1000, 0],
     allowHTML: true,
-    placement: 'top-start',
+    placement: 'top',
 });
