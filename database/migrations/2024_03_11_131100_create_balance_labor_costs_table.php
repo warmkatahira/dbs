@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('balance_labor_costs', function (Blueprint $table) {
             $table->increments('balance_labor_cost_id');
-            $table->unsignedInteger('balance_id');
+            $table->string('balance_id', 21);
             $table->integer('fulltime_labor_cost')->default(0);
             $table->integer('contract_labor_cost')->default(0);
             $table->integer('parttime_labor_cost')->default(0);
             $table->integer('temporary_labor_cost')->default(0);
             $table->timestamps();
             // 外部キー制約
-            $table->foreign('balance_id')->references('balance_id')->on('balances')->onDelete('cascade');
+            $table->foreign('balance_id')->references('balance_id')->on('balances')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 

@@ -34,6 +34,12 @@
                 <li><a href="{{ route('user_mgt.index') }}">ユーザー管理</a></li>
             </ul>
         </li>
+        <li class="dropdown"><a href="#" class="trigger-drop">テスト</a>
+            <ul class="drop">
+                <li><a href="{{ route('test.balance_create') }}">収支枠作成</a></li>
+                <li><a href="">人件費同期</a></li>
+            </ul>
+        </li>
     </ul>
     <ul class="user_info">
         <li class="dropdown"><a href="#" class="trigger-drop">{{ Auth::user()->last_name.' '.Auth::user()->first_name.'さん' }}</a>

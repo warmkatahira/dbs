@@ -12,6 +12,8 @@ class BalanceStorage extends Model
     protected $connection = 'mysql';
     // 主キーカラムを変更
     protected $primaryKey = 'balance_storage_id';
+    // オートインクリメント無効化
+    public $incrementing = false;
     // 操作可能なカラムを定義
     protected $fillable = [
         'balance_id',

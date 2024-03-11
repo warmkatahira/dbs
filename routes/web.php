@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Route;
 // +-+-+-+-+-+-+-+- 収支管理 +-+-+-+-+-+-+-+-
     // 収支一覧
     use App\Http\Controllers\BalanceMgt\BalanceListController;
+    // 収支詳細
+    use App\Http\Controllers\BalanceMgt\BalanceDetailController;
 // +-+-+-+-+-+-+-+- マスタ管理 +-+-+-+-+-+-+-+-
     // 荷主マスタ
     use App\Http\Controllers\MasterMgt\Customer\CustomerController;
@@ -31,17 +33,11 @@ use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\SystemMgt\BaseMgt\BaseMgtController;
     // ユーザー管理
     use App\Http\Controllers\SystemMgt\UserMgt\UserMgtController;
+// +-+-+-+-+-+-+-+- テスト +-+-+-+-+-+-+-+-
+    // 拠点管理
+    use App\Http\Controllers\TestController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+
 
 // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ Welcome ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
     // -+-+-+-+-+-+-+-+-+-+-+-+ Welcome -+-+-+-+-+-+-+-+-+-+-+-+
@@ -61,6 +57,10 @@ Route::middleware(['auth'])->group(function () {
         Route::controller(BalanceListController::class)->prefix('balance_list')->name('balance_list.')->group(function(){
             Route::get('index_calendar', 'index_calendar')->name('index_calendar');
             Route::get('index_list', 'index_list')->name('index_list');
+        });
+        // -+-+-+-+-+-+-+-+-+-+-+-+ 収支詳細 -+-+-+-+-+-+-+-+-+-+-+-+
+        Route::controller(BalanceDetailController::class)->prefix('balance_detail')->name('balance_detail.')->group(function(){
+            Route::get('', 'index')->name('index');
         });
     // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ マスタ管理 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
         // -+-+-+-+-+-+-+-+-+-+-+-+ 荷主マスタ -+-+-+-+-+-+-+-+-+-+-+-+
@@ -119,6 +119,11 @@ Route::middleware(['auth'])->group(function () {
         // -+-+-+-+-+-+-+-+-+-+-+-+ ユーザー管理 -+-+-+-+-+-+-+-+-+-+-+-+
         Route::controller(UserMgtController::class)->prefix('user_mgt')->name('user_mgt.')->group(function(){
             Route::get('', 'index')->name('index');
+        });
+    // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ テスト ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
+        Route::controller(TestController::class)->prefix('test')->name('test.')->group(function(){
+            Route::get('balance_create', 'balance_create')->name('balance_create');
+            Route::get('labor_cost_update', 'labor_cost_update')->name('labor_cost_update');
         });
 });
 

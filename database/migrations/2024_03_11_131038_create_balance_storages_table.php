@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('balance_storages', function (Blueprint $table) {
             $table->increments('balance_storage_id');
-            $table->unsignedInteger('balance_id');
+            $table->string('balance_id', 21);
             $table->integer('storage_sales')->default(0);
             $table->integer('storage_cost')->default(0);
             $table->timestamps();
             // 外部キー制約
-            $table->foreign('balance_id')->references('balance_id')->on('balances')->onDelete('cascade');
+            $table->foreign('balance_id')->references('balance_id')->on('balances')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 
