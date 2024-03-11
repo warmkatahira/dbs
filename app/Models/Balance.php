@@ -22,4 +22,19 @@ class Balance extends Model
         'sales',
         'cost',
     ];
+    // DB:dbsのbalance_storagesテーブルとのリレーション
+    public function dbs_balance_storage()
+    {
+        return $this->hasOne(BalanceStorage::class, 'balance_id', 'balance_id');
+    }
+    // DB:dbsのbalance_monthly_costsテーブルとのリレーション
+    public function dbs_balance_monthly_cost()
+    {
+        return $this->hasOne(BalanceMonthlyCost::class, 'balance_id', 'balance_id');
+    }
+    // DB:dbsのbalance_labor_costsテーブルとのリレーション
+    public function dbs_balance_labor_cost()
+    {
+        return $this->hasOne(BalanceLaborCost::class, 'balance_id', 'balance_id');
+    }
 }

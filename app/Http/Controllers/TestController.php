@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use App\Models\Customer;
 use App\Models\Balance;
 use App\Models\BalanceLaborCost;
+use App\Models\BalanceStorage;
+use App\Models\BalanceMonthlyCost;
+use App\Models\KintaiKintai;
 // その他
 use Carbon\CarbonImmutable;
 
@@ -39,6 +42,12 @@ class TestController extends Controller
                 BalanceLaborCost::create([
                     'balance_id' => $balance_id,
                 ]);
+                BalanceStorage::create([
+                    'balance_id' => $balance_id,
+                ]);
+                BalanceMonthlyCost::create([
+                    'balance_id' => $balance_id,
+                ]);
             }
             // 日付を1日足す
             $current_date = $current_date->addDay();
@@ -53,8 +62,30 @@ class TestController extends Controller
     {
         // 人件費を更新する日付を取得
         $date = '2024-03-01';
-        // 
-        
+        // 指定した日付の荷主稼働時間を従業員区分毎に集計して取得
+        $kintais = KintaiKintai::getCustomerWorkingTimeByEmployeeCategoryId($date)->get();
+
+        foreach($kintais as $kintai){
+            $balance = Balance::where('balance_date', $date)->where('customer_id', $kintai->customer_id)->first();
+            if($balance){
+                if($kintai->employee_category_id == 1){
+                    $update_column = 'fulltime_labor_cost';
+                    $hourly_wage = 2000;
+                }
+                if($kintai->employee_category_id == 2){
+                    $update_column = 'contract_labor_cost';
+                    $hourly_wage = 1700;
+                }
+                if($kintai->employee_category_id == 10){
+                    $update_column = 'parttime_labor_cost';
+                    $hourly_wage = 1300;
+                }
+                BalanceLaborCost::where('balance_id', $balance->balance_id)->update([
+                    $update_column => ($kintai->total_customer_working_time / 60) * $hourly_wage,
+                ]);
+            }
+        }
+
         return redirect()->back()->with([
             'alert_type' => 'success',
             'alert_message' => '人件費を更新しました。',

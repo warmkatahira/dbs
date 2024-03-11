@@ -37,7 +37,7 @@
         <li class="dropdown"><a href="#" class="trigger-drop">テスト</a>
             <ul class="drop">
                 <li><a href="{{ route('test.balance_create') }}">収支枠作成</a></li>
-                <li><a href="">人件費同期</a></li>
+                <li><a href="{{ route('test.labor_cost_update') }}">人件費同期</a></li>
             </ul>
         </li>
     </ul>
