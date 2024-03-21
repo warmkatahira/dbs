@@ -26,8 +26,8 @@ class TestController extends Controller
         // 収支を作成する月を取得
         $create_month = '2024-03';
         // 収支を作成する期間の日付を取得
-        $create_start_date = CarbonImmutable::parse($create_month)->startOfMonth()->format('Y-m-d');
-        $create_end_date = CarbonImmutable::parse($create_month)->endOfMonth()->format('Y-m-d');
+        $create_start_date = CarbonImmutable::parse($create_month)->startOfMonth();
+        $create_end_date = CarbonImmutable::parse($create_month)->endOfMonth();
         // ループ処理で使用する変数に開始する日付を格納
         $current_date = CarbonImmutable::parse($create_start_date);
         // 開始日から終了日までの間の日付を配列に格納

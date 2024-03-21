@@ -32,7 +32,7 @@
                         <p class="pb-2">
                             {{ CarbonImmutable::parse($date)->isoFormat('MM/DD') }}
                             @if(!is_null($balances['holiday']))
-                                <span class="text-10px ml-3">{{ '('.$balances['holiday'].')' }}</span>
+                                <span class="text-10px ml-3"><i class="las la-calendar la-lg"></i>{{ $balances['holiday'] }}</span>
                             @endif
                         </p>
                         @foreach($balances['disp_balances'] as $balance)
