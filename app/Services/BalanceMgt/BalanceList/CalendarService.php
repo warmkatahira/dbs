@@ -4,6 +4,7 @@ namespace App\Services\BalanceMgt\BalanceList;
 
 // モデル
 use App\Models\Balance;
+use App\Models\KintaiHoliday;
 // その他
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Auth;
@@ -79,8 +80,27 @@ class CalendarService
         return $month_date;
     }
 
+    // 休日情報を取得
+    public function getHoliday($start_end_date)
+    {
+        // 表示する期間の休日情報を取得
+        $holidays = KintaiHoliday::whereDate('holiday', '>=', $start_end_date['start_date'])
+                            ->whereDate('holiday', '<=', $start_end_date['end_date'])
+                            ->get();
+        // 休日情報を格納する配列を初期化
+        $holiday_arr = [];
+        // 休日情報を配列にセット
+        foreach($holidays as $holiday){
+            $holiday_arr[] = [
+                'date' => $holiday->holiday,
+                'holiday_note' => $holiday->holiday_note,
+            ];
+        }
+        return $holiday_arr;
+    }
+
     // カレンダーに表示する情報を取得
-    public function getCalendarInfo($month_date)
+    public function getCalendarInfo($month_date, $holiday_arr)
     {
         // カレンダーに表示する情報を格納する配列を初期化
         $calendar_info = [];
@@ -146,11 +166,25 @@ class CalendarService
                         'other_balances_total_sales' => $other_balances_total_sales,
                         'other_balances_total_cost' => $other_balances_total_cost,
                         'other_balances_total_profit' => $other_balances_total_profit,
+                        'holiday' => $this->checkHoliday($holiday_arr, $date),
                     ];
             }
             // 週単位の配列を全体の配列に格納
             $calendar_info[] = $week_info;
         }
         return $calendar_info;
+    }
+
+    // 指定した日付が休日であるか確認・取得
+    public function checkHoliday($holiday_arr, $date)
+    {
+        // 休日情報の分だけループ処理
+        foreach($holiday_arr as $holiday){
+            // 日付が存在すれば、休日備考を返す
+            if($holiday['date'] == $date){
+                return $holiday['holiday_note'];
+            }
+        }
+        return null;
     }
 }

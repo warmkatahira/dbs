@@ -27,8 +27,10 @@ class BalanceListController extends Controller
         $start_end_date = $CalendarService->getStartEndDate(session('search_month'));
         // 指定した月の情報を取得
         $month_date = $CalendarService->getMonthInfo($start_end_date);
+        // 休日情報を取得
+        $holiday_arr = $CalendarService->getHoliday($start_end_date);
         // カレンダーに表示する情報を取得
-        $calendar_info = $CalendarService->getCalendarInfo($month_date);
+        $calendar_info = $CalendarService->getCalendarInfo($month_date, $holiday_arr);
         // 拠点を取得
         $bases = Base::getall()->get();
         // 指定した拠点の有効な荷主を全て取得

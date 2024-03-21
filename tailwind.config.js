@@ -19,6 +19,9 @@ export default {
                     'gray': "#ebe6e6",
                 },
             },
+            fontSize: {
+                '10px': '10px',
+            },
         },
     },
 

@@ -23,9 +23,18 @@
                         if(CarbonImmutable::parse($date)->dayOfWeek == CarbonImmutable::SUNDAY){
                             $bg = 'bg-pink-100';
                         }
+                        // 休日だったら、カレンダーの背景色を設定
+                        if(!is_null($balances['holiday'])){
+                            $bg = 'bg-rose-100';
+                        }
                     @endphp
                     <td class="py-1 px-2 border align-top w-40 h-20 {{ $bg }}">
-                        <p class="pb-2">{{ CarbonImmutable::parse($date)->isoFormat('MM/DD') }}</p>
+                        <p class="pb-2">
+                            {{ CarbonImmutable::parse($date)->isoFormat('MM/DD') }}
+                            @if(!is_null($balances['holiday']))
+                                <span class="text-10px ml-3">{{ '('.$balances['holiday'].')' }}</span>
+                            @endif
+                        </p>
                         @foreach($balances['disp_balances'] as $balance)
                             <x-balance-mgt.balance-list.calendar.balance-info
                                 :customerName="$balance['customer_name']"
