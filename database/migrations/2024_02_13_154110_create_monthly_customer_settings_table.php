@@ -19,7 +19,10 @@ return new class extends Migration
             $table->unsignedInteger('monthly_storage_cost')->default(0);
             $table->unsignedInteger('ho_cost_allocation_ratio')->default(0);
             $table->unsignedInteger('monthly_cost_allocation_ratio')->default(0);
+            $table->boolean('balance_create_is_available')->default(1);
             $table->timestamps();
+            // 外部キー制約
+            $table->foreign('customer_id')->references('customer_id')->on('customers')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 

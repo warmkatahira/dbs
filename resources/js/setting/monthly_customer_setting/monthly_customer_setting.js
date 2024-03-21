@@ -16,9 +16,9 @@ tippy('.tippy_monthly_cost_allocation_ratio', {
     theme: 'light-border',
 });
 
-// 有効/無効のツールチップ
-tippy('.tippy_is_available', {
-    content: '「KINTAI」から参照している為、<br>変更はできません。',
+// 収支作成のツールチップ
+tippy('.tippy_balance_create_is_available', {
+    content: '収支作成を行うかを設定します。',
     duration: [1000, 700],
     allowHTML: true,
     placement: 'top',

@@ -18,8 +18,9 @@ class MonthlyCustomerSetting extends Model
         'monthly_customer_setting_ym',
         'monthly_storage_sales',
         'monthly_storage_cost',
-        'customer_sort_order',
-        'cost_allocation_ratio',
+        'ho_cost_allocation_ratio',
+        'monthly_cost_allocation_ratio',
+        'balance_create_is_available',
     ];
     // ヘッダーを定義
     public static function csvHeader()
@@ -33,7 +34,7 @@ class MonthlyCustomerSetting extends Model
             '月額保管経費',
             '本社管理費分配割合',
             '月額経費分配割合',
-            '有効/無効',
+            '収支作成',
         ];
     }
     // ヘッダーを定義
@@ -48,7 +49,7 @@ class MonthlyCustomerSetting extends Model
             'monthly_storage_cost',
             'ho_cost_allocation_ratio',
             'monthly_cost_allocation_ratio',
-            'is_available',
+            'balance_create_is_available',
         ];
     }
     // DB:dbsのcustomersテーブルとのリレーション
@@ -63,9 +64,7 @@ class MonthlyCustomerSetting extends Model
                         $query->where('base_id', $base_id);
                     })
                     ->where('monthly_customer_setting_ym', $monthly_customer_setting_ym)
-                    ->whereHas('dbs_customer', function ($query){
-                        $query->where('is_available', 1);
-                    })
+                    ->where('balance_create_is_available' ,1)
                     ->sum($column);
     }
 }

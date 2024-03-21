@@ -41,6 +41,7 @@ class MonthlyCustomerSettingUploadService
                     'monthly_storage_cost' => $item['monthly_storage_cost'],
                     'ho_cost_allocation_ratio' => $item['ho_cost_allocation_ratio'],
                     'monthly_cost_allocation_ratio' => $item['monthly_cost_allocation_ratio'],
+                    'balance_create_is_available' => $item['balance_create_is_available'] == '無効' ? 0 : 1,
                 ]);
             }
         }
@@ -59,6 +60,7 @@ class MonthlyCustomerSettingUploadService
             'monthly_storage_cost' => 'required|integer|min:0',
             'ho_cost_allocation_ratio' => 'required|integer|min:0|max:100',
             'monthly_cost_allocation_ratio' => 'required|integer|min:0|max:100',
+            'balance_create_is_available' => 'required|in:有効,無効',
         ];
         // バリデーションエラーメッセージを定義
         $messages = [
@@ -67,6 +69,7 @@ class MonthlyCustomerSettingUploadService
             'integer' => ':attributeは整数で設定して下さい。',
             'min' => ':attributeは:min以上で設定して下さい。',
             'max' => ':attributeは:max以下で設定して下さい。',
+            'in' => ':attributeには「有効」か「無効」を設定して下さい。',
         ];
         // バリデーションエラー項目を定義
         $attributes = [
@@ -75,6 +78,7 @@ class MonthlyCustomerSettingUploadService
             'monthly_storage_cost' => '月額保管経費',
             'ho_cost_allocation_ratio' => '本社管理費分配割合',
             'monthly_cost_allocation_ratio' => '月額経費分配割合',
+            'balance_create_is_available' => '収支作成',
         ];
         // バリデーション実施
         $validator = Validator::make($itemArray, $rules, $messages, $attributes);

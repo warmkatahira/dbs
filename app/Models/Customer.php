@@ -21,7 +21,6 @@ class Customer extends Model
         'customer_name',
         'is_available',
         'customer_sort_order',
-        'balance_create_is_available',
     ];
     // ヘッダーを定義
     public static function csvHeader()
@@ -31,7 +30,6 @@ class Customer extends Model
             '拠点',
             '荷主名',
             '有効/無効',
-            '収支作成',
         ];
     }
     // DB:dbsのbasesテーブルとのリレーション

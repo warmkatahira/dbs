@@ -35,7 +35,7 @@ class MonthlyCustomerSettingDownloadService
                         $monthly_customer_setting->monthly_storage_cost,
                         $monthly_customer_setting->ho_cost_allocation_ratio,
                         $monthly_customer_setting->monthly_cost_allocation_ratio,
-                        $monthly_customer_setting->dbs_customer->is_available == 0 ? '無効' : '有効',
+                        $monthly_customer_setting->balance_create_is_available == 0 ? '無効' : '有効',
                     ];
                     fputcsv($handle, $row);
                 };

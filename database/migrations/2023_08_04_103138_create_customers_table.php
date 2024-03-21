@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('customer_name', 20);
             $table->boolean('is_available');
             $table->unsignedInteger('customer_sort_order');
-            $table->boolean('balance_create_is_available')->default(1);
             $table->timestamps();
         });
     }
