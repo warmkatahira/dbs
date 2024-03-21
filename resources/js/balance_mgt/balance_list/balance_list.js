@@ -8,7 +8,7 @@ tippy('.tippy_balance_info_disp', {
         const sales = balance.getAttribute('data-sales').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
         const cost = balance.getAttribute('data-cost').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
         const profit = balance.getAttribute('data-profit').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-        const profit_ratio = sales == 0 || profit == 0 ? 0 : ((balance.getAttribute('data-profit') / balance.getAttribute('data-sales')) * 100).toFixed(2);
+        const profit_ratio = sales == 0 ? 0 : ((balance.getAttribute('data-profit') / balance.getAttribute('data-sales')) * 100).toFixed(2);
         // 利益だけマイナスであれば色を変えたいので、確認してタグを調整する
         let start_tag = '';
         let end_tag = '';

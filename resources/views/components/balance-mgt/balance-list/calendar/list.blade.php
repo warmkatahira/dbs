@@ -33,6 +33,7 @@
                                 :sales="$balance['sales']"
                                 :cost="$balance['cost']"
                                 :profit="$balance['profit']"
+                                :balanceId="$balance['balance_id']"
                             />
                         @endforeach
                         @if(!empty($balances['other_balances']))
@@ -42,6 +43,7 @@
                                 :sales="$balances['other_balances_total_sales']"
                                 :cost="$balances['other_balances_total_cost']"
                                 :profit="$balances['other_balances_total_profit']"
+                                balanceId=""
                             />
                         @endif
                         @if($balances['balance_count'] > 0)

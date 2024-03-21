@@ -11,6 +11,7 @@ use App\Models\BalanceLaborCost;
 use App\Models\BalanceStorage;
 use App\Models\BalanceMonthlyCost;
 use App\Models\KintaiKintai;
+use App\Models\MonthlyCustomerSetting;
 // その他
 use Carbon\CarbonImmutable;
 
@@ -61,7 +62,7 @@ class TestController extends Controller
     public function labor_cost_update()
     {
         // 人件費を更新する日付を取得
-        $date = '2024-03-01';
+        $date = '2024-03-15';
         // 指定した日付の荷主稼働時間を従業員区分毎に集計して取得
         $kintais = KintaiKintai::getCustomerWorkingTimeByEmployeeCategoryId($date)->get();
 
@@ -85,10 +86,28 @@ class TestController extends Controller
                 ]);
             }
         }
-
         return redirect()->back()->with([
             'alert_type' => 'success',
             'alert_message' => '人件費を更新しました。',
+        ]);
+    }
+
+    public function monthly_customer_setting_create()
+    {
+        $customers = Customer::getAll()->get();
+        // 作成する月を取得
+        $create_month = '2024-03-01';
+        foreach($customers as $customer){
+            MonthlyCustomerSetting::create([
+                'customer_id' => $customer->customer_id,
+                'monthly_customer_setting_ym' => $create_month,
+            ]);
+        }
+
+
+        return redirect()->back()->with([
+            'alert_type' => 'success',
+            'alert_message' => '月別荷主設定を作成しました。',
         ]);
     }
 }

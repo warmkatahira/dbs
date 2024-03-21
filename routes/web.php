@@ -124,6 +124,7 @@ Route::middleware(['auth'])->group(function () {
         Route::controller(TestController::class)->prefix('test')->name('test.')->group(function(){
             Route::get('balance_create', 'balance_create')->name('balance_create');
             Route::get('labor_cost_update', 'labor_cost_update')->name('labor_cost_update');
+            Route::get('monthly_customer_setting_create', 'monthly_customer_setting_create')->name('monthly_customer_setting_create');
         });
 });
 

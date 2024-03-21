@@ -38,6 +38,7 @@
             <ul class="drop">
                 <li><a href="{{ route('test.balance_create') }}">収支枠作成</a></li>
                 <li><a href="{{ route('test.labor_cost_update') }}">人件費同期</a></li>
+                <li><a href="{{ route('test.monthly_customer_setting_create') }}">月別荷主設定作成</a></li>
             </ul>
         </li>
     </ul>
