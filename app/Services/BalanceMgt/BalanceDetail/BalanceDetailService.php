@@ -13,5 +13,6 @@ class BalanceDetailService
     public function getLaborCost($balance_id)
     {
         return;
+        
     }
 }

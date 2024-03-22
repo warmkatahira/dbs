@@ -5,23 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BalanceShippingFee extends Model
+class CustomerShippingMethod extends Model
 {
     use HasFactory;
     // 接続するDBをセット
     protected $connection = 'mysql';
+    // テーブル名を定義
+    protected $table = 'customer_shipping_method';
     // 主キーカラムを変更
-    protected $primaryKey = 'balance_shipping_fee_id';
+    protected $primaryKey = 'customer_shipping_method_id';
     // 操作可能なカラムを定義
     protected $fillable = [
-        'balance_id',
+        'customer_id',
         'shipping_method_id',
-        'shipping_fee_quantity_sales',
         'shipping_fee_unit_price_sales',
-        'shipping_fee_amount_sales',
-        'shipping_fee_quantity_cost',
         'shipping_fee_unit_price_cost',
-        'shipping_fee_amount_cost',
         'shipping_fee_note',
     ];
 }

@@ -53,4 +53,14 @@ class Customer extends Model
                     ->orderBy('base_id', 'asc')
                     ->orderBy('customer_id', 'asc');
     }
+    // shipping_methodsテーブルとのリレーション(中間テーブル用)
+    public function shipping_methods()
+    {
+        return $this->belongsToMany(ShippingMethod::class, 'customer_shipping_method', 'customer_id', 'shipping_method_id')->withTimeStamps();
+    }
+    // handlingsテーブルとのリレーション(中間テーブル用)
+    public function shipping_methods()
+    {
+        return $this->belongsToMany(Handling::class, 'customer_handling', 'customer_id', 'handling_id')->withTimeStamps();
+    }
 }

@@ -34,7 +34,7 @@ use Illuminate\Support\Facades\Route;
     // ユーザー管理
     use App\Http\Controllers\SystemMgt\UserMgt\UserMgtController;
 // +-+-+-+-+-+-+-+- テスト +-+-+-+-+-+-+-+-
-    // 拠点管理
+    // テスト
     use App\Http\Controllers\TestController;
 
 
