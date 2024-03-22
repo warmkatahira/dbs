@@ -22,6 +22,11 @@ class Balance extends Model
         'sales',
         'cost',
     ];
+    // 指定したレコードを取得
+    public static function getSpecify($balance_id)
+    {
+        return self::where('balance_id', $balance_id);
+    }
     // DB:dbsのbalance_storagesテーブルとのリレーション
     public function dbs_balance_storage()
     {

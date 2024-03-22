@@ -66,7 +66,6 @@ class MonthlyCostSettingService
         return $monthly_cost_settings
                 ->orderBy('base_id', 'asc')
                 ->orderBy('monthly_cost_setting_ym', 'asc')
-                ->orderBy('monthly_cost_item_id', 'asc')
                 ->paginate(50);
     }
 }

@@ -20,11 +20,8 @@ class MonthlyCostSettingCreateController extends Controller
     {
         // 拠点を取得
         $base = Base::getSpecify(session('search_base_id'))->first();
-        // 経費項目を全て取得
-        $monthly_items = MonthlyItem::getSpecifyByItemCategory1(MonthlyItemEnum::COST_JP)->get();
         return view('setting.monthly_cost_setting.create')->with([
             'base' => $base,
-            'monthly_items' => $monthly_items,
         ]);
     }
 

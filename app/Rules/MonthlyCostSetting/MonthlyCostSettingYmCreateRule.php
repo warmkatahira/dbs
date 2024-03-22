@@ -38,12 +38,10 @@ class MonthlyCostSettingYmCreateRule implements ValidationRule, DataAwareRule
         // 追加しようとしている条件のレコードを取得
         $monthly_cost_setting = MonthlyCostSetting::where('base_id', Auth::user()->base_id)
                         ->where('monthly_cost_setting_ym', $monthly_cost_setting_ym)
-                        ->where('monthly_cost_item_id', $this->data['monthly_cost_item_id'])
                         ->first();
         // レコードが取得されていれば追加できないのでエラーを返す
         if(!is_null($monthly_cost_setting)){
-            $monthly_item = MonthlyItem::getSpecify($this->data['monthly_cost_item_id'])->first();
-            $fail(CarbonImmutable::parse($this->data['monthly_cost_setting_ym'])->isoFormat('Y年MM月') . 'の「'.$monthly_item->monthly_item_name.'」は既に登録されています。');
+            $fail(CarbonImmutable::parse($this->data['monthly_cost_setting_ym'])->isoFormat('Y年MM月') . 'の月額経費設定は既に登録されています。');
         }
     }
 }

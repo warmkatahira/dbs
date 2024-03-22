@@ -25,7 +25,7 @@ class MonthlyCostSettingCreateRequest extends FormRequest
     {
         return [
             'monthly_cost_setting_ym' => ['required', 'date', new MonthlyCostSettingYmCreateRule],
-            'monthly_cost_item_id' => 'required|exists:monthly_items,monthly_item_id',
+            'ho_cost' => 'required|integer|min:0',
             'monthly_cost' => 'required|integer|min:0',
         ];
     }
@@ -37,7 +37,6 @@ class MonthlyCostSettingCreateRequest extends FormRequest
             'date' => ":attributeは日付で入力して下さい。",
             'min' => ":attributeは:min文字以上で入力して下さい。",
             'integer' => ':attributeは数値で入力して下さい。',
-            'exists' => ':attributeが存在しません。',
         ];
     }
 
@@ -45,7 +44,7 @@ class MonthlyCostSettingCreateRequest extends FormRequest
     {
         return [
             'monthly_cost_setting_ym' => '月額経費年月',
-            'monthly_cost_item_id' => '経費項目',
+            'ho_cost' => '本社管理費',
             'monthly_cost' => '月額経費',
         ];
     }

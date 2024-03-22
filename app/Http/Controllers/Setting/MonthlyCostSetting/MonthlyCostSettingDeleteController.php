@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Setting\MonthlyCostSetting;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-// モデル
-use App\Models\MonthlyCostSetting;
 // サービス
 use App\Services\Setting\MonthlyCostSetting\MonthlyCostSettingDeleteService;
 

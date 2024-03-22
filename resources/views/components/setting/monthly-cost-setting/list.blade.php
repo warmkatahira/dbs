@@ -5,7 +5,7 @@
                 <tr class="text-left text-white bg-gray-600 sticky top-0">
                     <th class="font-thin py-3 px-2 text-center">設定年月</th>
                     <th class="font-thin py-3 px-2 text-center">拠点</th>
-                    <th class="font-thin py-3 px-2 text-center">経費項目</th>
+                    <th class="font-thin py-3 px-2 text-center">本社管理費</th>
                     <th class="font-thin py-3 px-2 text-center">月額経費</th>
                     <th class="font-thin py-3 px-2 text-center">操作</th>
                 </tr>
@@ -15,7 +15,7 @@
                     <tr class="text-left hover:bg-theme-sub cursor-default">
                         <td class="py-1 px-2 border">{{ CarbonImmutable::parse($monthly_cost_setting->monthly_cost_setting_ym)->isoFormat('YYYY年MM月') }}</td>
                         <td class="py-1 px-2 border">{{ $monthly_cost_setting->dbs_base->base_name }}</td>
-                        <td class="py-1 px-2 border">{{ $monthly_cost_setting->dbs_item->monthly_item_name }}</td>
+                        <td class="py-1 px-2 border text-right"><i class="las la-yen-sign"></i>{{ number_format($monthly_cost_setting->ho_cost) }}</td>
                         <td class="py-1 px-2 border text-right"><i class="las la-yen-sign"></i>{{ number_format($monthly_cost_setting->monthly_cost) }}</td>
                         <td class="py-1 px-2 border">
                             <div class="flex">

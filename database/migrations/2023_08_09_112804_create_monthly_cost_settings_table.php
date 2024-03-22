@@ -15,7 +15,7 @@ return new class extends Migration
             $table->increments('monthly_cost_setting_id');
             $table->string('base_id', 20);
             $table->date('monthly_cost_setting_ym');
-            $table->unsignedInteger('monthly_cost_item_id');
+            $table->unsignedInteger('ho_cost');
             $table->unsignedInteger('monthly_cost');
             $table->timestamps();
         });

@@ -16,18 +16,13 @@ class MonthlyCostSetting extends Model
     protected $fillable = [
         'base_id',
         'monthly_cost_setting_ym',
-        'monthly_cost_item_id',
+        'ho_cost',
         'monthly_cost',
     ];
     // 指定したレコードを取得
     public static function getSpecify($monthly_cost_setting_id)
     {
         return self::where('monthly_cost_setting_id', $monthly_cost_setting_id);
-    }
-    // DB:dbsのitemsテーブルとのリレーション
-    public function dbs_item()
-    {
-        return $this->belongsTo(MonthlyItem::class, 'monthly_cost_item_id', 'monthly_item_id');
     }
     // DB:dbsのbasesテーブルとのリレーション
     public function dbs_base()

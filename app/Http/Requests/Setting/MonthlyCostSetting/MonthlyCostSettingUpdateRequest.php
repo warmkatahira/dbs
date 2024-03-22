@@ -22,6 +22,7 @@ class MonthlyCostSettingUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'ho_cost' => 'required|integer|min:0',
             'monthly_cost' => 'required|integer|min:0',
         ];
     }
@@ -38,6 +39,7 @@ class MonthlyCostSettingUpdateRequest extends FormRequest
     public function attributes()
     {
         return [
+            'ho_cost' => '本社管理費',
             'monthly_cost' => '月額経費',
         ];
     }

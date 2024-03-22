@@ -16,7 +16,7 @@ class MonthlyCostSettingCreateService
         MonthlyCostSetting::create([
             'base_id' => Auth::user()->base_id,
             'monthly_cost_setting_ym' => CarbonImmutable::createFromFormat('Y-m', $request->monthly_cost_setting_ym)->startOfMonth(), // 1日の日付で登録する
-            'monthly_cost_item_id' => $request->monthly_cost_item_id,
+            'ho_cost' => $request->ho_cost,
             'monthly_cost' => $request->monthly_cost,
         ]);
         return;

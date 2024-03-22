@@ -125,6 +125,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('balance_create', 'balance_create')->name('balance_create');
             Route::get('labor_cost_update', 'labor_cost_update')->name('labor_cost_update');
             Route::get('monthly_customer_setting_create', 'monthly_customer_setting_create')->name('monthly_customer_setting_create');
+            Route::get('sales_cost_allocation', 'sales_cost_allocation')->name('sales_cost_allocation');
         });
 });
 
