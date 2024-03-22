@@ -66,7 +66,7 @@ class TestController extends Controller
     public function labor_cost_update()
     {
         // 人件費を更新する日付を取得
-        $date = '2024-03-15';
+        $date = '2024-03-01';
         // 指定した日付の荷主稼働時間を従業員区分毎に集計して取得
         $kintais = KintaiKintai::getCustomerWorkingTimeByEmployeeCategoryId($date)->get();
         // 勤怠の分だけループ処理
@@ -208,7 +208,7 @@ class TestController extends Controller
     public function getDailyAmount($amount, $weekdays)
     {
         // 金額が0であれば、0を返す
-        if($amount = 0){
+        if($amount == 0){
             return 0;
         }
         // 金額を平日の日数で割る(小数点第一位を四捨五入)

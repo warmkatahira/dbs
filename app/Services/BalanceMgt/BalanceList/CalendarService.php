@@ -102,6 +102,8 @@ class CalendarService
     // カレンダーに表示する情報を取得
     public function getCalendarInfo($month_date, $holiday_arr)
     {
+        // 現在のURLを取得
+        session(['back_url_1' => url()->full()]);
         // カレンダーに表示する情報を格納する配列を初期化
         $calendar_info = [];
         // 週毎にループ処理

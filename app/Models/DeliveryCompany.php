@@ -5,22 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BalanceStorage extends Model
+class DeliveryCompany extends Model
 {
     use HasFactory;
     // 接続するDBをセット
     protected $connection = 'mysql';
     // 主キーカラムを変更
-    protected $primaryKey = 'balance_storage_id';
+    protected $primaryKey = 'delivery_company_id';
+    // オートインクリメント無効化
+    public $incrementing = false;
     // 操作可能なカラムを定義
     protected $fillable = [
-        'balance_id',
-        'storage_sales',
-        'storage_cost',
+        'delivery_company_id',
+        'delivery_company_name',
+        'company_image',
     ];
-    // balance_idを指定して取得
-    public static function getSpecifyByBalanceId($balance_id)
-    {
-        return self::where('balance_id', $balance_id);
-    }
 }

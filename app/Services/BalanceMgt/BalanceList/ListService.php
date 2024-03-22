@@ -34,6 +34,8 @@ class ListService
     // リストに表示する情報を取得
     public function getListInfo()
     {
+        // 現在のURLを取得
+        session(['back_url_1' => url()->full()]);
         // 収支テーブルをセット(収支日の条件を適用)
         $balances = Balance::whereDate('balance_date', '>=', session('search_balance_date_from'))
                     ->whereDate('balance_date', '<=', session('search_balance_date_to'))

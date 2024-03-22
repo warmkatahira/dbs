@@ -12,12 +12,15 @@ class BalanceMonthlyCost extends Model
     protected $connection = 'mysql';
     // 主キーカラムを変更
     protected $primaryKey = 'balance_monthly_cost_id';
-    // オートインクリメント無効化
-    public $incrementing = false;
     // 操作可能なカラムを定義
     protected $fillable = [
         'balance_id',
         'ho_cost',
         'monthly_cost',
     ];
+    // balance_idを指定して取得
+    public static function getSpecifyByBalanceId($balance_id)
+    {
+        return self::where('balance_id', $balance_id);
+    }
 }

@@ -1,0 +1,1 @@
+<a href="{{ $url }}" class="bg-black text-white mb-3 w-20 inline-block text-center py-2 hover:bg-gray-500">戻る</a>
