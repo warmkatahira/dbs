@@ -20,5 +20,6 @@ class CustomerHandling extends Model
         'handling_id',
         'handling_fee_unit_price',
         'handling_fee_note',
+        'handling_sort_order',
     ];
 }

@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('handlings', function (Blueprint $table) {
             $table->increments('handling_id');
             $table->string('handling_name', 20);
-            $table->unsignedInteger('handling_sort_order')->default(999);
             $table->timestamps();
         });
     }

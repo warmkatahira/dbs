@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             MonthlyItemSeeder::class,
             DeliveryCompanySeeder::class,
             ShippingMethodSeeder::class,
+            HandlingSeeder::class,
         ]);
     }
 }

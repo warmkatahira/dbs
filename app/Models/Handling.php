@@ -15,7 +15,6 @@ class Handling extends Model
     // 操作可能なカラムを定義
     protected $fillable = [
         'handling_name',
-        'handling_sort_order',
     ];
     // customersテーブルとのリレーション(中間テーブル用)
     public function customers()
