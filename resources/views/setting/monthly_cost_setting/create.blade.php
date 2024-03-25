@@ -12,8 +12,8 @@
             @csrf
             <x-div.label label="拠点" :value="Auth::user()->dbs_base->base_name" />
             <x-div.input type="month" label="月額経費年月" id="monthly_cost_setting_ym" :db="null" required="1" tippy="0" />
-            <x-div.input type="text" label="本社管理費" id="ho_cost" :db="null" required="1" tippy="0" />
-            <x-div.input type="text" label="月額経費" id="monthly_cost" :db="null" required="1" tippy="0" />
+            <x-div.input type="tel" label="本社管理費" id="ho_cost" :db="null" required="1" tippy="0" />
+            <x-div.input type="tel" label="月額経費" id="monthly_cost" :db="null" required="1" tippy="0" />
         </form>
     </div>
     <button type="button" id="monthly_cost_setting_create_enter" class="text-sm px-10 py-2 bg-theme-main text-white">登録</button>

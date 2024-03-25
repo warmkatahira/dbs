@@ -44,6 +44,11 @@ class Customer extends Model
                     ->orderBy('base_id', 'asc')
                     ->orderBy('customer_id', 'asc');
     }
+    // 指定したレコードを取得
+    public static function getSpecify($customer_id)
+    {
+        return self::where('customer_id', $customer_id);
+    }
     // 指定した拠点の有効な荷主を全て取得
     public static function getAllByBase($base_id)
     {
@@ -56,11 +61,16 @@ class Customer extends Model
     // shipping_methodsテーブルとのリレーション(中間テーブル用)
     public function shipping_methods()
     {
-        return $this->belongsToMany(ShippingMethod::class, 'customer_shipping_method', 'customer_id', 'shipping_method_id')->withTimeStamps();
+        return $this->belongsToMany(ShippingMethod::class, 'customer_shipping_method', 'customer_id', 'shipping_method_id')
+                    ->orderBy('shipping_method_sort_order', 'asc')
+                    ->orderBy('customer_shipping_method_id', 'asc')
+                    ->withPivot('customer_shipping_method_id', 'shipping_fee_unit_price_sales', 'shipping_fee_unit_price_cost', 'shipping_fee_note')
+                    ->withTimeStamps();
     }
     // handlingsテーブルとのリレーション(中間テーブル用)
-    public function shipping_methods()
+    public function handlings()
     {
-        return $this->belongsToMany(Handling::class, 'customer_handling', 'customer_id', 'handling_id')->withTimeStamps();
+        return $this->belongsToMany(Handling::class, 'customer_handling', 'customer_id', 'handling_id')
+                    ->withTimeStamps();
     }
 }

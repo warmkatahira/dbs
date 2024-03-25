@@ -17,16 +17,19 @@ class DeliveryCompanySeeder extends Seeder
             'delivery_company_id' => 'sagawa',
             'delivery_company_name' => '佐川急便',
             'company_image' => 'sagawa.svg',
+            'delivery_company_sort_order' => 1,
         ]);
         DeliveryCompany::create([
             'delivery_company_id' => 'yamato',
             'delivery_company_name' => 'ヤマト運輸',
             'company_image' => 'yamato.svg',
+            'delivery_company_sort_order' => 2,
         ]);
         DeliveryCompany::create([
             'delivery_company_id' => 'jp',
             'delivery_company_name' => '日本郵便',
             'company_image' => 'jp.svg',
+            'delivery_company_sort_order' => 3,
         ]);
     }
 }

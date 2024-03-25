@@ -19,5 +19,16 @@ class DeliveryCompany extends Model
         'delivery_company_id',
         'delivery_company_name',
         'company_image',
+        'delivery_company_sort_order',
     ];
+    // 全てを取得
+    public static function getAll()
+    {
+        return self::orderBy('delivery_company_sort_order', 'asc');
+    }
+    // shipping_methodsテーブルとのリレーション
+    public function shipping_methods()
+    {
+        return $this->hasMany(ShippingMethod::class, 'delivery_company_id', 'delivery_company_id');
+    }
 }

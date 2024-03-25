@@ -16,9 +16,15 @@ class ShippingMethod extends Model
     protected $fillable = [
         'delivery_company_id',
         'shipping_method_name',
+        'shipping_method_sort_order',
     ];
+    // 指定したレコードを取得
+    public static function getSpecify($shipping_method_id)
+    {
+        return self::where('shipping_method_id', $shipping_method_id);
+    }
     // DB:dbsのdelivery_companiesテーブルとのリレーション
-    public function dbs_delivery_company()
+    public function delivery_company()
     {
         return $this->belongsTo(DeliveryCompany::class, 'delivery_company_id', 'delivery_company_id');
     }

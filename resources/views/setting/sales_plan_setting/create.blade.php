@@ -12,7 +12,7 @@
             @csrf
             <x-div.label label="拠点" :value="Auth::user()->dbs_base->base_name" />
             <x-div.input type="month" label="売上計画年月" id="sales_plan_setting_ym" :db="null" required="1" tippy="0" />
-            <x-div.input type="text" label="売上計画" id="sales_plan" :db="null" required="1" tippy="0" />
+            <x-div.input type="tel" label="売上計画" id="sales_plan" :db="null" required="1" tippy="0" />
         </form>
     </div>
     <button type="button" id="sales_plan_setting_create_enter" class="text-sm px-10 py-2 bg-theme-main text-white">登録</button>

@@ -22,4 +22,9 @@ class CustomerShippingMethod extends Model
         'shipping_fee_unit_price_cost',
         'shipping_fee_note',
     ];
+    // 指定したレコードを取得
+    public static function getSpecify($customer_shipping_method_id)
+    {
+        return self::where('customer_shipping_method_id', $customer_shipping_method_id);
+    }
 }

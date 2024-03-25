@@ -3,15 +3,6 @@
     <div class="flex flex-row mb-2">
         <!-- 操作ボタン -->
         <x-master-mgt.customer.operation-div />
-        <!-- 経費分配割合エラーメッセージ -->
-        <div class="flex flex-col">
-            @if(!empty($cost_allocation_ratio_check['ho_cost']))
-                <p class="text-sm text-red-600 ml-5"><i class="las la-exclamation-triangle la-lg mr-1"></i>{{ $cost_allocation_ratio_check['ho_cost'] }}</p>
-            @endif
-            @if(!empty($cost_allocation_ratio_check['monthly_cost_setting']))
-                <p class="text-sm text-red-600 ml-5"><i class="las la-exclamation-triangle la-lg mr-1"></i>{{ $cost_allocation_ratio_check['monthly_cost_setting'] }}</p>
-            @endif
-        </div>
         <!-- ページネーション -->
         <x-pagination :pages="$customers" />
     </div>

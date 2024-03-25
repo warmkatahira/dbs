@@ -15,6 +15,7 @@ return new class extends Migration
             $table->increments('shipping_method_id');
             $table->string('delivery_company_id', 20);
             $table->string('shipping_method_name', 20);
+            $table->unsignedInteger('shipping_method_sort_order');
             $table->timestamps();
             // 外部キー制約
             $table->foreign('delivery_company_id')->references('delivery_company_id')->on('delivery_companies')->cascadeOnUpdate()->cascadeOnDelete();

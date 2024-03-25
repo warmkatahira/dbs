@@ -45,6 +45,11 @@ export default defineConfig({
                 // 収支一覧
                 'resources/js/balance_mgt/balance_list/balance_list.js',
             ],
+            // マスタ管理
+            [
+                // 運賃設定
+                'resources/js/master_mgt/shipping_fee_setting/shipping_fee_setting.js',
+            ],
         ),
     ],
 });
