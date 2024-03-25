@@ -20,6 +20,11 @@ class CustomerHandling extends Model
         'handling_id',
         'handling_fee_unit_price',
         'handling_fee_note',
-        'handling_sort_order',
+        'handling_fee_sort_order',
     ];
+    // 指定したレコードを取得
+    public static function getSpecify($customer_handling_id)
+    {
+        return self::where('customer_handling_id', $customer_handling_id);
+    }
 }

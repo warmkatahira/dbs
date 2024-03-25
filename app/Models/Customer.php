@@ -71,6 +71,8 @@ class Customer extends Model
     public function handlings()
     {
         return $this->belongsToMany(Handling::class, 'customer_handling', 'customer_id', 'handling_id')
+                    ->orderBy('handling_fee_sort_order', 'asc')
+                    ->withPivot('customer_handling_id', 'handling_fee_unit_price', 'handling_fee_note', 'handling_fee_sort_order')
                     ->withTimeStamps();
     }
 }

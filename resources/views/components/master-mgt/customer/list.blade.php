@@ -16,7 +16,7 @@
                         <td class="py-1 px-2 border text-left">{{ $customer->customer_name }}</td>
                         <td class="py-1 px-2 border text-center">{{ $customer->is_available == 0 ? '無効' : '有効' }}</td>
                         <td class="py-1 px-2 border text-center">
-                            <a href="{{ route('shipping_fee_setting.index', ['customer_id' => $customer->customer_id]) }}" class="bg-theme-main hover:bg-gray-500 text-white px-3 py-1">荷役</a>
+                            <a href="{{ route('handling_fee_setting.index', ['customer_id' => $customer->customer_id]) }}" class="bg-theme-main hover:bg-gray-500 text-white px-3 py-1">荷役</a>
                             <a href="{{ route('shipping_fee_setting.index', ['customer_id' => $customer->customer_id]) }}" class="bg-theme-main hover:bg-gray-500 text-white px-3 py-1 ml-3">運賃</a>
                         </td>
                     </tr>

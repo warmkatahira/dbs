@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('balance_handling_fees', function (Blueprint $table) {
             $table->increments('balance_handling_fee_id');
             $table->string('balance_id', 21);
-            $table->unsignedInteger('handling_id');
+            $table->string('handling_id', 8);
             $table->unsignedInteger('handling_fee_quantity')->default(0);
             $table->unsignedInteger('handling_fee_unit_price')->default(0);
             $table->unsignedInteger('handling_fee_amount')->default(0);

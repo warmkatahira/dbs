@@ -19,6 +19,11 @@ use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\MasterMgt\ShippingFeeSetting\ShippingFeeSettingCreateController;
     use App\Http\Controllers\MasterMgt\ShippingFeeSetting\ShippingFeeSettingDeleteController;
     use App\Http\Controllers\MasterMgt\ShippingFeeSetting\ShippingFeeSettingUpdateController;
+    // 荷主マスタ=>荷役設定
+    use App\Http\Controllers\MasterMgt\HandlingFeeSetting\HandlingFeeSettingController;
+    use App\Http\Controllers\MasterMgt\HandlingFeeSetting\HandlingFeeSettingCreateController;
+    use App\Http\Controllers\MasterMgt\HandlingFeeSetting\HandlingFeeSettingDeleteController;
+    use App\Http\Controllers\MasterMgt\HandlingFeeSetting\HandlingFeeSettingUpdateController;
 // +-+-+-+-+-+-+-+- 設定 +-+-+-+-+-+-+-+-
     // 売上計画設定
     use App\Http\Controllers\Setting\SalesPlanSetting\SalesPlanSettingController;
@@ -86,6 +91,21 @@ Route::middleware(['auth'])->group(function () {
             Route::post('delete', 'delete')->name('delete');
         });
         Route::controller(ShippingFeeSettingUpdateController::class)->prefix('shipping_fee_setting_update')->name('shipping_fee_setting_update.')->group(function(){
+            Route::get('', 'index')->name('index');
+            Route::post('update', 'update')->name('update');
+        });
+        // -+-+-+-+-+-+-+-+-+-+-+-+ 荷主マスタ=>荷役設定 -+-+-+-+-+-+-+-+-+-+-+-+
+        Route::controller(HandlingFeeSettingController::class)->prefix('handling_fee_setting')->name('handling_fee_setting.')->group(function(){
+            Route::get('', 'index')->name('index');
+        });
+        Route::controller(HandlingFeeSettingCreateController::class)->prefix('handling_fee_setting_create')->name('handling_fee_setting_create.')->group(function(){
+            Route::get('', 'index')->name('index');
+            Route::post('create', 'create')->name('create');
+        });
+        Route::controller(HandlingFeeSettingDeleteController::class)->prefix('handling_fee_setting_delete')->name('handling_fee_setting_delete.')->group(function(){
+            Route::post('delete', 'delete')->name('delete');
+        });
+        Route::controller(HandlingFeeSettingUpdateController::class)->prefix('handling_fee_setting_update')->name('handling_fee_setting_update.')->group(function(){
             Route::get('', 'index')->name('index');
             Route::post('update', 'update')->name('update');
         });

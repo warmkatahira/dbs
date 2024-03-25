@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('handlings', function (Blueprint $table) {
-            $table->increments('handling_id');
-            $table->string('handling_name', 20);
+            $table->string('handling_id', 8)->primary();
+            $table->string('handling_name', 30);
             $table->timestamps();
         });
     }

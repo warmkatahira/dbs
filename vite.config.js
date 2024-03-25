@@ -49,6 +49,8 @@ export default defineConfig({
             [
                 // 運賃設定
                 'resources/js/master_mgt/shipping_fee_setting/shipping_fee_setting.js',
+                // 荷役設定
+                'resources/js/master_mgt/handling_fee_setting/handling_fee_setting.js',
             ],
         ),
     ],

@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('customer_handling', function (Blueprint $table) {
             $table->increments('customer_handling_id');
             $table->string('customer_id', 20);
-            $table->unsignedInteger('handling_id');
+            $table->string('handling_id', 8);
             $table->unsignedInteger('handling_fee_unit_price');
             $table->string('handling_fee_note', 20)->nullable();
-            $table->unsignedInteger('handling_sort_order')->default(999);
+            $table->unsignedInteger('handling_fee_sort_order')->default(999);
             $table->timestamps();
             // 外部キー制約
             $table->foreign('customer_id')->references('customer_id')->on('customers')->cascadeOnUpdate()->cascadeOnDelete();
