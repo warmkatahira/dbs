@@ -23,6 +23,7 @@ class HandlingFeeSettingUpdateRequest extends FormRequest
     {
         return [
             'customer_handling_id' => 'required|exists:customer_handling,customer_handling_id',
+            'handling_id' => 'required|exists:handlings,handling_id',
             'handling_fee_unit_price' => 'required|integer|min:0',
             'handling_fee_note' => 'nullable|max:20',
             'handling_fee_sort_order' => 'required|integer|min:0',
@@ -44,6 +45,7 @@ class HandlingFeeSettingUpdateRequest extends FormRequest
     {
         return [
             'customer_handling_id' => '荷役設定',
+            'handling_id' => '荷役',
             'handling_fee_unit_price' => '荷役単価',
             'handling_fee_note' => '荷役備考',
             'handling_fee_sort_order' => '荷役並び順',

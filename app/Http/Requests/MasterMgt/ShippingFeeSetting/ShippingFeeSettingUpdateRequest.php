@@ -23,6 +23,7 @@ class ShippingFeeSettingUpdateRequest extends FormRequest
     {
         return [
             'customer_shipping_method_id' => 'required|exists:customer_shipping_method,customer_shipping_method_id',
+            'shipping_method_id' => 'required|exists:shipping_methods,shipping_method_id',
             'shipping_fee_unit_price_sales' => 'required|integer|min:0',
             'shipping_fee_unit_price_cost' => 'required|integer|min:0',
             'shipping_fee_note' => 'nullable|max:20',
@@ -44,6 +45,7 @@ class ShippingFeeSettingUpdateRequest extends FormRequest
     {
         return [
             'customer_shipping_method_id' => '運賃設定',
+            'shipping_method_id' => '配送方法',
             'shipping_fee_unit_price_sales' => '運賃単価(売上)',
             'shipping_fee_unit_price_cost' => '運賃単価(経費)',
             'shipping_fee_note' => '運賃備考',

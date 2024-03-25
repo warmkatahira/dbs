@@ -11,6 +11,7 @@ class ShippingFeeSettingUpdateService
     {
         // 更新
         CustomerShippingMethod::where('customer_shipping_method_id', $request->customer_shipping_method_id)->update([
+            'shipping_method_id' => $request->shipping_method_id,
             'shipping_fee_unit_price_sales' => $request->shipping_fee_unit_price_sales,
             'shipping_fee_unit_price_cost' => $request->shipping_fee_unit_price_cost,
             'shipping_fee_note' => $request->shipping_fee_note,
