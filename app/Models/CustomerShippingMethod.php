@@ -27,4 +27,9 @@ class CustomerShippingMethod extends Model
     {
         return self::where('customer_shipping_method_id', $customer_shipping_method_id);
     }
+    // DB:dbsのdelivery_companiesテーブルとのリレーション
+    public function delivery_company()
+    {
+        return $this->belongsTo(DeliveryCompany::class, 'delivery_company_id', 'delivery_company_id');
+    }
 }

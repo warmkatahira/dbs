@@ -1,6 +1,10 @@
 <x-app-layout>
     <x-page-header content="収支詳細"/>
     <x-page-back :url="session('back_url_1')" />
+    <div class="flex flex-row mb-2">
+        <!-- 操作ボタン -->
+        <x-balance-mgt.balance-detail.operation-div :balance="$balance" />
+    </div>
     <!-- 人件費 -->
     <x-balance-mgt.balance-detail.balance-labor-cost :balanceLaborCost="$balance_labor_cost" />
     <!-- 月額経費 -->

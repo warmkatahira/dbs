@@ -18,9 +18,4 @@ class BalanceMonthlyCost extends Model
         'ho_cost',
         'monthly_cost',
     ];
-    // balance_idを指定して取得
-    public static function getSpecifyByBalanceId($balance_id)
-    {
-        return self::where('balance_id', $balance_id);
-    }
 }

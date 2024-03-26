@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\BalanceMgt\BalanceListController;
     // 収支詳細
     use App\Http\Controllers\BalanceMgt\BalanceDetailController;
+    // 収支更新
+    use App\Http\Controllers\BalanceMgt\BalanceUpdateController;
 // +-+-+-+-+-+-+-+- 設定 +-+-+-+-+-+-+-+-
     // 売上計画設定
     use App\Http\Controllers\Setting\SalesPlanSetting\SalesPlanSettingController;
@@ -58,6 +60,11 @@ Route::middleware(['auth'])->group(function () {
         // -+-+-+-+-+-+-+-+-+-+-+-+ 収支詳細 -+-+-+-+-+-+-+-+-+-+-+-+
         Route::controller(BalanceDetailController::class)->prefix('balance_detail')->name('balance_detail.')->group(function(){
             Route::get('', 'index')->name('index');
+        });
+        // -+-+-+-+-+-+-+-+-+-+-+-+ 収支更新 -+-+-+-+-+-+-+-+-+-+-+-+
+        Route::controller(BalanceUpdateController::class)->prefix('balance_update')->name('balance_update.')->group(function(){
+            Route::get('', 'index')->name('index');
+            Route::post('update', 'update')->name('update');
         });
     // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ 設定 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆
         // -+-+-+-+-+-+-+-+-+-+-+-+ 売上計画設定 -+-+-+-+-+-+-+-+-+-+-+-+

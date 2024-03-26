@@ -27,12 +27,16 @@
                         if(!is_null($balances['holiday'])){
                             $bg = 'bg-rose-100';
                         }
+                        // 該当月以外だったら、カレンダーの背景色を設定
+                        if(CarbonImmutable::parse($date)->format('Y-m') != session('search_month')){
+                            $bg = 'bg-gray-300';
+                        }
                     @endphp
                     <td class="py-1 px-2 border align-top w-40 h-20 {{ $bg }}">
-                        <p class="pb-2">
-                            {{ CarbonImmutable::parse($date)->isoFormat('MM/DD') }}
+                        <p class="pb-2 flex">
+                            {{ CarbonImmutable::parse($date)->isoFormat('DD') }}
                             @if(!is_null($balances['holiday']))
-                                <span class="text-10px ml-3"><i class="las la-calendar la-lg"></i>{{ $balances['holiday'] }}</span>
+                                <span class="text-xs ml-auto">{{ $balances['holiday'] }}</span>
                             @endif
                         </p>
                         @foreach($balances['disp_balances'] as $balance)

@@ -24,4 +24,9 @@ class BalanceShippingFee extends Model
         'shipping_fee_amount_cost',
         'shipping_fee_note',
     ];
+    // DB:dbsのshipping_methodsテーブルとのリレーション
+    public function shipping_method()
+    {
+        return $this->belongsTo(ShippingMethod::class, 'shipping_method_id', 'shipping_method_id');
+    }
 }
