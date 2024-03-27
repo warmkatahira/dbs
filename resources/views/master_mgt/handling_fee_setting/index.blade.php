@@ -2,9 +2,9 @@
 
 <x-app-layout>
     <x-page-header content="荷役設定"/>
+    <x-page-back :url="session('back_url_1')" />
     <!-- バリデーションエラー -->
     <x-validation-error-msg />
-    <x-page-back :url="session('back_url_1')" />
     <div class="flex flex-row mb-2">
         <!-- 操作ボタン -->
         <x-master-mgt.handling-fee-setting.operation-div :customer="$customer" />

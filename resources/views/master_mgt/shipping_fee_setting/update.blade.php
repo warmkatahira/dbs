@@ -2,9 +2,9 @@
 
 <x-app-layout>
     <x-page-header content="運賃設定更新"/>
+    <x-page-back :url="session('back_url_2')" />
     <!-- バリデーションエラー -->
     <x-validation-error-msg />
-    <x-page-back :url="session('back_url_2')" />
     <div class="bg-white">
         <form method="POST" action="{{ route('shipping_fee_setting_update.update') }}" id="shipping_fee_setting_update_form">
             @csrf
