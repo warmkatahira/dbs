@@ -67,7 +67,6 @@ class BalanceUpdateController extends Controller
                 'shipping_fee_note' => $request->shipping_fee_note[$key],
             ];
         }
-        //dd($data);
         BalanceShippingFee::upsert($data, 'balance_shipping_fee_id');
 
 
@@ -85,7 +84,6 @@ class BalanceUpdateController extends Controller
                 'handling_fee_note' => $request->handling_fee_note[$key],
             ];
         }
-        //dd($data);
         BalanceHandlingFee::upsert($data, 'balance_handling_fee_id');
 
 
