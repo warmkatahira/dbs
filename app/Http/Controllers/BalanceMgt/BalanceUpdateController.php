@@ -9,7 +9,7 @@ use App\Models\Balance;
 use App\Models\Customer;
 use App\Models\BalanceShippingFee;
 // サービス
-use App\Services\BalanceMgt\BalanceDetail\BalanceDetailService;
+use App\Services\BalanceMgt\BalanceUpdate\BalanceUpdateValidationService;
 
 class BalanceUpdateController extends Controller
 {
@@ -65,5 +65,17 @@ class BalanceUpdateController extends Controller
 
 
         dd('aaa');
+    }
+
+    public function validation(Request $request)
+    {
+        // インスタンス化
+        $BalanceUpdateValidationService = new BalanceUpdateValidationService;
+        // 運賃のバリデーションを実施
+        $balance_shipping_fee_errors = $BalanceUpdateValidationService->validationBalanceShippingFee($request);
+        // 結果を返す
+        return response()->json([
+            'validation_errors' => $balance_shipping_fee_errors,
+        ]);
     }
 }

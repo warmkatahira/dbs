@@ -64,6 +64,7 @@ Route::middleware(['auth'])->group(function () {
         // -+-+-+-+-+-+-+-+-+-+-+-+ 収支更新 -+-+-+-+-+-+-+-+-+-+-+-+
         Route::controller(BalanceUpdateController::class)->prefix('balance_update')->name('balance_update.')->group(function(){
             Route::get('', 'index')->name('index');
+            Route::post('validation', 'validation')->name('validation');
             Route::post('update', 'update')->name('update');
         });
     // ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆ 設定 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆

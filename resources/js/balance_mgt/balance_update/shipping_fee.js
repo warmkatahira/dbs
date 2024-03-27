@@ -15,13 +15,13 @@ $(document).on('click', '#customer_shipping_method_create', function() {
                     <button type="button" class="text-xs mx-3 px-3 py-1 border border-red-600 bg-red-100 customer_shipping_method_delete">削除</button>
                 </td>
                 <td class="py-1 px-2 border text-left">${shipping_method_name}</td>
-                <td class="py-1 px-2 border"><input type="tel" name="shipping_fee_quantity_sales[]" class="text-xs text-right py-1 w-20 numeric-input shipping_fee_calc" value="1" autocomplete="off"></td>
-                <td class="py-1 px-2 border"><i class="las la-yen-sign mr-1"></i><input type="tel" name="shipping_fee_unit_price_sales[]" class="text-xs text-right py-1 w-20 numeric-input shipping_fee_calc" value="${shipping_fee_unit_price_sales}" autocomplete="off"></td>
-                <td class="py-1 px-2 border"><i class="las la-yen-sign mr-1"></i><input type="tel" name="shipping_fee_amount_sales[]" class="text-xs text-right py-1 w-24 numeric-input" value="${shipping_fee_unit_price_sales}" autocomplete="off"></td>
-                <td class="py-1 px-2 border"><input type="tel" name="shipping_fee_quantity_cost[]" class="text-xs text-right py-1 w-20 numeric-input shipping_fee_calc" value="1" autocomplete="off"></td>
-                <td class="py-1 px-2 border"><i class="las la-yen-sign mr-1"></i><input type="tel" name="shipping_fee_unit_price_cost[]" class="text-xs text-right py-1 w-20 numeric-input shipping_fee_calc" value="${shipping_fee_unit_price_cost}" autocomplete="off"></td>
-                <td class="py-1 px-2 border"><i class="las la-yen-sign mr-1"></i><input type="tel" name="shipping_fee_amount_cost[]" class="text-xs text-right py-1 w-20 numeric-input" value="${shipping_fee_unit_price_cost}" autocomplete="off"></td>
-                <td class="py-1 px-2 border"><input type="tel" name="shipping_fee_note[]" class="text-xs text-left py-1 w-48" value="${shipping_fee_note}"></td>
+                <td class="py-1 px-2 border"><input type="tel" name="shipping_fee_quantity_sales[]" class="text-xs text-right py-1 w-20 shipping_fee_calc" value="1" autocomplete="off"></td>
+                <td class="py-1 px-2 border"><i class="las la-yen-sign mr-1"></i><input type="tel" name="shipping_fee_unit_price_sales[]" class="text-xs text-right py-1 w-20 shipping_fee_calc" value="${shipping_fee_unit_price_sales}" autocomplete="off"></td>
+                <td class="py-1 px-2 border"><i class="las la-yen-sign mr-1"></i><input type="tel" name="shipping_fee_amount_sales[]" class="text-xs text-right py-1 w-24" value="${shipping_fee_unit_price_sales}" autocomplete="off"></td>
+                <td class="py-1 px-2 border"><input type="tel" name="shipping_fee_quantity_cost[]" class="text-xs text-right py-1 w-20 shipping_fee_calc" value="1" autocomplete="off"></td>
+                <td class="py-1 px-2 border"><i class="las la-yen-sign mr-1"></i><input type="tel" name="shipping_fee_unit_price_cost[]" class="text-xs text-right py-1 w-20 shipping_fee_calc" value="${shipping_fee_unit_price_cost}" autocomplete="off"></td>
+                <td class="py-1 px-2 border"><i class="las la-yen-sign mr-1"></i><input type="tel" name="shipping_fee_amount_cost[]" class="text-xs text-right py-1 w-20" value="${shipping_fee_unit_price_cost}" autocomplete="off"></td>
+                <td class="py-1 px-2 border"><input type="tel" name="shipping_fee_note[]" class="text-xs text-left py-1 w-48" value="${shipping_fee_note}" autocomplete="off"></td>
                 <input type="hidden" name="shipping_method_id[]" value="${shipping_method_id}">
             </tr>
         `
@@ -47,7 +47,7 @@ $(document).on('change', '.shipping_fee_calc', function() {
     let shipping_fee_quantity_cost = parentTR.find('[name="shipping_fee_quantity_cost[]"]').val();
     let shipping_fee_unit_price_cost = parentTR.find('[name="shipping_fee_unit_price_cost[]"]').val();
     const shipping_fee_amount_cost = parentTR.find('[name="shipping_fee_amount_cost[]"]');
-    // 個口数と運賃単価が数値だったら、運賃金額を更新
+    // 個口数と運賃単価が問題なかったら、運賃金額を更新
     if(!isNaN(shipping_fee_quantity_sales) && !isNaN(shipping_fee_unit_price_sales)){
         if(numericCheck(Number(shipping_fee_quantity_sales)) && numericCheck(Number(shipping_fee_unit_price_sales))){
             shipping_fee_amount_sales.val(shipping_fee_quantity_sales * shipping_fee_unit_price_sales);
