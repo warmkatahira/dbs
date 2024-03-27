@@ -4,6 +4,7 @@ namespace App\Services\BalanceMgt\BalanceUpdate;
 
 // 列挙
 use App\Enums\BalanceMgt\BalanceUpdate\BalanceShippingFeeValidationEnum;
+use App\Enums\BalanceMgt\BalanceUpdate\BalanceHandlingFeeValidationEnum;
 // その他
 use Illuminate\Support\Facades\Validator;
 
@@ -28,6 +29,28 @@ class BalanceUpdateValidationService
             ];
             // バリデーション処理
             $messages = $this->validation($param, BalanceShippingFeeValidationEnum::RULES, BalanceShippingFeeValidationEnum::MESSAGES, BalanceShippingFeeValidationEnum::ATTRIBUTES);
+            // エラーメッセージを格納
+            $validation_errors = empty($messages) ? $validation_errors : (empty($validation_errors) ? $messages : $validation_errors ."<br>". $messages);
+        }
+        return $validation_errors;
+    }
+
+    public function validationBalanceHandlingFee($request)
+    {
+        // バリデーションエラーメッセージを格納する変数をセット
+        $validation_errors = '';
+        // レコードの分だけループ処理
+        foreach($request->handling_id as $key => $value){
+            // バリデーションする値を格納
+            $param = [
+                'handling_id' => $request->handling_id[$key],
+                'handling_fee_quantity' => $request->handling_fee_quantity[$key],
+                'handling_fee_unit_price' => $request->handling_fee_unit_price[$key],
+                'handling_fee_amount' => $request->handling_fee_amount[$key],
+                'handling_fee_note' => $request->handling_fee_note[$key],
+            ];
+            // バリデーション処理
+            $messages = $this->validation($param, BalanceHandlingFeeValidationEnum::RULES, BalanceHandlingFeeValidationEnum::MESSAGES, BalanceHandlingFeeValidationEnum::ATTRIBUTES);
             // エラーメッセージを格納
             $validation_errors = empty($messages) ? $validation_errors : (empty($validation_errors) ? $messages : $validation_errors ."<br>". $messages);
         }

@@ -42,9 +42,14 @@ class Balance extends Model
     {
         return $this->hasOne(BalanceLaborCost::class, 'balance_id', 'balance_id');
     }
-    // DB:dbsのbalance_labor_costsテーブルとのリレーション
+    // DB:dbsのbalance_shipping_feesテーブルとのリレーション
     public function balance_shipping_fees()
     {
         return $this->hasMany(BalanceShippingFee::class, 'balance_id', 'balance_id');
+    }
+    // DB:dbsのbalance_handling_feesテーブルとのリレーション
+    public function balance_handling_fees()
+    {
+        return $this->hasMany(BalanceHandlingFee::class, 'balance_id', 'balance_id');
     }
 }

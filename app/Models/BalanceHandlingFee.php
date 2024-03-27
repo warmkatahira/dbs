@@ -21,4 +21,9 @@ class BalanceHandlingFee extends Model
         'handling_fee_amount',
         'handling_fee_note',
     ];
+    // DB:dbsのhandlingsテーブルとのリレーション
+    public function handling()
+    {
+        return $this->belongsTo(Handling::class, 'handling_id', 'handling_id');
+    }
 }

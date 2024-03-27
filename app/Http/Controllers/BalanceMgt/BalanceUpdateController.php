@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Balance;
 use App\Models\Customer;
 use App\Models\BalanceShippingFee;
+use App\Models\BalanceHandlingFee;
 // サービス
 use App\Services\BalanceMgt\BalanceUpdate\BalanceUpdateValidationService;
 
@@ -29,6 +30,10 @@ class BalanceUpdateController extends Controller
         $customer_shipping_methods = $customer->shipping_methods()->get();
         // 現在登録されている運賃を取得
         $balance_shipping_fees = $balance->balance_shipping_fees()->get();
+        // 荷役設定を取得
+        $customer_handlings = $customer->handlings()->get();
+        // 現在登録されている荷役を取得
+        $balance_handling_fees = $balance->balance_handling_fees()->get();
         return view('balance_mgt.balance_update.index')->with([
             'balance' => $balance,
             'balance_labor_cost' => $balance_labor_cost,
@@ -36,6 +41,8 @@ class BalanceUpdateController extends Controller
             'balance_storage' => $balance_storage,
             'customer_shipping_methods' => $customer_shipping_methods,
             'balance_shipping_fees' => $balance_shipping_fees,
+            'customer_handlings' => $customer_handlings,
+            'balance_handling_fees' => $balance_handling_fees,
         ]);
     }
 
@@ -47,7 +54,7 @@ class BalanceUpdateController extends Controller
         BalanceShippingFee::where('balance_id', $request->balance_id)->delete();
         // 今回の運賃を登録
         $data = [];
-        foreach($request->shipping_fee_quantity_sales as $key => $shipping_fee){
+        foreach($request->shipping_method_id as $key => $shipping_method_id){
             $data[] = [
                 'balance_id' => $request->balance_id,
                 'shipping_method_id' => $request->shipping_method_id[$key],
@@ -64,6 +71,24 @@ class BalanceUpdateController extends Controller
         BalanceShippingFee::upsert($data, 'balance_shipping_fee_id');
 
 
+        // 現在の荷役を削除
+        BalanceHandlingFee::where('balance_id', $request->balance_id)->delete();
+        // 今回の荷役を登録
+        $data = [];
+        foreach($request->handling_id as $key => $handling_id){
+            $data[] = [
+                'balance_id' => $request->balance_id,
+                'handling_id' => $request->handling_id[$key],
+                'handling_fee_quantity' => $request->handling_fee_quantity[$key],
+                'handling_fee_unit_price' => $request->handling_fee_unit_price[$key],
+                'handling_fee_amount' => $request->handling_fee_amount[$key],
+                'handling_fee_note' => $request->handling_fee_note[$key],
+            ];
+        }
+        //dd($data);
+        BalanceHandlingFee::upsert($data, 'balance_handling_fee_id');
+
+
         dd('aaa');
     }
 
@@ -73,9 +98,11 @@ class BalanceUpdateController extends Controller
         $BalanceUpdateValidationService = new BalanceUpdateValidationService;
         // 運賃のバリデーションを実施
         $balance_shipping_fee_errors = $BalanceUpdateValidationService->validationBalanceShippingFee($request);
+        // 荷役のバリデーションを実施
+        $balance_handling_fee_errors = $BalanceUpdateValidationService->validationBalanceHandlingFee($request);
         // 結果を返す
         return response()->json([
-            'validation_errors' => $balance_shipping_fee_errors,
+            'validation_errors' => $balance_shipping_fee_errors."<br>".$balance_handling_fee_errors,
         ]);
     }
 }

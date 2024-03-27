@@ -3,7 +3,7 @@ $(document).on('click', '#customer_shipping_method_create', function() {
     // 選択している情報を取得
     const customer_shipping_method_option = $('#customer_shipping_method_id').find(':selected');
     const shipping_method_id = customer_shipping_method_option.data('shipping-method-id');
-    const shipping_method_name = customer_shipping_method_option.html();
+    const shipping_method_name = customer_shipping_method_option.data('shipping-method-name')
     const shipping_fee_unit_price_sales = customer_shipping_method_option.data('shipping-fee-unit-price-sales');
     const shipping_fee_unit_price_cost = customer_shipping_method_option.data('shipping-fee-unit-price-cost');
     const shipping_fee_note = customer_shipping_method_option.data('shipping-fee-note');
