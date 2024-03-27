@@ -18,7 +18,6 @@ $(document).on('click', '#balance_update_enter', function() {
         type: 'POST',
         dataType: 'json',
         success: function(data){
-            console.log(data['validation_errors'] == '');
             // バリデーションエラーがある場合
             if(data['validation_errors'] != ''){
                 // クラスを削除

@@ -96,13 +96,15 @@ class BalanceUpdateController extends Controller
     {
         // インスタンス化
         $BalanceUpdateValidationService = new BalanceUpdateValidationService;
+        // バリデーションエラーを格納する変数を初期化
+        $validation_errors = '';
         // 運賃のバリデーションを実施
-        $balance_shipping_fee_errors = $BalanceUpdateValidationService->validationBalanceShippingFee($request);
+        $validation_errors = $BalanceUpdateValidationService->validationBalanceShippingFee($request, $validation_errors);
         // 荷役のバリデーションを実施
-        $balance_handling_fee_errors = $BalanceUpdateValidationService->validationBalanceHandlingFee($request);
+        $validation_errors = $BalanceUpdateValidationService->validationBalanceHandlingFee($request, $validation_errors);
         // 結果を返す
         return response()->json([
-            'validation_errors' => $balance_shipping_fee_errors."<br>".$balance_handling_fee_errors,
+            'validation_errors' => $validation_errors,
         ]);
     }
 }
