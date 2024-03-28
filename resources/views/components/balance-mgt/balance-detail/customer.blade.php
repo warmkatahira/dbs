@@ -1,4 +1,4 @@
-<div class="bg-white px-5 pb-5 pt-2 text-sm">
+<div class="bg-white w-1300px px-5 pb-5 pt-2 text-sm">
     <p class="text-xl mb-5">荷主</p>
     <div class="flex flex-row">
         <p class="bg-gray-300 w-32 py-2 pl-2">拠点</p>
