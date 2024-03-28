@@ -12,7 +12,8 @@ class CustomerSyncService
     public function syncCustomer()
     {
         // DB:kintaiのcustomersテーブルを全て取得
-        $kintai_customers = KintaiCustomer::getAll()->get();
+        //$kintai_customers = KintaiCustomer::getAll()->get();
+        $kintai_customers = KintaiCustomer::where('base_id', '08_LC')->get();
         // 追加用の配列を初期化
         $param = [];
         // レコードの分だけループ

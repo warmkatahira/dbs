@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('balance_handling_fees', function (Blueprint $table) {
-            $table->increments('balance_handling_fee_id');
+            $table->string('balance_handling_fee_id', 25)->primary();
             $table->string('balance_id', 21);
             $table->string('handling_id', 8);
             $table->unsignedInteger('handling_fee_quantity')->default(0);

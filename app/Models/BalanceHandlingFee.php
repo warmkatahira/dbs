@@ -12,8 +12,11 @@ class BalanceHandlingFee extends Model
     protected $connection = 'mysql';
     // 主キーカラムを変更
     protected $primaryKey = 'balance_handling_fee_id';
+    // オートインクリメント無効化
+    public $incrementing = false;
     // 操作可能なカラムを定義
     protected $fillable = [
+        'balance_handling_fee_id',
         'balance_id',
         'handling_id',
         'handling_fee_quantity',

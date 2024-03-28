@@ -12,8 +12,11 @@ class BalanceShippingFee extends Model
     protected $connection = 'mysql';
     // 主キーカラムを変更
     protected $primaryKey = 'balance_shipping_fee_id';
+    // オートインクリメント無効化
+    public $incrementing = false;
     // 操作可能なカラムを定義
     protected $fillable = [
+        'balance_shipping_fee_id',
         'balance_id',
         'shipping_method_id',
         'shipping_fee_quantity_sales',

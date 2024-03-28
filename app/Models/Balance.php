@@ -21,6 +21,9 @@ class Balance extends Model
         'balance_date',
         'sales',
         'cost',
+        'profit',
+        'note',
+        'last_updated_user_id',
     ];
     // 指定したレコードを取得
     public static function getSpecify($balance_id)
