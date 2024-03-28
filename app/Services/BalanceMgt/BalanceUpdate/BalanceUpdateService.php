@@ -77,7 +77,7 @@ class BalanceUpdateService
     }
 
     // 収支を更新
-    public function updateBalance($balance, $request)
+    public function updateBalance($balance)
     {
         // 変数を初期化
         $sales = 0;
