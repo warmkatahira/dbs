@@ -5,7 +5,7 @@
     <table class="text-xs block whitespace-nowrap">
         <thead>
             <tr class="text-center">
-                <th colspan="3" class="font-thin py-3 px-2 bg-rose-300">経費</th>
+                <th colspan="3" class="font-thin py-3 px-2 bg-rose-200">経費</th>
             </tr>
             <tr class="text-center">
                 <th class="font-thin py-3 px-2 bg-rose-200">正社員</th>

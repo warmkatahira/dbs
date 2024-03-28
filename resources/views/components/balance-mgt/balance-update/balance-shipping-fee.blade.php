@@ -18,19 +18,19 @@
         <thead>
             <tr class="text-center">
                 <th colspan="2" class="font-thin py-3 px-2"></th>
-                <th colspan="3" class="font-thin py-3 px-2 bg-orange-300">売上</th>
-                <th colspan="3" class="font-thin py-3 px-2 bg-rose-300">経費</th>
+                <th colspan="3" class="font-thin py-3 px-2 bg-orange-200">売上</th>
+                <th colspan="3" class="font-thin py-3 px-2 bg-rose-200">経費</th>
             </tr>
             <tr class="text-center">
-                <th class="font-thin py-3 px-2 bg-gray-300">操作</th>
-                <th class="font-thin py-3 px-2 bg-gray-300">配送方法</th>
+                <th class="font-thin py-3 px-2 bg-gray-200">操作</th>
+                <th class="font-thin py-3 px-2 bg-gray-200">配送方法</th>
                 <th class="font-thin py-3 px-2 bg-orange-200">個口数</th>
                 <th class="font-thin py-3 px-2 bg-orange-200">運賃単価</th>
                 <th class="font-thin py-3 px-2 bg-orange-200">運賃金額</th>
                 <th class="font-thin py-3 px-2 bg-rose-200">個口数</th>
                 <th class="font-thin py-3 px-2 bg-rose-200">運賃単価</th>
                 <th class="font-thin py-3 px-2 bg-rose-200">運賃金額</th>
-                <th class="font-thin py-3 px-2 bg-gray-300">運賃備考</th>
+                <th class="font-thin py-3 px-2 bg-gray-200">運賃備考</th>
             </tr>
         </thead>
         <tbody id="customer_shipping_method_tbody" class="bg-white">

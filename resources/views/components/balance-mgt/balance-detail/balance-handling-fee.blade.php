@@ -4,14 +4,14 @@
         <thead>
             <tr class="text-center">
                 <th class="font-thin py-3 px-2"></th>
-                <th colspan="3" class="font-thin py-3 px-2 bg-orange-300">売上</th>
+                <th colspan="3" class="font-thin py-3 px-2 bg-orange-200">売上</th>
             </tr>
             <tr class="text-center">
-                <th class="font-thin py-3 px-2 bg-gray-300">荷役名</th>
+                <th class="font-thin py-3 px-2 bg-gray-200">荷役名</th>
                 <th class="font-thin py-3 px-2 bg-orange-200">荷役数</th>
                 <th class="font-thin py-3 px-2 bg-orange-200">荷役単価</th>
                 <th class="font-thin py-3 px-2 bg-orange-200">荷役金額</th>
-                <th class="font-thin py-3 px-2 bg-gray-300">荷役備考</th>
+                <th class="font-thin py-3 px-2 bg-gray-200">荷役備考</th>
             </tr>
         </thead>
         <tbody id="customer_handling_tbody" class="bg-white">

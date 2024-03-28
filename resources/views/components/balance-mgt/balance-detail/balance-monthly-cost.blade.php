@@ -3,7 +3,7 @@
     <table class="text-sm block whitespace-nowrap">
         <thead>
             <tr class="text-center">
-                <th colspan="2" class="font-thin py-3 px-2 bg-rose-300">経費</th>
+                <th colspan="2" class="font-thin py-3 px-2 bg-rose-200">経費</th>
             </tr>
             <tr class="text-center">
                 <th class="font-thin py-3 px-2 bg-rose-200">本社管理費</th>
