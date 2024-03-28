@@ -26,11 +26,11 @@ class BalanceDetailService
         $customer = Customer::getSpecify($balance->customer_id)->first();
         // 運賃設定を取得
         $customer_shipping_methods = $customer->shipping_methods()->get();
-        // 現在登録されている運賃を取得
+        // 運賃を取得
         $balance_shipping_fees = $balance->balance_shipping_fees()->get();
         // 荷役設定を取得
         $customer_handlings = $customer->handlings()->get();
-        // 現在登録されている荷役を取得
+        // 荷役を取得
         $balance_handling_fees = $balance->balance_handling_fees()->get();
         return compact(
             'balance',

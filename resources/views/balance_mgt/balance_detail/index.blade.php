@@ -5,6 +5,10 @@
         <!-- 操作ボタン -->
         <x-balance-mgt.balance-detail.operation-div :balance="$balance_data['balance']" />
     </div>
+    <!-- 運賃 -->
+    <x-balance-mgt.balance-detail.balance-shipping-fee :balance="$balance_data['balance']" :balanceShippingFees="$balance_data['balance_shipping_fees']" />
+    <!-- 運賃 -->
+    <x-balance-mgt.balance-detail.balance-handling-fee :balance="$balance_data['balance']" :balanceHandlingFees="$balance_data['balance_handling_fees']" />
     <!-- 人件費 -->
     <x-balance-mgt.balance-detail.balance-labor-cost :balanceLaborCost="$balance_data['balance_labor_cost']" />
     <!-- 月額経費 -->
