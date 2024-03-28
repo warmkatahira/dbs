@@ -28,7 +28,7 @@ class CustomerDownloadService
                 foreach($customers as $customer){
                     $row = [
                         $customer->customer_id,
-                        $customer->dbs_base->base_name,
+                        $customer->base->base_name,
                         $customer->customer_name,
                         $customer->is_available,
                     ];

@@ -8,7 +8,7 @@
     <div class="bg-white">
         <form method="POST" action="{{ route('sales_plan_setting_update.update') }}" id="sales_plan_setting_update_form">
             @csrf
-            <x-div.label label="拠点" :value="$sales_plan_setting->dbs_base->base_name" />
+            <x-div.label label="拠点" :value="$sales_plan_setting->base->base_name" />
             <x-div.label label="売上計画年月" :value="CarbonImmutable::parse($sales_plan_setting->sales_plan_setting_ym)->isoFormat('YYYY年MM月')" />
             <x-div.input type="tel" label="売上計画" id="sales_plan" :db="$sales_plan_setting->sales_plan" required="1" tippy="0" />
         </form>

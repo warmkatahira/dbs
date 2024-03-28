@@ -8,7 +8,7 @@
     <div class="bg-white">
         <form method="POST" action="{{ route('handling_fee_setting_create.create') }}" id="handling_fee_setting_create_form">
             @csrf
-            <x-div.label label="拠点" :value="$customer->dbs_base->base_name" />
+            <x-div.label label="拠点" :value="$customer->base->base_name" />
             <x-div.label label="荷主名" :value="$customer->customer_name" />
             <x-div.select label="荷役" id="handling_id" :forValue="$handlings" forId="handling_id" forText="handling_name" :db="null" required="1" tippy="0" />
             <x-div.input type="tel" label="荷役単価" id="handling_fee_unit_price" :db="null" required="1" tippy="0" />

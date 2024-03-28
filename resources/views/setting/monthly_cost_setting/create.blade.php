@@ -8,7 +8,7 @@
     <div class="bg-white">
         <form method="POST" action="{{ route('monthly_cost_setting_create.create') }}" id="monthly_cost_setting_create_form">
             @csrf
-            <x-div.label label="拠点" :value="Auth::user()->dbs_base->base_name" />
+            <x-div.label label="拠点" :value="Auth::user()->base->base_name" />
             <x-div.input type="month" label="月額経費年月" id="monthly_cost_setting_ym" :db="null" required="1" tippy="0" />
             <x-div.input type="tel" label="本社管理費" id="ho_cost" :db="null" required="1" tippy="0" />
             <x-div.input type="tel" label="月額経費" id="monthly_cost" :db="null" required="1" tippy="0" />

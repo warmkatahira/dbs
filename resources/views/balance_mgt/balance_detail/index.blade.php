@@ -5,6 +5,8 @@
         <!-- 操作ボタン -->
         <x-balance-mgt.balance-detail.operation-div :balance="$balance_data['balance']" />
     </div>
+    <!-- 荷主情報 -->
+    <x-balance-mgt.balance-detail.customer :balance="$balance_data['balance']" :customer="$balance_data['customer']" />
     <!-- 運賃 -->
     <x-balance-mgt.balance-detail.balance-shipping-fee :balance="$balance_data['balance']" :balanceShippingFees="$balance_data['balance_shipping_fees']" />
     <!-- 運賃 -->

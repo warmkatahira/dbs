@@ -29,7 +29,7 @@ class MonthlyCustomerSettingDownloadService
                     $row = [
                         $monthly_customer_setting->monthly_customer_setting_id,
                         CarbonImmutable::parse($monthly_customer_setting->monthly_customer_setting_ym)->isoFormat('YYYY年MM月'),
-                        $monthly_customer_setting->dbs_customer->dbs_base->base_name,
+                        $monthly_customer_setting->dbs_customer->base->base_name,
                         $monthly_customer_setting->dbs_customer->customer_name,
                         $monthly_customer_setting->monthly_storage_sales,
                         $monthly_customer_setting->monthly_storage_cost,

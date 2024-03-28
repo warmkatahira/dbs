@@ -8,7 +8,7 @@
     <div class="bg-white">
         <form method="POST" action="{{ route('shipping_fee_setting_create.create') }}" id="shipping_fee_setting_create_form">
             @csrf
-            <x-div.label label="拠点" :value="$customer->dbs_base->base_name" />
+            <x-div.label label="拠点" :value="$customer->base->base_name" />
             <x-div.label label="荷主名" :value="$customer->customer_name" />
             <x-master-mgt.shipping-fee-setting.shipping-method-select :deliveryCompanies="$delivery_companies" :db="null" />
             <x-div.input type="tel" label="運賃単価(売上)" id="shipping_fee_unit_price_sales" :db="null" required="1" tippy="0" />

@@ -1,6 +1,6 @@
 @vite(['resources/js/balance_mgt/balance_update/balance_shipping_fee.js'])
 
-<div class="bg-white w-1300px px-5 pb-5 pt-2">
+<div class="bg-white w-1300px px-5 pb-5 pt-2 mt-5">
     <div class="flex flex-row mb-5">
         <p class="text-xl">運賃</p>
         <div class="ml-auto">

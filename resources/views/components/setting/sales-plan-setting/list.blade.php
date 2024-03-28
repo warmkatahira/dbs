@@ -13,7 +13,7 @@
                 @foreach($salesPlans as $sales_plan_setting)
                     <tr class="text-left hover:bg-theme-sub cursor-default">
                         <td class="py-1 px-2 border">{{ CarbonImmutable::parse($sales_plan_setting->sales_plan_setting_ym)->isoFormat('YYYY年MM月') }}</td>
-                        <td class="py-1 px-2 border text-right">{{ $sales_plan_setting->dbs_base->base_name }}</td>
+                        <td class="py-1 px-2 border text-right">{{ $sales_plan_setting->base->base_name }}</td>
                         <td class="py-1 px-2 border text-right"><i class="las la-yen-sign"></i>{{ number_format($sales_plan_setting->sales_plan) }}</td>
                         <td class="py-1 px-2 border">
                             <div class="flex">

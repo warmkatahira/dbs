@@ -14,7 +14,7 @@
             <tbody class="bg-white">
                 @foreach($users as $user)
                     <tr class="text-left hover:bg-theme-sub cursor-default">
-                        <td class="py-1 px-2 border">{{ $user->dbs_base->base_name }}</td>
+                        <td class="py-1 px-2 border">{{ $user->base->base_name }}</td>
                         <td class="py-1 px-2 border">{{ $user->last_name.' '.$user->first_name }}</td>
                         <td class="py-1 px-2 border">{{ $user->email }}</td>
                         <td class="py-1 px-2 border">{{ $user->dbs_role->role_name }}</td>

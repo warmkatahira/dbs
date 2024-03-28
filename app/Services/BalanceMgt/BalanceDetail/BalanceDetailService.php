@@ -37,6 +37,7 @@ class BalanceDetailService
             'balance_labor_cost',
             'balance_monthly_cost',
             'balance_storage',
+            'customer',
             'customer_shipping_methods',
             'balance_shipping_fees',
             'customer_handlings',

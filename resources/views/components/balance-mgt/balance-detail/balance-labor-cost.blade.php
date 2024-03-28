@@ -1,7 +1,5 @@
 <div class="bg-white w-1300px px-5 pb-5 pt-2 mt-5">
-    <div class="flex flex-row mb-5">
-        <p class="text-xl">人件費</p>
-    </div>
+    <p class="text-xl mb-5">人件費</p>
     <table class="text-sm block whitespace-nowrap">
         <thead>
             <tr class="text-center">

@@ -33,7 +33,7 @@ class Customer extends Model
         ];
     }
     // DB:dbsのbasesテーブルとのリレーション
-    public function dbs_base()
+    public function base()
     {
         return $this->belongsTo(Base::class, 'base_id', 'base_id');
     }
