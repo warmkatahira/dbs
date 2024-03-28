@@ -24,12 +24,12 @@
             <tr class="text-center">
                 <th class="font-thin py-3 px-2 bg-gray-200">操作</th>
                 <th class="font-thin py-3 px-2 bg-gray-200">配送方法</th>
-                <th class="font-thin py-3 px-2 bg-orange-200">個口数</th>
-                <th class="font-thin py-3 px-2 bg-orange-200">運賃単価</th>
-                <th class="font-thin py-3 px-2 bg-orange-200">運賃金額</th>
-                <th class="font-thin py-3 px-2 bg-rose-200">個口数</th>
-                <th class="font-thin py-3 px-2 bg-rose-200">運賃単価</th>
-                <th class="font-thin py-3 px-2 bg-rose-200">運賃金額</th>
+                <th class="font-thin py-3 px-2 bg-orange-100">個口数</th>
+                <th class="font-thin py-3 px-2 bg-orange-100">運賃単価</th>
+                <th class="font-thin py-3 px-2 bg-orange-100">運賃金額</th>
+                <th class="font-thin py-3 px-2 bg-rose-100">個口数</th>
+                <th class="font-thin py-3 px-2 bg-rose-100">運賃単価</th>
+                <th class="font-thin py-3 px-2 bg-rose-100">運賃金額</th>
                 <th class="font-thin py-3 px-2 bg-gray-200">運賃備考</th>
             </tr>
         </thead>

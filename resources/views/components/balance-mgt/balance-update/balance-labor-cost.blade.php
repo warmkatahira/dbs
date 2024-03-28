@@ -8,9 +8,9 @@
                 <th colspan="3" class="font-thin py-3 px-2 bg-rose-200">経費</th>
             </tr>
             <tr class="text-center">
-                <th class="font-thin py-3 px-2 bg-rose-200">正社員</th>
-                <th class="font-thin py-3 px-2 bg-rose-200">契約社員</th>
-                <th class="font-thin py-3 px-2 bg-rose-200">パート</th>
+                <th class="font-thin py-3 px-2 bg-rose-100">正社員</th>
+                <th class="font-thin py-3 px-2 bg-rose-100">契約社員</th>
+                <th class="font-thin py-3 px-2 bg-rose-100">パート</th>
             </tr>
         </thead>
         <tbody class="bg-white">
