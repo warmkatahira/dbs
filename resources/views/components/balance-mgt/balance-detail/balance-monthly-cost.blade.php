@@ -1,19 +1,22 @@
-<div class="flex flex-col">
-    <p class="mb-2">月額経費</p>
-    <div class="flex flex-row text-sm mb-2">
-        <p class="w-40 py-1 pl-2 bg-gray-600 text-white">本社管理費</p>
-        <p class="w-28 py-1 pr-2 bg-white text-right"><i class="las la-yen-sign"></i>{{ number_format($balanceMonthlyCost->ho_cost) }}</p>
+<div class="bg-white w-1300px px-5 pb-5 pt-2 mt-5">
+    <div class="flex flex-row mb-5">
+        <p class="text-xl">月額経費</p>
     </div>
-    <div class="flex flex-row text-sm mb-2">
-        <p class="w-40 py-1 pl-2 bg-gray-600 text-white">月額経費</p>
-        <p class="w-28 py-1 pr-2 bg-white text-right"><i class="las la-yen-sign"></i>{{ number_format($balanceMonthlyCost->monthly_cost) }}</p>
-    </div>
-    @php
-        // 各月額経費を合計
-        $total_monthly_cost = $balanceMonthlyCost->ho_cost + $balanceMonthlyCost->monthly_cost;
-    @endphp
-    <div class="flex flex-row text-sm mb-2">
-        <p class="w-40 py-1 pl-2 bg-gray-600 text-white">合計</p>
-        <p class="w-28 py-1 pr-2 bg-white text-right"><i class="las la-yen-sign"></i>{{ number_format($total_monthly_cost) }}</p>
-    </div>
+    <table class="text-sm block whitespace-nowrap">
+        <thead>
+            <tr class="text-center">
+                <th colspan="2" class="font-thin py-3 px-2 bg-rose-300">経費</th>
+            </tr>
+            <tr class="text-center">
+                <th class="font-thin py-3 px-2 bg-rose-200">本社管理費</th>
+                <th class="font-thin py-3 px-2 bg-rose-200">月額経費</th>
+            </tr>
+        </thead>
+        <tbody class="bg-white">
+            <tr>
+                <td class="py-1 px-2 border text-right"><i class="las la-yen-sign mr-1"></i>{{ number_format($balanceMonthlyCost->ho_cost) }}</td>
+                <td class="py-1 px-2 border text-right"><i class="las la-yen-sign mr-1"></i>{{ number_format($balanceMonthlyCost->monthly_cost) }}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>

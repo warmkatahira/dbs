@@ -9,12 +9,10 @@
     <x-balance-mgt.balance-detail.balance-shipping-fee :balance="$balance_data['balance']" :balanceShippingFees="$balance_data['balance_shipping_fees']" />
     <!-- 運賃 -->
     <x-balance-mgt.balance-detail.balance-handling-fee :balance="$balance_data['balance']" :balanceHandlingFees="$balance_data['balance_handling_fees']" />
-    <!-- 人件費 -->
-    <x-balance-mgt.balance-detail.balance-labor-cost :balanceLaborCost="$balance_data['balance_labor_cost']" />
+    <!-- 保管 -->
+    <x-balance-mgt.balance-detail.balance-storage :balanceStorage="$balance_data['balance_storage']" />
     <!-- 月額経費 -->
     <x-balance-mgt.balance-detail.balance-monthly-cost :balanceMonthlyCost="$balance_data['balance_monthly_cost']" />
-    <!-- 保管経費 -->
-    <x-balance-mgt.balance-detail.balance-storage :balanceStorage="$balance_data['balance_storage']" label="保管経費" column="storage_cost" />
-    <!-- 保管売上 -->
-    <x-balance-mgt.balance-detail.balance-storage :balanceStorage="$balance_data['balance_storage']" label="保管売上" column="storage_sales" />
+    <!-- 人件費 -->
+    <x-balance-mgt.balance-detail.balance-labor-cost :balanceLaborCost="$balance_data['balance_labor_cost']" />
 </x-app-layout>

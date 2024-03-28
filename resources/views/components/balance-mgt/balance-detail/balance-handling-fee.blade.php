@@ -2,7 +2,7 @@
     <div class="flex flex-row mb-5">
         <p class="text-xl">荷役</p>
     </div>
-    <table class="text-xs block whitespace-nowrap">
+    <table class="text-sm block whitespace-nowrap">
         <thead>
             <tr class="text-center">
                 <th class="font-thin py-3 px-2"></th>

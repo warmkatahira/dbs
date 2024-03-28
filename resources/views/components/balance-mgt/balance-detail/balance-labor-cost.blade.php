@@ -1,23 +1,24 @@
-<div class="flex flex-col">
-    <p class="mb-2">人件費</p>
-    <div class="flex flex-row text-sm mb-2">
-        <p class="w-40 py-1 pl-2 bg-gray-600 text-white">正社員</p>
-        <p class="w-28 py-1 pr-2 bg-white text-right"><i class="las la-yen-sign"></i>{{ number_format($balanceLaborCost->fulltime_labor_cost) }}</p>
+<div class="bg-white w-1300px px-5 pb-5 pt-2 mt-5">
+    <div class="flex flex-row mb-5">
+        <p class="text-xl">人件費</p>
     </div>
-    <div class="flex flex-row text-sm mb-2">
-        <p class="w-40 py-1 pl-2 bg-gray-600 text-white">契約社員</p>
-        <p class="w-28 py-1 pr-2 bg-white text-right"><i class="las la-yen-sign"></i>{{ number_format($balanceLaborCost->contract_labor_cost) }}</p>
-    </div>
-    <div class="flex flex-row text-sm mb-2">
-        <p class="w-40 py-1 pl-2 bg-gray-600 text-white">パート</p>
-        <p class="w-28 py-1 pr-2 bg-white text-right"><i class="las la-yen-sign"></i>{{ number_format($balanceLaborCost->parttime_labor_cost) }}</p>
-    </div>
-    @php
-        // 各人件費を合計
-        $total_labor_cost = $balanceLaborCost->fulltime_labor_cost + $balanceLaborCost->contract_labor_cost + $balanceLaborCost->parttime_labor_cost;
-    @endphp
-    <div class="flex flex-row text-sm mb-2">
-        <p class="w-40 py-1 pl-2 bg-gray-600 text-white">合計</p>
-        <p class="w-28 py-1 pr-2 bg-white text-right"><i class="las la-yen-sign"></i>{{ number_format($total_labor_cost) }}</p>
-    </div>
+    <table class="text-sm block whitespace-nowrap">
+        <thead>
+            <tr class="text-center">
+                <th colspan="3" class="font-thin py-3 px-2 bg-rose-300">経費</th>
+            </tr>
+            <tr class="text-center">
+                <th class="font-thin py-3 px-2 bg-rose-200">正社員</th>
+                <th class="font-thin py-3 px-2 bg-rose-200">契約社員</th>
+                <th class="font-thin py-3 px-2 bg-rose-200">パート</th>
+            </tr>
+        </thead>
+        <tbody class="bg-white">
+            <tr>
+                <td class="py-1 px-2 border text-right"><i class="las la-yen-sign mr-1"></i>{{ number_format($balanceLaborCost->fulltime_labor_cost) }}</td>
+                <td class="py-1 px-2 border text-right"><i class="las la-yen-sign mr-1"></i>{{ number_format($balanceLaborCost->contract_labor_cost) }}</td>
+                <td class="py-1 px-2 border text-right"><i class="las la-yen-sign mr-1"></i>{{ number_format($balanceLaborCost->parttime_labor_cost) }}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
