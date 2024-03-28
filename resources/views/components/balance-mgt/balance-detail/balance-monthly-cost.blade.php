@@ -3,11 +3,11 @@
     <table class="text-sm block whitespace-nowrap">
         <thead>
             <tr class="text-center">
-                <th colspan="2" class="font-thin py-3 px-2 bg-rose-200">経費</th>
+                <th colspan="2" class="font-thin py-3 px-2 bg-balance-cost-2">経費</th>
             </tr>
             <tr class="text-center">
-                <th class="font-thin py-3 px-2 bg-rose-100">本社管理費</th>
-                <th class="font-thin py-3 px-2 bg-rose-100">月額経費</th>
+                <th class="font-thin py-3 px-2 bg-balance-cost-1">本社管理費</th>
+                <th class="font-thin py-3 px-2 bg-balance-cost-1">月額経費</th>
             </tr>
         </thead>
         <tbody class="bg-white">

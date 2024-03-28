@@ -25,7 +25,7 @@
                         }
                         // 休日だったら、カレンダーの背景色を設定
                         if(!is_null($balances['holiday'])){
-                            $bg = 'bg-rose-100';
+                            $bg = 'bg-balance-cost-1';
                         }
                         // 該当月以外だったら、カレンダーの背景色を設定
                         if(CarbonImmutable::parse($date)->format('Y-m') != session('search_month')){
