@@ -15,8 +15,8 @@
         </thead>
         <tbody class="bg-white">
             <tr>
-                <td class="py-1 px-2 border text-right"><i class="las la-yen-sign mr-1"></i>{{ number_format($balanceStorage->storage_sales) }}></td>
-                <td class="py-1 px-2 border text-right"><i class="las la-yen-sign mr-1"></i>{{ number_format($balanceStorage->storage_cost) }}></td>
+                <td class="py-1 px-2 border text-right"><i class="las la-yen-sign mr-1"></i>{{ number_format($balanceStorage->storage_sales) }}</td>
+                <td class="py-1 px-2 border text-right"><i class="las la-yen-sign mr-1"></i>{{ number_format($balanceStorage->storage_cost) }}</td>
             </tr>
         </tbody>
     </table>
