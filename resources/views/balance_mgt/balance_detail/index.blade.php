@@ -7,8 +7,14 @@
     </div>
     <!-- 最終更新 -->
     <x-balance-mgt.balance-detail.balance-last-update :balance="$balance_data['balance']" />
-    <!-- 荷主+収支 -->
-    <x-balance-mgt.balance-detail.customer-balance :customer="$balance_data['customer']" :balance="$balance_data['balance']" />
+    <div class="flex flex-row justify-between bg-white w-1300px px-5 pb-5 pt-2 mt-5">
+        <!-- 荷主 -->
+        <x-balance-mgt.balance-detail.customer :customer="$balance_data['customer']" />
+        <!-- 収支 -->
+        <x-balance-mgt.balance-detail.balance :balance="$balance_data['balance']" />
+        <!-- 収支備考 -->
+        <x-balance-mgt.balance-detail.balance-note :balance="$balance_data['balance']" />
+    </div>
     <!-- 運賃 -->
     <x-balance-mgt.balance-detail.balance-shipping-fee :balance="$balance_data['balance']" :balanceShippingFees="$balance_data['balance_shipping_fees']" />
     <!-- 荷役 -->

@@ -5,6 +5,9 @@ namespace App\Services\BalanceMgt\BalanceUpdate;
 // 列挙
 use App\Enums\BalanceMgt\BalanceUpdate\BalanceShippingFeeValidationEnum;
 use App\Enums\BalanceMgt\BalanceUpdate\BalanceHandlingFeeValidationEnum;
+use App\Enums\BalanceMgt\BalanceUpdate\BalanceStorageValidationEnum;
+use App\Enums\BalanceMgt\BalanceUpdate\BalanceMonthlyCostValidationEnum;
+use App\Enums\BalanceMgt\BalanceUpdate\BalanceLaborCostValidationEnum;
 // その他
 use Illuminate\Support\Facades\Validator;
 
@@ -52,6 +55,43 @@ class BalanceUpdateValidationService
                 $validation_errors = $this->validation($validation_errors, $param, BalanceHandlingFeeValidationEnum::RULES, BalanceHandlingFeeValidationEnum::MESSAGES, BalanceHandlingFeeValidationEnum::ATTRIBUTES);
             }
         }
+        return $validation_errors;
+    }
+
+    public function validationBalanceStorage($request, $validation_errors)
+    {
+        // バリデーションする値を格納
+        $param = [
+            'storage_sales' => $request->storage_sales,
+            'storage_cost' => $request->storage_cost,
+        ];
+        // バリデーション処理
+        $validation_errors = $this->validation($validation_errors, $param, BalanceStorageValidationEnum::RULES, BalanceStorageValidationEnum::MESSAGES, BalanceStorageValidationEnum::ATTRIBUTES);
+        return $validation_errors;
+    }
+
+    public function validationBalanceMonthlyCost($request, $validation_errors)
+    {
+        // バリデーションする値を格納
+        $param = [
+            'ho_cost' => $request->ho_cost,
+            'monthly_cost' => $request->monthly_cost,
+        ];
+        // バリデーション処理
+        $validation_errors = $this->validation($validation_errors, $param, BalanceMonthlyCostValidationEnum::RULES, BalanceMonthlyCostValidationEnum::MESSAGES, BalanceMonthlyCostValidationEnum::ATTRIBUTES);
+        return $validation_errors;
+    }
+
+    public function validationBalanceLaborCost($request, $validation_errors)
+    {
+        // バリデーションする値を格納
+        $param = [
+            'fulltime_labor_cost' => $request->fulltime_labor_cost,
+            'contract_labor_cost' => $request->contract_labor_cost,
+            'parttime_labor_cost' => $request->parttime_labor_cost,
+        ];
+        // バリデーション処理
+        $validation_errors = $this->validation($validation_errors, $param, BalanceLaborCostValidationEnum::RULES, BalanceLaborCostValidationEnum::MESSAGES, BalanceLaborCostValidationEnum::ATTRIBUTES);
         return $validation_errors;
     }
 

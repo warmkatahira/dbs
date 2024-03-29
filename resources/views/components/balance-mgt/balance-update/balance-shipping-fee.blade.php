@@ -50,7 +50,6 @@
                     <input type="hidden" name="shipping_method_id[]" value="{{ $balance_shipping_fee->shipping_method_id }}">
                 </tr>
             @endforeach
-            <input type="hidden" name="balance_id" value="{{ $balance->balance_id }}">
         </tbody>
     </table>
 </div>

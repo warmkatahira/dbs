@@ -35,7 +35,7 @@ class BalanceUpdateController extends Controller
         // 収支荷役を更新
         $BalanceUpdateService->updateBalanceHandlingFee($balance, $request);
         // 収支を更新
-        $BalanceUpdateService->updateBalance($balance);
+        $BalanceUpdateService->updateBalance($balance, $request);
         return redirect()->away(session('back_url_2'))->with([
             'alert_type' => 'success',
             'alert_message' => '収支を更新しました。',
@@ -52,6 +52,12 @@ class BalanceUpdateController extends Controller
         $validation_errors = $BalanceUpdateValidationService->validationBalanceShippingFee($request, $validation_errors);
         // 荷役のバリデーションを実施
         $validation_errors = $BalanceUpdateValidationService->validationBalanceHandlingFee($request, $validation_errors);
+        // 保管のバリデーションを実施
+        $validation_errors = $BalanceUpdateValidationService->validationBalanceStorage($request, $validation_errors);
+        // 月額経費のバリデーションを実施
+        $validation_errors = $BalanceUpdateValidationService->validationBalanceMonthlyCost($request, $validation_errors);
+        // 人件費のバリデーションを実施
+        $validation_errors = $BalanceUpdateValidationService->validationBalanceLaborCost($request, $validation_errors);
         // 結果を返す
         return response()->json([
             'validation_errors' => $validation_errors,

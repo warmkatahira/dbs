@@ -77,7 +77,7 @@ class BalanceUpdateService
     }
 
     // 収支を更新
-    public function updateBalance($balance)
+    public function updateBalance($balance, $request)
     {
         // 変数を初期化
         $sales = 0;
@@ -109,6 +109,7 @@ class BalanceUpdateService
             'sales' => $sales,
             'cost' => $cost,
             'profit' => $profit,
+            'note' => $request->note,
             'last_updated_user_id' => Auth::user()->user_id,
         ]);
         return;
