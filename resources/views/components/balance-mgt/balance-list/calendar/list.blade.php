@@ -29,7 +29,7 @@
                         }
                         // 該当月以外だったら、カレンダーの背景色を設定
                         if(CarbonImmutable::parse($date)->format('Y-m') != session('search_month')){
-                            $bg = 'bg-gray-200';
+                            $bg = 'bg-gray-300';
                         }
                     @endphp
                     <td class="py-1 px-2 border align-top w-40 h-20 {{ $bg }}">
