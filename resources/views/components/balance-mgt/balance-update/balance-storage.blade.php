@@ -1,4 +1,4 @@
-<div class="bg-white w-1300px px-5 pb-5 pt-2 mt-5">
+<div class="">
     <div class="flex flex-row mb-5">
         <p class="text-xl">保管</p>
     </div>

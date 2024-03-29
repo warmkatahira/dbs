@@ -30,6 +30,11 @@ class Balance extends Model
     {
         return self::where('balance_id', $balance_id);
     }
+    // DB:dbsのusersテーブルとのリレーション
+    public function user()
+    {
+        return $this->hasOne(User::class, 'user_id', 'last_updated_user_id');
+    }
     // DB:dbsのbalance_storagesテーブルとのリレーション
     public function balance_storage()
     {

@@ -1,4 +1,4 @@
-<div class="bg-white w-1300px px-5 pb-5 pt-2 mt-5">
+<div class="">
     <p class="text-xl mb-5">保管</p>
     <table class="text-sm block whitespace-nowrap">
         <thead>
