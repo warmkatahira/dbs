@@ -48,6 +48,8 @@ class BalanceUpdateController extends Controller
         $BalanceUpdateValidationService = new BalanceUpdateValidationService;
         // バリデーションエラーを格納する変数を初期化
         $validation_errors = '';
+        // 収支のバリデーションを実施
+        $validation_errors = $BalanceUpdateValidationService->validationBalance($request, $validation_errors);
         // 運賃のバリデーションを実施
         $validation_errors = $BalanceUpdateValidationService->validationBalanceShippingFee($request, $validation_errors);
         // 荷役のバリデーションを実施

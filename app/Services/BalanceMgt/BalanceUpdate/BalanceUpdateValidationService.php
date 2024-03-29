@@ -3,6 +3,7 @@
 namespace App\Services\BalanceMgt\BalanceUpdate;
 
 // 列挙
+use App\Enums\BalanceMgt\BalanceUpdate\BalanceValidationEnum;
 use App\Enums\BalanceMgt\BalanceUpdate\BalanceShippingFeeValidationEnum;
 use App\Enums\BalanceMgt\BalanceUpdate\BalanceHandlingFeeValidationEnum;
 use App\Enums\BalanceMgt\BalanceUpdate\BalanceStorageValidationEnum;
@@ -13,6 +14,18 @@ use Illuminate\Support\Facades\Validator;
 
 class BalanceUpdateValidationService
 {
+    public function validationBalance($request, $validation_errors)
+    {
+        // バリデーションする値を格納
+        $param = [
+            'balance_id' => $request->balance_id,
+            'note' => $request->note,
+        ];
+        // バリデーション処理
+        $validation_errors = $this->validation($validation_errors, $param, BalanceValidationEnum::RULES, BalanceValidationEnum::MESSAGES, BalanceValidationEnum::ATTRIBUTES);
+        return $validation_errors;
+    }
+
     public function validationBalanceShippingFee($request, $validation_errors)
     {
         // パラメータがある場合のみ処理を行う
